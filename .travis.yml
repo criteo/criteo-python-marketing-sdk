@@ -1,0 +1,19 @@
+language: java
+jdk:
+  - openjdk11
+python:
+  - "2.7"
+  - "3.4"
+env:
+  - TOX_ENV=py34
+  - TOX_ENV=py27
+install:
+  - gradle buildPythonClient
+  - pip install tox
+script:
+  - tox -e $TOX_ENV -c package/tox.ini
+
+branches:
+  only:
+    - master
+    - v0
