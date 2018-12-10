@@ -1,19 +1,27 @@
-language: java
-jdk:
-  - openjdk11
-python:
-  - "2.7"
-  - "3.4"
+language: python
+dist: xenial
+python: "3.4"
 env:
   - TOX_ENV=py34
-  - TOX_ENV=py27
+
 install:
-  - gradle buildPythonClient
+  - pip install --upgrade pip
   - pip install tox
+
 script:
-  - tox -e $TOX_ENV -c package/tox.ini
+  - tox -e $TOX_ENV
 
 branches:
   only:
     - master
     - v0
+
+deploy:
+  provider: pypi
+  user: criteo-marketing
+  password:
+    secure: AHQNztPvRBdd4G1uvQVEk4dUbJ2RG3M9Hg1cGqRLTURXzL/kpomoSsYzTwi/wlCV+lJAUqYl7yfSZQJ9rKZIZjPEX9qpbyn6epL7BYfJd7W6WyDPGrjwWbdtJdf/lNuQWrvz91X9ilPhRD4MMnPNEV2KBof1pKJqIPYTYx+ZV+b1wMtVFOXFrd8RxC8+DAkQXWxFdwKVRWkBTDDcsml4hEbWuwEPwX2uuYYjV8kAqDWPF9dCJOQsemkKb/C4epzeHslxYAJZ2tCYFlVHwMi4qpsm4XFr3FwxDiL+yC9ild0l8UeFuG/Zt35v3rd/xa+eQrQVRfU+jZ1/WBUtJSoKIJDNPdPTysqSHZ5JBvTHGgUOTh+n8aizrhdf7YtCm9aS9ztYQ5pL0VGNPW+sX6+30M5gqj/odr9R35CjGsoVDxuucM4H2GzBnigDEjdmmRQFJQUlN8KRfdFx2AOBaWGyXHFqFt/6wzU8AroDFtQQvO4ySBsEJ4vp/6+y3psuphux2lJXz15+Kgo/rNp1g7aSHdqZId9CrMhrBy4pr6QcLV7IHDbAxfdV+XY1E0janzg/W8AgnVtQ45qF1/itzbtrQmHF/TlrZ/qI/RX8uIuNMWRSNnI1eXGgb3HMdvyakkVVseI85nS6ZhGrrch/7DTO60P7ITQFbyN/02y4iGsNoII=
+  skip-existing: true
+  skip_cleanup: true
+  on:
+    branch: master
