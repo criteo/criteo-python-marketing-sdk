@@ -14,7 +14,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "1.0.20"
+__version__ = "1.0.23"
 
 # import apis into sdk package
 from criteo_marketing.api.advertisers_api import AdvertisersApi
