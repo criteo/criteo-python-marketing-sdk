@@ -6,6 +6,7 @@ from pprint import pprint
 import criteo_marketing
 from criteo_marketing import Configuration
 
+# There is only one accepted GRANT_TYPE
 GRANT_TYPE = 'client_credentials'
 
 
@@ -29,12 +30,10 @@ if __name__ == '__main__':
     if len(sys.argv) != 3:
         raise ValueError("You need to specify the CLIENT_ID and the CLIENT_SECRET")
 
-    client_id = sys.argv[1]
-    client_secret = sys.argv[2]
-
     configuration = Configuration()
-    configuration.username = client_id
-    configuration.password = client_secret
+    configuration.username = sys.argv[1]
+    configuration.password = sys.argv[2]
+
     marketing_client = criteo_marketing.ApiClient(configuration)
 
     valid_token = get_token(marketing_client)
