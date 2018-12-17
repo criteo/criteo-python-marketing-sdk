@@ -4,7 +4,7 @@ from setuptools import setup, find_packages  # noqa: H301
 import os
 
 NAME = "criteo_marketing"
-VERSION = "1.0.29"
+VERSION = "1.0.30"
 # To install the library, run the following
 #
 # python setup.py install
@@ -28,7 +28,7 @@ setup(
     description="Marketing API v.1.0",
     author_email="",
     author=AUTHOR,
-    url="",
+    url="https://github.com/criteo/criteo-python-marketing-sdk",
     keywords=[AUTHOR, "OpenAPI-Generator", "Marketing API v.1.0"],
     install_requires=REQUIRES,
     packages=find_packages(),
