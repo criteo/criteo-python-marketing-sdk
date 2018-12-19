@@ -3,11 +3,11 @@ dist: xenial
 
 matrix:
   include:
-    - python: "3.7"
+    - python: '3.7'
       env: TOX_ENV=py37
-    - python: "3.4"
+    - python: '3.4'
       env: TOX_ENV=py34
-    - python: "2.7"
+    - python: '2.7'
       env: TOX_ENV=py27
 
 install:
@@ -31,3 +31,7 @@ deploy:
   skip_cleanup: true
   on:
     branch: master
+
+notifications:
+  slack:
+    secure: VE/9bo/W4w6UUId9uIWaNTZqn9yRHHnXvw5WMSRu6AKOoS94HCbCzZJX4taDRlY/DPab2mgkWP3aYn1wKX0c8W6bIZz4m26UTtbVccWrmx/9DGT+CJAMTZNgqgXPfuGC0TsSBJ0kawSZSnQYWN4AmhZNeEjhTv/XKuggwUGJT5Mu4aRrXG2HJhR7yUbTepojP6xSAqXn9WnSta3PEUU49LJhkTIYNBBhPdr1bRAo+nHYEo1IHFwX/6liNdFpJGkbEk3L/6i3ZXCrqkd19sVKQc0AUBp2U3ais9I8oJPQ4I4imLBrsxHXkWcZLYGfFXMI3+Ob9uAJ+lIp/CzIsGYafADQlJnQAk/9Esc2tZc6tpQN3MbeJpHXPda9c8LnY4GiJP3eL6vF86+Hainbs8mLWkg5wVxajKKyKXZ5FRm4LptXEfsILbO9IvqX1Mk6ye5yXlVcyYFcCWIKxIcif0BQDrdWH/i1cstZnE5Kc64i+qhRtwT9CgRGf3qrMxSzAS1VEn5WjIAzS/dAymGnU1bVpBy4cuAu+EAAE/OtupUv6QBE7yx3H1zHTnd8vb5QudcSizXRHBxv3Wmf9oFH9SOIz+hepo6zd4mQvwUXfQc0JEzQsX2ONfYgjI5DOkG9bGuak1DLFAdDxyO0CaVfNzw5O7JW43P2sma8jMdGeEU/lmw=
