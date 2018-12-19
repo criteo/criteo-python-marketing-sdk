@@ -9,23 +9,6 @@ from criteo_marketing import Configuration
 # There is only one accepted GRANT_TYPE
 GRANT_TYPE = 'client_credentials'
 
-
-def get_token(client):
-    auth_api = criteo_marketing.AuthenticationApi(client)
-    token = auth_api.o_auth2_token_post(client_id=marketing_client.configuration.username,
-                                        client_secret=marketing_client.configuration.password,
-                                        grant_type=GRANT_TYPE)
-    return token.token_type + " " + token.access_token
-
-
-def get_advertisers_campaigns(client, token=''):
-    advertisers = criteo_marketing.AdvertisersApi(client)
-    advertiser_id = 45749
-
-    api_response = advertisers.get_campaigns(advertiser_id, token)
-    pprint(api_response)
-
-
 if __name__ == '__main__':
     if len(sys.argv) != 3:
         raise ValueError("You need to specify the CLIENT_ID and the CLIENT_SECRET")
@@ -34,8 +17,21 @@ if __name__ == '__main__':
     configuration.username = sys.argv[1]
     configuration.password = sys.argv[2]
 
-    marketing_client = criteo_marketing.ApiClient(configuration)
+    # Enable/Disable debug httplib and criteo_marketing packages
+    # configuration.debug = True
 
-    valid_token = get_token(marketing_client)
+    client = criteo_marketing.ApiClient(configuration)
 
-    get_advertisers_campaigns(marketing_client, valid_token)
+    # Get a valid token. The configuration is accessible through the client
+    auth_api = criteo_marketing.AuthenticationApi(client)
+    auth_response = auth_api.o_auth2_token_post(client_id=client.configuration.username,
+                                                client_secret=client.configuration.password,
+                                                grant_type=GRANT_TYPE)
+    # Token type is always "BEARER"
+    token = auth_response.token_type + " " + auth_response.access_token
+
+    # Reuse the same client to benefit from the configuration in order to automatically refresh expired token
+    portfolio_api = criteo_marketing.PortfolioApi(client)
+
+    portfolio_response = portfolio_api.get_portfolio(token)
+    pprint(portfolio_response)
