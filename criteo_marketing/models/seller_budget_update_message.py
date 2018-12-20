@@ -10,10 +10,13 @@
 """
 
 
+import logging
 import pprint
 import re  # noqa: F401
 
 import six
+
+logger = logging.getLogger(__name__)
 
 
 class SellerBudgetUpdateMessage(object):
@@ -145,7 +148,7 @@ class SellerBudgetUpdateMessage(object):
         """
         allowed_values = ["Inactive", "Active"]  # noqa: E501
         if status not in allowed_values:
-            print("Unknown value `status` [{0}]".format(status))
+            logger.debug("Unknown value `status` [%s]", status)
 
         self._status = status
 

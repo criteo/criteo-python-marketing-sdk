@@ -10,10 +10,13 @@
 """
 
 
+import logging
 import pprint
 import re  # noqa: F401
 
 import six
+
+logger = logging.getLogger(__name__)
 
 
 class CampaignBidChangeResponse(object):
@@ -103,7 +106,7 @@ class CampaignBidChangeResponse(object):
         """
         allowed_values = ["OK", "AccessDenied", "EnabledCategoryNumberExceeded", "CategoriesNotEnabled", "DuplicateCatalogEntry", "InvalidCatalogId", "InvalidCategoryHashcode", "InactiveCategory", "DuplicateCategoryEntry", "BiddingCategoriesOnThisCampaignNotAllowed", "CampaignNotInPortfolioOrNotActive", "DuplicateCampaignEntry", "BiddingOnThisCampaignNotAllowed", "BidNotInRange", "FourDecimalsNotAllowed"]  # noqa: E501
         if error_code not in allowed_values:
-            print("Unknown value `error_code` [{0}]".format(error_code))
+            logger.debug("Unknown value `error_code` [%s]", error_code)
 
         self._error_code = error_code
 

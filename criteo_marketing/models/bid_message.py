@@ -10,10 +10,13 @@
 """
 
 
+import logging
 import pprint
 import re  # noqa: F401
 
 import six
+
+logger = logging.getLogger(__name__)
 
 
 class BidMessage(object):
@@ -124,7 +127,7 @@ class BidMessage(object):
         """
         allowed_values = ["Unknown", "CPC", "COS", "CPO"]  # noqa: E501
         if bid_type not in allowed_values:
-            print("Unknown value `bid_type` [{0}]".format(bid_type))
+            logger.debug("Unknown value `bid_type` [%s]", bid_type)
 
         self._bid_type = bid_type
 

@@ -10,10 +10,13 @@
 """
 
 
+import logging
 import pprint
 import re  # noqa: F401
 
 import six
+
+logger = logging.getLogger(__name__)
 
 
 class StatsQueryMessage(object):
@@ -165,7 +168,7 @@ class StatsQueryMessage(object):
         """
         allowed_values = ["CampaignId", "AdvertiserId", "Category", "Seller", "Hour", "Day", "Week", "Month", "Year"]  # noqa: E501
         if not set(dimensions).issubset(set(allowed_values)):
-            print("Unknown value `dimensions` [{0}]".format(dimensions))
+            logger.debug("Unknown value `dimensions` [%s]",dimensions)
 
         self._dimensions = dimensions
 
@@ -210,7 +213,7 @@ class StatsQueryMessage(object):
         """
         allowed_values = ["Csv", "Excel", "Xml", "Json"]  # noqa: E501
         if format not in allowed_values:
-            print("Unknown value `format` [{0}]".format(format))
+            logger.debug("Unknown value `format` [%s]", format)
 
         self._format = format
 
@@ -255,7 +258,7 @@ class StatsQueryMessage(object):
         """
         allowed_values = ["GMT", "PST", "JST"]  # noqa: E501
         if timezone not in allowed_values:
-            print("Unknown value `timezone` [{0}]".format(timezone))
+            logger.debug("Unknown value `timezone` [%s]", timezone)
 
         self._timezone = timezone
 

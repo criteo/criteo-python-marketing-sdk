@@ -1,5 +1,6 @@
 from __future__ import print_function
 
+import logging
 import sys
 from pprint import pprint
 
@@ -18,6 +19,7 @@ if __name__ == '__main__':
     configuration.password = sys.argv[2]
 
     # Enable/Disable debug httplib and criteo_marketing packages
+    # logging.basicConfig(level=logging.DEBUG)
     # configuration.debug = True
 
     client = criteo_marketing.ApiClient(configuration)
