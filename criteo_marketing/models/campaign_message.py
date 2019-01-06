@@ -108,7 +108,7 @@ class CampaignMessage(object):
         :param campaign_type: The campaign_type of this CampaignMessage.  # noqa: E501
         :type: str
         """
-        allowed_values = ["MidFunnel", "ActiveUsers", "AudienceSelling"]  # noqa: E501
+        allowed_values = ["ActiveUsers", "MidFunnel", "AudienceSelling"]  # noqa: E501
         if campaign_type not in allowed_values:
             logger.debug("Unknown value `campaign_type` [%s]", campaign_type)
 
