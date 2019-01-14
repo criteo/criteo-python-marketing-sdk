@@ -10,13 +10,10 @@
 """
 
 
-import logging
 import pprint
 import re  # noqa: F401
 
 import six
-
-logger = logging.getLogger(__name__)
 
 
 class SellerInfoMessage(object):
@@ -125,9 +122,6 @@ class SellerInfoMessage(object):
         :param status: The status of this SellerInfoMessage.  # noqa: E501
         :type: str
         """
-        allowed_values = ["Inactive", "Active"]  # noqa: E501
-        if status not in allowed_values:
-            logger.debug("Unknown value `status` [%s]", status)
 
         self._status = status
 

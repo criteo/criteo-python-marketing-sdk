@@ -10,13 +10,10 @@
 """
 
 
-import logging
 import pprint
 import re  # noqa: F401
 
 import six
-
-logger = logging.getLogger(__name__)
 
 
 class CampaignBidMessage(object):
@@ -172,9 +169,6 @@ class CampaignBidMessage(object):
         :param campaign_status: The campaign_status of this CampaignBidMessage.  # noqa: E501
         :type: str
         """
-        allowed_values = ["Running", "Archived", "NotRunning"]  # noqa: E501
-        if campaign_status not in allowed_values:
-            logger.debug("Unknown value `campaign_status` [%s]", campaign_status)
 
         self._campaign_status = campaign_status
 

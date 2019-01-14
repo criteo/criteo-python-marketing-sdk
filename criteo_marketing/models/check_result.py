@@ -10,13 +10,10 @@
 """
 
 
-import logging
 import pprint
 import re  # noqa: F401
 
 import six
-
-logger = logging.getLogger(__name__)
 
 
 class CheckResult(object):

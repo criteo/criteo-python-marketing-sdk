@@ -10,13 +10,10 @@
 """
 
 
-import logging
 import pprint
 import re  # noqa: F401
 
 import six
-
-logger = logging.getLogger(__name__)
 
 
 class ThrottlePolicy(object):
@@ -73,9 +70,6 @@ class ThrottlePolicy(object):
         :param policy_type: The policy_type of this ThrottlePolicy.  # noqa: E501
         :type: str
         """
-        allowed_values = ["IpThrottling", "ClientThrottling"]  # noqa: E501
-        if policy_type not in allowed_values:
-            logger.debug("Unknown value `policy_type` [%s]", policy_type)
 
         self._policy_type = policy_type
 

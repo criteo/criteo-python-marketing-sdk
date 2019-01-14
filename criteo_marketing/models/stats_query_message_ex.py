@@ -10,13 +10,10 @@
 """
 
 
-import logging
 import pprint
 import re  # noqa: F401
 
 import six
-
-logger = logging.getLogger(__name__)
 
 
 class StatsQueryMessageEx(object):
@@ -113,9 +110,6 @@ class StatsQueryMessageEx(object):
         :param report_type: The report_type of this StatsQueryMessageEx.  # noqa: E501
         :type: str
         """
-        allowed_values = ["CampaignPerformance", "FacebookDPA", "TransactionID"]  # noqa: E501
-        if report_type not in allowed_values:
-            logger.debug("Unknown value `report_type` [%s]", report_type)
 
         self._report_type = report_type
 
@@ -221,9 +215,6 @@ class StatsQueryMessageEx(object):
         :param dimensions: The dimensions of this StatsQueryMessageEx.  # noqa: E501
         :type: list[str]
         """
-        allowed_values = ["CampaignId", "AdvertiserId", "Category", "Seller", "Hour", "Day", "Week", "Month", "Year"]  # noqa: E501
-        if not set(dimensions).issubset(set(allowed_values)):
-            logger.debug("Unknown value `dimensions` [%s]",dimensions)
 
         self._dimensions = dimensions
 
@@ -266,9 +257,6 @@ class StatsQueryMessageEx(object):
         :param format: The format of this StatsQueryMessageEx.  # noqa: E501
         :type: str
         """
-        allowed_values = ["Csv", "Excel", "Xml", "Json"]  # noqa: E501
-        if format not in allowed_values:
-            logger.debug("Unknown value `format` [%s]", format)
 
         self._format = format
 
@@ -311,9 +299,6 @@ class StatsQueryMessageEx(object):
         :param timezone: The timezone of this StatsQueryMessageEx.  # noqa: E501
         :type: str
         """
-        allowed_values = ["GMT", "PST", "JST"]  # noqa: E501
-        if timezone not in allowed_values:
-            logger.debug("Unknown value `timezone` [%s]", timezone)
 
         self._timezone = timezone
 
