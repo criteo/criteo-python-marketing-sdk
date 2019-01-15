@@ -35,7 +35,8 @@ class AudiencePatchResponse(object):
         'request_date': 'datetime',
         'schema': 'str',
         'nb_valid_identifiers': 'int',
-        'nb_invalid_identifiers': 'int'
+        'nb_invalid_identifiers': 'int',
+        'sample_invalid_identifiers': 'list[str]'
     }
 
     attribute_map = {
@@ -43,10 +44,11 @@ class AudiencePatchResponse(object):
         'request_date': 'requestDate',
         'schema': 'schema',
         'nb_valid_identifiers': 'nbValidIdentifiers',
-        'nb_invalid_identifiers': 'nbInvalidIdentifiers'
+        'nb_invalid_identifiers': 'nbInvalidIdentifiers',
+        'sample_invalid_identifiers': 'sampleInvalidIdentifiers'
     }
 
-    def __init__(self, operation=None, request_date=None, schema=None, nb_valid_identifiers=None, nb_invalid_identifiers=None):  # noqa: E501
+    def __init__(self, operation=None, request_date=None, schema=None, nb_valid_identifiers=None, nb_invalid_identifiers=None, sample_invalid_identifiers=None):  # noqa: E501
         """AudiencePatchResponse - a model defined in OpenAPI"""  # noqa: E501
 
         self._operation = None
@@ -54,6 +56,7 @@ class AudiencePatchResponse(object):
         self._schema = None
         self._nb_valid_identifiers = None
         self._nb_invalid_identifiers = None
+        self._sample_invalid_identifiers = None
         self.discriminator = None
 
         if operation is not None:
@@ -66,6 +69,8 @@ class AudiencePatchResponse(object):
             self.nb_valid_identifiers = nb_valid_identifiers
         if nb_invalid_identifiers is not None:
             self.nb_invalid_identifiers = nb_invalid_identifiers
+        if sample_invalid_identifiers is not None:
+            self.sample_invalid_identifiers = sample_invalid_identifiers
 
     @property
     def operation(self):
@@ -177,6 +182,29 @@ class AudiencePatchResponse(object):
         """
 
         self._nb_invalid_identifiers = nb_invalid_identifiers
+
+    @property
+    def sample_invalid_identifiers(self):
+        """Gets the sample_invalid_identifiers of this AudiencePatchResponse.  # noqa: E501
+
+        Optionnal. A sample of invalid identifiers if there is some.  # noqa: E501
+
+        :return: The sample_invalid_identifiers of this AudiencePatchResponse.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._sample_invalid_identifiers
+
+    @sample_invalid_identifiers.setter
+    def sample_invalid_identifiers(self, sample_invalid_identifiers):
+        """Sets the sample_invalid_identifiers of this AudiencePatchResponse.
+
+        Optionnal. A sample of invalid identifiers if there is some.  # noqa: E501
+
+        :param sample_invalid_identifiers: The sample_invalid_identifiers of this AudiencePatchResponse.  # noqa: E501
+        :type: list[str]
+        """
+
+        self._sample_invalid_identifiers = sample_invalid_identifiers
 
     def to_dict(self):
         """Returns the model properties as a dict"""

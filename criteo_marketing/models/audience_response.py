@@ -34,23 +34,41 @@ class AudienceResponse(object):
         'id': 'int',
         'advertiser_id': 'int',
         'name': 'str',
-        'description': 'str'
+        'description': 'str',
+        'created': 'int',
+        'updated': 'int',
+        'nb_lines': 'int',
+        'nb_lines_email': 'int',
+        'nb_matches_email': 'int',
+        'last_run': 'int'
     }
 
     attribute_map = {
         'id': 'id',
         'advertiser_id': 'advertiserId',
         'name': 'name',
-        'description': 'description'
+        'description': 'description',
+        'created': 'created',
+        'updated': 'updated',
+        'nb_lines': 'nbLines',
+        'nb_lines_email': 'nbLinesEmail',
+        'nb_matches_email': 'nbMatchesEmail',
+        'last_run': 'lastRun'
     }
 
-    def __init__(self, id=None, advertiser_id=None, name=None, description=None):  # noqa: E501
+    def __init__(self, id=None, advertiser_id=None, name=None, description=None, created=None, updated=None, nb_lines=None, nb_lines_email=None, nb_matches_email=None, last_run=None):  # noqa: E501
         """AudienceResponse - a model defined in OpenAPI"""  # noqa: E501
 
         self._id = None
         self._advertiser_id = None
         self._name = None
         self._description = None
+        self._created = None
+        self._updated = None
+        self._nb_lines = None
+        self._nb_lines_email = None
+        self._nb_matches_email = None
+        self._last_run = None
         self.discriminator = None
 
         if id is not None:
@@ -61,6 +79,18 @@ class AudienceResponse(object):
             self.name = name
         if description is not None:
             self.description = description
+        if created is not None:
+            self.created = created
+        if updated is not None:
+            self.updated = updated
+        if nb_lines is not None:
+            self.nb_lines = nb_lines
+        if nb_lines_email is not None:
+            self.nb_lines_email = nb_lines_email
+        if nb_matches_email is not None:
+            self.nb_matches_email = nb_matches_email
+        if last_run is not None:
+            self.last_run = last_run
 
     @property
     def id(self):
@@ -145,6 +175,144 @@ class AudienceResponse(object):
         """
 
         self._description = description
+
+    @property
+    def created(self):
+        """Gets the created of this AudienceResponse.  # noqa: E501
+
+        Unix timestamp in seconds of audience creation  # noqa: E501
+
+        :return: The created of this AudienceResponse.  # noqa: E501
+        :rtype: int
+        """
+        return self._created
+
+    @created.setter
+    def created(self, created):
+        """Sets the created of this AudienceResponse.
+
+        Unix timestamp in seconds of audience creation  # noqa: E501
+
+        :param created: The created of this AudienceResponse.  # noqa: E501
+        :type: int
+        """
+
+        self._created = created
+
+    @property
+    def updated(self):
+        """Gets the updated of this AudienceResponse.  # noqa: E501
+
+        Unix timestamp in seconds of audience last update  # noqa: E501
+
+        :return: The updated of this AudienceResponse.  # noqa: E501
+        :rtype: int
+        """
+        return self._updated
+
+    @updated.setter
+    def updated(self, updated):
+        """Sets the updated of this AudienceResponse.
+
+        Unix timestamp in seconds of audience last update  # noqa: E501
+
+        :param updated: The updated of this AudienceResponse.  # noqa: E501
+        :type: int
+        """
+
+        self._updated = updated
+
+    @property
+    def nb_lines(self):
+        """Gets the nb_lines of this AudienceResponse.  # noqa: E501
+
+        The total number of line in the audience  # noqa: E501
+
+        :return: The nb_lines of this AudienceResponse.  # noqa: E501
+        :rtype: int
+        """
+        return self._nb_lines
+
+    @nb_lines.setter
+    def nb_lines(self, nb_lines):
+        """Sets the nb_lines of this AudienceResponse.
+
+        The total number of line in the audience  # noqa: E501
+
+        :param nb_lines: The nb_lines of this AudienceResponse.  # noqa: E501
+        :type: int
+        """
+
+        self._nb_lines = nb_lines
+
+    @property
+    def nb_lines_email(self):
+        """Gets the nb_lines_email of this AudienceResponse.  # noqa: E501
+
+        The number of email line in the audience  # noqa: E501
+
+        :return: The nb_lines_email of this AudienceResponse.  # noqa: E501
+        :rtype: int
+        """
+        return self._nb_lines_email
+
+    @nb_lines_email.setter
+    def nb_lines_email(self, nb_lines_email):
+        """Sets the nb_lines_email of this AudienceResponse.
+
+        The number of email line in the audience  # noqa: E501
+
+        :param nb_lines_email: The nb_lines_email of this AudienceResponse.  # noqa: E501
+        :type: int
+        """
+
+        self._nb_lines_email = nb_lines_email
+
+    @property
+    def nb_matches_email(self):
+        """Gets the nb_matches_email of this AudienceResponse.  # noqa: E501
+
+        The number of email matches in the audience  # noqa: E501
+
+        :return: The nb_matches_email of this AudienceResponse.  # noqa: E501
+        :rtype: int
+        """
+        return self._nb_matches_email
+
+    @nb_matches_email.setter
+    def nb_matches_email(self, nb_matches_email):
+        """Sets the nb_matches_email of this AudienceResponse.
+
+        The number of email matches in the audience  # noqa: E501
+
+        :param nb_matches_email: The nb_matches_email of this AudienceResponse.  # noqa: E501
+        :type: int
+        """
+
+        self._nb_matches_email = nb_matches_email
+
+    @property
+    def last_run(self):
+        """Gets the last_run of this AudienceResponse.  # noqa: E501
+
+        Unix timestamp in seconds of audience last computation  # noqa: E501
+
+        :return: The last_run of this AudienceResponse.  # noqa: E501
+        :rtype: int
+        """
+        return self._last_run
+
+    @last_run.setter
+    def last_run(self, last_run):
+        """Sets the last_run of this AudienceResponse.
+
+        Unix timestamp in seconds of audience last computation  # noqa: E501
+
+        :param last_run: The last_run of this AudienceResponse.  # noqa: E501
+        :type: int
+        """
+
+        self._last_run = last_run
 
     def to_dict(self):
         """Returns the model properties as a dict"""
