@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **get_stats**
-> get_stats(authorization, stats_query_message_ex)
+> str get_stats(authorization, stats_query_message_ex)
 
 Generates a statistics report
 
@@ -29,7 +29,8 @@ stats_query_message_ex = criteo_marketing.StatsQueryMessageEx() # StatsQueryMess
 
 try:
     # Generates a statistics report
-    api_instance.get_stats(authorization, stats_query_message_ex)
+    api_response = api_instance.get_stats(authorization, stats_query_message_ex)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling StatisticsApi->get_stats: %s\n" % e)
 ```
@@ -43,7 +44,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -52,7 +53,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded, text/html
- - **Accept**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

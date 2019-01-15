@@ -44,7 +44,7 @@ class StatisticsApi(object):
         :param async_req bool
         :param str authorization: JWT Bearer Token (required)
         :param StatsQueryMessageEx stats_query_message_ex: The report query details (required)
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -67,7 +67,7 @@ class StatisticsApi(object):
         :param async_req bool
         :param str authorization: JWT Bearer Token (required)
         :param StatsQueryMessageEx stats_query_message_ex: The report query details (required)
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -113,6 +113,10 @@ class StatisticsApi(object):
         body_params = None
         if 'stats_query_message_ex' in local_var_params:
             body_params = local_var_params['stats_query_message_ex']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', 'text/json', 'application/xml', 'text/xml', 'text/html'])  # noqa: E501
+
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
             ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded', 'text/html'])  # noqa: E501
@@ -128,7 +132,7 @@ class StatisticsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
