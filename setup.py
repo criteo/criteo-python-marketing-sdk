@@ -4,7 +4,7 @@ from setuptools import setup, find_packages  # noqa: H301
 import os
 
 NAME = "criteo_marketing"
-VERSION = "1.0.55"
+VERSION = "1.0.56"
 # To install the library, run the following
 #
 # python setup.py install
@@ -16,11 +16,38 @@ REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil"]
 
 AUTHOR='Criteo'
 README_CONTENT_TYPE='text/markdown'
+PACKAGE_LONG_DESCRIPTION = """# Criteo Marketing SDK for Python
+[![](https://img.shields.io/pypi/pyversions/criteo-marketing.svg)](https://pypi.org/project/criteo-marketing/)
 
-this_dir = os.path.dirname(__file__)
-readme_filename = os.path.join(this_dir, 'README.md')
-with open(readme_filename) as f:
-    PACKAGE_LONG_DESCRIPTION = f.read()
+IMPORTANT: This Python package links to Criteo production environment. Any test applied here will thus impact real campaigns.
+
+## Requirements.
+
+Python 2.7 and 3.4+
+
+## Installation & Usage
+### pip install
+
+
+```sh
+pip install criteo_marketing
+```
+(you may need to run `pip` with root permission: `sudo pip install criteo_marketing`)
+
+Then import the package:
+```python
+import criteo_marketing
+```
+
+Full documentation on [Github](https://github.com/criteo/criteo-python-marketing-sdk).
+
+## Disclaimer
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+"""
 
 setup(
     name=NAME,
