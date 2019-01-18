@@ -141,10 +141,13 @@ class RESTClientObject(object):
                 "body parameter cannot be used with post_params parameter."
             )
 
-        self.token = self._refresh_token(headers)
-
         post_params = post_params or {}
         headers = headers or {}
+
+        if 'Authorization' in headers:
+            token_refreshed = self.refresh_token(headers)
+            if token_refreshed:
+                headers['Authorization'] = 'Bearer ' + self.token.access_token
 
         timeout = None
         if _request_timeout:
@@ -302,31 +305,30 @@ class RESTClientObject(object):
                             _request_timeout=_request_timeout,
                             body=body)
 
-    def _refresh_token(self, headers):
-        if 'Authorization' not in headers:
-            return self.token
-        elif self.token is None or not self.token.is_valid_enough():
-            if self.client_id is None or self.client_id == '':
-                raise ValueError('client_id (username) is missing')
-            if self.client_secret is None or self.client_secret == '':
-                raise ValueError('client_secret (password) is missing')
+    def refresh_token(self, headers):
+        missing_credentials = self.client_id is None or self.client_id == '' \
+                              or self.client_secret is None or self.client_secret == ''
+        missing_or_expired_token = self.token is None or not self.token.is_valid_enough()
 
-            oauth_url = self.host + '/oauth2/token'
-            new_headers = {'Accept': 'application/json',
-                           'Content-Type': 'application/x-www-form-urlencoded',
-                           'User-Agent': headers['User-Agent']}
-            post_params = [('client_id', self.client_id),
-                           ('client_secret', self.client_secret),
-                           ('grant_type', self.grant_type)]
-            try:
-                response = self.POST(oauth_url, headers=new_headers, query_params=[], post_params=post_params)
-                data = json.loads(response.data)
-                self.token = Token(data['access_token'], data['expires_in'])
-            except ApiException as e:
-                raise self._enrich_exception_message(e, oauth_url)
+        if not missing_credentials and missing_or_expired_token:
+            self.token = self.call_auth_endpoint(headers)
+            return True
+        return False
 
-        headers['Authorization'] = 'Bearer ' + self.token.access_token
-        return self.token
+    def call_auth_endpoint(self, headers):
+        oauth_url = self.host + '/oauth2/token'
+        new_headers = {'Accept': 'application/json',
+                       'Content-Type': 'application/x-www-form-urlencoded',
+                       'User-Agent': headers['User-Agent']}
+        post_params = [('client_id', self.client_id),
+                       ('client_secret', self.client_secret),
+                       ('grant_type', self.grant_type)]
+        try:
+            response = self.POST(oauth_url, headers=new_headers, query_params=[], post_params=post_params)
+            data = json.loads(response.data)
+            return Token(data['access_token'], data['expires_in'])
+        except ApiException as e:
+            raise self._enrich_exception_message(e, oauth_url)
 
     @staticmethod
     def _enrich_exception_message(e, url):
