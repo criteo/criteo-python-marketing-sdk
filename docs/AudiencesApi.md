@@ -20,6 +20,8 @@ Add/Remove users to an Audience.
 Add/Remove users to an Audience.
 
 ### Example
+
+* Api Key Authentication (Authorization): 
 ```python
 from __future__ import print_function
 import time
@@ -27,8 +29,14 @@ import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
 
+# Configure API key authorization: Authorization
+configuration = criteo_marketing.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
 # create an instance of the API class
-api_instance = criteo_marketing.AudiencesApi()
+api_instance = criteo_marketing.AudiencesApi(criteo_marketing.ApiClient(configuration))
 audience_id = 56 # int | Mandatory. The id of the audience to add or remove users to.
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
 audience_patch_request = criteo_marketing.AudiencePatchRequest() # AudiencePatchRequest | Mandatory. The request to create the Audience.
@@ -55,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -72,6 +80,8 @@ Create a new Audience.
 Create a new Audience for the given Advertiser.
 
 ### Example
+
+* Api Key Authentication (Authorization): 
 ```python
 from __future__ import print_function
 import time
@@ -79,8 +89,14 @@ import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
 
+# Configure API key authorization: Authorization
+configuration = criteo_marketing.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
 # create an instance of the API class
-api_instance = criteo_marketing.AudiencesApi()
+api_instance = criteo_marketing.AudiencesApi(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
 audience_create_request = criteo_marketing.AudienceCreateRequest() # AudienceCreateRequest | 
 
@@ -105,7 +121,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -122,6 +138,8 @@ Delete an Audience.
 Delete an Audience.
 
 ### Example
+
+* Api Key Authentication (Authorization): 
 ```python
 from __future__ import print_function
 import time
@@ -129,8 +147,14 @@ import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
 
+# Configure API key authorization: Authorization
+configuration = criteo_marketing.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
 # create an instance of the API class
-api_instance = criteo_marketing.AudiencesApi()
+api_instance = criteo_marketing.AudiencesApi(criteo_marketing.ApiClient(configuration))
 audience_id = 56 # int | Mandatory. The id of the audience to delete.
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
 
@@ -155,7 +179,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -172,6 +196,8 @@ Get the list of Audiences.
 Get the list of Audiences for the given Advertiser.
 
 ### Example
+
+* Api Key Authentication (Authorization): 
 ```python
 from __future__ import print_function
 import time
@@ -179,8 +205,14 @@ import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
 
+# Configure API key authorization: Authorization
+configuration = criteo_marketing.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
 # create an instance of the API class
-api_instance = criteo_marketing.AudiencesApi()
+api_instance = criteo_marketing.AudiencesApi(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
 advertiser_id = 56 # int | Mandatory. Advertiser to get all Audiences for. (optional)
 
@@ -205,7 +237,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -222,6 +254,8 @@ Remove all users from an Audience.
 Remove all users from an Audience.
 
 ### Example
+
+* Api Key Authentication (Authorization): 
 ```python
 from __future__ import print_function
 import time
@@ -229,8 +263,14 @@ import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
 
+# Configure API key authorization: Authorization
+configuration = criteo_marketing.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
 # create an instance of the API class
-api_instance = criteo_marketing.AudiencesApi()
+api_instance = criteo_marketing.AudiencesApi(criteo_marketing.ApiClient(configuration))
 audience_id = 56 # int | Mandatory. The id of the audience to empty.
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
 
@@ -255,7 +295,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -272,6 +312,8 @@ Update an Audience metadata.
 Update an Audience metadata.
 
 ### Example
+
+* Api Key Authentication (Authorization): 
 ```python
 from __future__ import print_function
 import time
@@ -279,8 +321,14 @@ import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
 
+# Configure API key authorization: Authorization
+configuration = criteo_marketing.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
 # create an instance of the API class
-api_instance = criteo_marketing.AudiencesApi()
+api_instance = criteo_marketing.AudiencesApi(criteo_marketing.ApiClient(configuration))
 audience_id = 56 # int | Mandatory. The id of the Audience to update.
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
 audience_put_request = criteo_marketing.AudiencePutRequest() # AudiencePutRequest | Mandatory. The request to update the Audience metadata.
@@ -307,7 +355,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 

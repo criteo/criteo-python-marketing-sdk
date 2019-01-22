@@ -20,6 +20,8 @@ Gets a the bids for campaigns and their categories
 Get the campaigns' bids, as well as the bids of their categories
 
 ### Example
+
+* Api Key Authentication (Authorization): 
 ```python
 from __future__ import print_function
 import time
@@ -27,8 +29,14 @@ import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
 
+# Configure API key authorization: Authorization
+configuration = criteo_marketing.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
 # create an instance of the API class
-api_instance = criteo_marketing.CampaignsApi()
+api_instance = criteo_marketing.CampaignsApi(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
 campaign_ids = 'campaign_ids_example' # str | Optional. The ids of the campaigns we want to get the bids on. If not specified, advertiserIds will be used. (optional)
 advertiser_ids = 'advertiser_ids_example' # str | Optional. The ids of the advertisers' campaigns we want to get the bids on. If campaignIds not specified, and neither is advertiserIds, all the advertisers in the user's portfolio are used. (optional)
@@ -63,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -80,6 +88,8 @@ Gets a specific campaign
 Get a specific campaign
 
 ### Example
+
+* Api Key Authentication (Authorization): 
 ```python
 from __future__ import print_function
 import time
@@ -87,8 +97,14 @@ import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
 
+# Configure API key authorization: Authorization
+configuration = criteo_marketing.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
 # create an instance of the API class
-api_instance = criteo_marketing.CampaignsApi()
+api_instance = criteo_marketing.CampaignsApi(criteo_marketing.ApiClient(configuration))
 campaign_id = 56 # int | Mandatory. The id of the campaign to return.
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
 
@@ -113,7 +129,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -130,6 +146,8 @@ Gets campaigns
 Get the list of campaigns with the specified filters.  If a campaign is requested but is missing from current user's portfolio, it will not be included in the list.  If neither campaign ids nor advertisers ids are provided, then the user's portfolio will be used.
 
 ### Example
+
+* Api Key Authentication (Authorization): 
 ```python
 from __future__ import print_function
 import time
@@ -137,8 +155,14 @@ import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
 
+# Configure API key authorization: Authorization
+configuration = criteo_marketing.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
 # create an instance of the API class
-api_instance = criteo_marketing.CampaignsApi()
+api_instance = criteo_marketing.CampaignsApi(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
 campaign_ids = 'campaign_ids_example' # str | Optional. One or more campaign ids, E.g., 78, 12932, 45236. If the campaign ids requested are not linked to advertisers in the user's portfolio, they will be skipped. (optional)
 advertiser_ids = 'advertiser_ids_example' # str | Optional. One or more advertiser ids, E.g., 78, 12932, 45236. If the advertiser ids requested are not part of the user's portfolio, they will be skipped. (optional)
@@ -169,7 +193,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -186,6 +210,8 @@ Gets categories
 Get the list of categories linked to the requested campaign.
 
 ### Example
+
+* Api Key Authentication (Authorization): 
 ```python
 from __future__ import print_function
 import time
@@ -193,8 +219,14 @@ import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
 
+# Configure API key authorization: Authorization
+configuration = criteo_marketing.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
 # create an instance of the API class
-api_instance = criteo_marketing.CampaignsApi()
+api_instance = criteo_marketing.CampaignsApi(criteo_marketing.ApiClient(configuration))
 campaign_id = 56 # int | Mandatory. The id of the campaign the categories are linked to.
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
 enabled_only = True # bool | Optional. Returns only categories you can bid on. Defaults to false. (optional)
@@ -221,7 +253,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -238,6 +270,8 @@ Gets a specific category
 Get a specific category linked to the requested campaign.
 
 ### Example
+
+* Api Key Authentication (Authorization): 
 ```python
 from __future__ import print_function
 import time
@@ -245,8 +279,14 @@ import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
 
+# Configure API key authorization: Authorization
+configuration = criteo_marketing.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
 # create an instance of the API class
-api_instance = criteo_marketing.CampaignsApi()
+api_instance = criteo_marketing.CampaignsApi(criteo_marketing.ApiClient(configuration))
 campaign_id = 56 # int | Mandatory. The id of the campaign the categories are linked to.
 category_hash_code = 56 # int | Mandatory. The id of the category to return.
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
@@ -273,7 +313,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -290,6 +330,8 @@ Update bids for campaigns and their categories
 If a campaign bid is updated, all (if any) category bids for this campaign will be updated with the new value if they are initially equal to the campaign bid.  If the category bid is not wanted to be cascaded to the categories with the same bid value, new change bids must be added in the request for the categories where the value should be kept (with the initial value).
 
 ### Example
+
+* Api Key Authentication (Authorization): 
 ```python
 from __future__ import print_function
 import time
@@ -297,8 +339,14 @@ import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
 
+# Configure API key authorization: Authorization
+configuration = criteo_marketing.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
 # create an instance of the API class
-api_instance = criteo_marketing.CampaignsApi()
+api_instance = criteo_marketing.CampaignsApi(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
 campaign_bid_change_request = NULL # list[CampaignBidChangeRequest] | Specifies the list of bid changes to be applied.
 
@@ -323,7 +371,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 

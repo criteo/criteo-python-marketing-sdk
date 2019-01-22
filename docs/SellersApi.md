@@ -20,6 +20,8 @@ Creates a budget for a seller/list of sellers.
 <b>Seller name</b>: can be retrieved from the /sellers/ endpoint. This value is case insensitive.<br /><b>Amount</b>: in your currency. Set it to \"null\" or leave empty to create an uncapped budget (with no limit).<br /><h4>Response</h4><p>              The budget's start date will be set to:<br />              • today: in case no budget is currently set for this seller<br />              • tomorrow: in case your seller already has a budget running, ending at midnight. Note that start dates are UTC+00:00 based.<br />              The budget will remain active until being completely consumed or stopped.<br /></p><h4>Validation rules</h4><p>              Budgets cannot <b>overlap</b> with each other for a specific seller.<br /></p><h4>Functional cases</h4><p>              When a seller's budget is totaly consumed, display delivery will automatically stop for this specific seller.<br />              If budget needs to be updated, by: adding fund, reducing a budget amount or stopping it, refer to the “update budget” endpoint.<br /></p>
 
 ### Example
+
+* Api Key Authentication (Authorization): 
 ```python
 from __future__ import print_function
 import time
@@ -27,8 +29,14 @@ import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
 
+# Configure API key authorization: Authorization
+configuration = criteo_marketing.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
 # create an instance of the API class
-api_instance = criteo_marketing.SellersApi()
+api_instance = criteo_marketing.SellersApi(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
 seller_budgets_create_message = criteo_marketing.SellerBudgetsCreateMessage() # SellerBudgetsCreateMessage | 
 
@@ -53,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -70,6 +78,8 @@ Gets sellers details.
 Returns a list of sellers with all their details.<br />  By default, this list will contain all active sellers that have been on-boarded onto the Criteo Reseller Program.<br />  Note that (in the situation where you would have multiple Criteo Reseller Program campaigns running at the same time) campaign filter can be applied to restrict the response to one or multiple campaign ids.<br /><h4>Functional cases</h4><p>  Only currently running and future seller budgets will be retrieved. Past sellers' budgets can be retrieved from the statistics endpoint.<br />  Seller's status has 2 possible values - Active or Inactive - which corresponds to:<br />  • <b>Active</b>: Seller in a running campaign, with a bid (CPC) and a budget &gt; 0<br />  • <b>Inactive</b>: Seller with a budget consumed or that you explicitly stopped.<br /></p>
 
 ### Example
+
+* Api Key Authentication (Authorization): 
 ```python
 from __future__ import print_function
 import time
@@ -77,8 +87,14 @@ import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
 
+# Configure API key authorization: Authorization
+configuration = criteo_marketing.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
 # create an instance of the API class
-api_instance = criteo_marketing.SellersApi()
+api_instance = criteo_marketing.SellersApi(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
 campaign_ids = 'campaign_ids_example' # str | Optional. One or more campaign ids, E.g., 78, 12932, 45236. If any of the requested campaign ids are not Criteo Reseller Program or are not liked to advertisers in the user's portfolio, the call will fail. (optional)
 only_active_sellers = True # bool | Optional. Filters by seller status, allowing to only display active sellers or not. Default value is false. (optional)
@@ -109,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -126,6 +142,8 @@ Gets campaigns
 Get the list of campaigns with the specified filters.  If a campaign is requested but is missing from current user's portfolio, it will not be included in the list.  If neither campaign ids nor advertisers ids are provided, then the user's portfolio will be used.
 
 ### Example
+
+* Api Key Authentication (Authorization): 
 ```python
 from __future__ import print_function
 import time
@@ -133,8 +151,14 @@ import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
 
+# Configure API key authorization: Authorization
+configuration = criteo_marketing.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
 # create an instance of the API class
-api_instance = criteo_marketing.SellersApi()
+api_instance = criteo_marketing.SellersApi(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
 campaign_ids = 'campaign_ids_example' # str | Optional. One or more campaign ids, E.g. 78, 12932, 45236. If any of the requested campaign ids are not Criteo Reseller Program or are not liked to advertisers in the user's portfolio, the call will fail. (optional)
 advertiser_ids = 'advertiser_ids_example' # str | Optional. One or more advertiser ids, E.g. 78, 12932, 45236. If the requested advertiser ids are not part of the user's portfolio, the call will fail. (optional)
@@ -163,7 +187,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -180,6 +204,8 @@ Generates a statistics report
 <b>AdvertiserIds</b>: Optional. The list of advertiser ids, comma-separated. Advertisers not in your portfolio will be skipped. If not present, all the advertisers in the portfolio will be used.<br /><b>StartDate, EndDate</b>: Start date (beginning of day) and end date (end of day) to be used for the report generation. Format to use: yyyy-MM-dd (e.g. 2017-10-30).<br /><b>Dimensions</b>: The dimensions to be used in the report. Between one and three. Possible values: CampaignId, AdvertiserId, Seller, Day, Week, Month, Year.<br /><b>Metrics</b>: The metrics to be used in the report. Possible values: Clicks, AdvertiserCost, Displays.<br /><b>Format</b>: The file format of the generated report. Possible values: Csv, Excel, Xml, Json.<br /><b>Currency</b>: Optional. The currency to be used in the report. Three-letter capitals. For a list of possible values, please see the full documentation. If not set, the user's preference seting will be used.<br /><b>Timezone</b>: Optional. Timezone to be used in the report. Possible values: GMT, PST, JST. If not set, the user's preference seting will be used.<br /><h4>Validation rules</h4>              StartDate and EndDate are mandatory.<br />              StartDate should come before, or be equal to EndDate.<br />              The requested dimensions must be in a supported combination.<br />              At least one metric must be provided.<br />              All metrics must be supported.<br />              The selected advertisers must have at least one campaign.<br />              Seller dimension is mandatory.<br />
 
 ### Example
+
+* Api Key Authentication (Authorization): 
 ```python
 from __future__ import print_function
 import time
@@ -187,8 +213,14 @@ import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
 
+# Configure API key authorization: Authorization
+configuration = criteo_marketing.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
 # create an instance of the API class
-api_instance = criteo_marketing.SellersApi()
+api_instance = criteo_marketing.SellersApi(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
 stats_query_message = criteo_marketing.StatsQueryMessage() # StatsQueryMessage | The report query details
 
@@ -212,7 +244,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -229,6 +261,8 @@ Set or update a bid for a seller/list of sellers.
 <b>Seller name</b>: can be retrieved from the /sellers/ endpoint. This value is case insensitive.              <h4>Functional cases</h4><p>              In case one of the bid values cannot be updated, the whole batch will be dropped.<br /></p>
 
 ### Example
+
+* Api Key Authentication (Authorization): 
 ```python
 from __future__ import print_function
 import time
@@ -236,8 +270,14 @@ import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
 
+# Configure API key authorization: Authorization
+configuration = criteo_marketing.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
 # create an instance of the API class
-api_instance = criteo_marketing.SellersApi()
+api_instance = criteo_marketing.SellersApi(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
 seller_bids_message = criteo_marketing.SellerBidsMessage() # SellerBidsMessage | 
 
@@ -262,7 +302,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -279,6 +319,8 @@ Updates a budget for a seller/list of sellers.
 <b>Amount</b>: Optional. Uses the advertiser's currency. Set it to \"null\" or leave empty to create an uncapped budget (with no limit).<br /><b>Status</b>: Optional. Budget's status, possible values are: [\"Inactive\",\"Active\"]. If set to null or undefined, status does not change.              <h4>Validation rules</h4><p>              Budgets cannot <b>overlap</b> with each other for a specific seller.<br />              Budget's <b>amount</b> can be decreased if it did not start yet.<br />              Budget's <b>status</b> can only be changed from \"Active\" to \"Inactive\", if budget already started.<br /><b>Inactive</b> budgets cannot be updated.              </p><h4>Functional cases</h4><h4 style=\"font-size: 1.0em\">Increase budget amount</h4><p>              Budget can only be increased if its end date is not reached.<br />              Amount value must include the amount that has been already spent.<br />              Example: if you want to add 50€ to a 100€ budget, you should update the amount to 150€, regardless of the amount already spent.<br />              Or, alternatively, you can set it to \"null\" or leave empty to change the budget to uncapped.<br /></p><h4 style=\"font-size: 1.0em\">Stop budget consumption</h4><p>              Setting a currently running budget’s status to Inactive, result in:<br />              • Setting its end date to today (at 23:59:59, according to UTC+00:00)<br />              • Stopping its consumption instantly<br /></p><h4 style=\"font-size: 1.0em\">Decrease budget amount</h4><p>              In order to decrease the amount of a currently running budget, you have to:<br />              • Stop budget consumption (making the currently running budget to end at 23:59:59, according to UTC+00:00)<br />              • Create a new budget with a dedicated amount. (that will start the following day, according to UTC+00:00)<br /></p>
 
 ### Example
+
+* Api Key Authentication (Authorization): 
 ```python
 from __future__ import print_function
 import time
@@ -286,8 +328,14 @@ import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
 
+# Configure API key authorization: Authorization
+configuration = criteo_marketing.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
 # create an instance of the API class
-api_instance = criteo_marketing.SellersApi()
+api_instance = criteo_marketing.SellersApi(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
 seller_budgets_update_message = criteo_marketing.SellerBudgetsUpdateMessage() # SellerBudgetsUpdateMessage | 
 
@@ -312,7 +360,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 

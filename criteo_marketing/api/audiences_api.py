@@ -130,7 +130,7 @@ class AudiencesApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded', 'text/html'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['Authorization']  # noqa: E501
 
         return self.api_client.call_api(
             '/v1/audiences/userlist/{audienceId}', 'PATCH',
@@ -238,7 +238,7 @@ class AudiencesApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded', 'text/html'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['Authorization']  # noqa: E501
 
         return self.api_client.call_api(
             '/v1/audiences/userlist', 'POST',
@@ -342,7 +342,7 @@ class AudiencesApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml', 'text/html'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['Authorization']  # noqa: E501
 
         return self.api_client.call_api(
             '/v1/audiences/{audienceId}', 'DELETE',
@@ -442,7 +442,7 @@ class AudiencesApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml', 'text/html'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['Authorization']  # noqa: E501
 
         return self.api_client.call_api(
             '/v1/audiences', 'GET',
@@ -546,7 +546,7 @@ class AudiencesApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml', 'text/html'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['Authorization']  # noqa: E501
 
         return self.api_client.call_api(
             '/v1/audiences/userlist/{audienceId}/users', 'DELETE',
@@ -662,7 +662,7 @@ class AudiencesApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded', 'text/html'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['Authorization']  # noqa: E501
 
         return self.api_client.call_api(
             '/v1/audiences/{audienceId}', 'PUT',

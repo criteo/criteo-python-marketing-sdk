@@ -16,6 +16,8 @@ Gets categories
 Get the list of categories with the specified filters.  If a category is requested but is missing from current user's portfolio, it will not be included in the list.  If neither campaign ids nor advertisers ids are provided, then the user's portfolio will be used.
 
 ### Example
+
+* Api Key Authentication (Authorization): 
 ```python
 from __future__ import print_function
 import time
@@ -23,8 +25,14 @@ import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
 
+# Configure API key authorization: Authorization
+configuration = criteo_marketing.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
 # create an instance of the API class
-api_instance = criteo_marketing.CategoriesApi()
+api_instance = criteo_marketing.CategoriesApi(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
 campaign_ids = 'campaign_ids_example' # str | Optional. One or more campaign ids, E.g., 78, 12932, 45236. If the campaign ids requested are not liked to advertisers in the user's portfolio, they will be skipped. (optional)
 advertiser_ids = 'advertiser_ids_example' # str | Optional. One or more advertiser ids, E.g., 78, 12932, 45236. If the advertiser ids requested are not part of the user's portfolio, they will be skipped. (optional)
@@ -55,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -72,6 +80,8 @@ Enables/disables categories
 Update categories for multiple catalogs.<br />  Please note that all validations need to pass before applying the requested changes;  the subsequent validation error messages will be returned in the response.<br />  Please note that bidding will still happen for disabled categories, but using the Camapign's bid.  If the call is successful, full details about the changed categories will be returned.
 
 ### Example
+
+* Api Key Authentication (Authorization): 
 ```python
 from __future__ import print_function
 import time
@@ -79,8 +89,14 @@ import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
 
+# Configure API key authorization: Authorization
+configuration = criteo_marketing.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
 # create an instance of the API class
-api_instance = criteo_marketing.CategoriesApi()
+api_instance = criteo_marketing.CategoriesApi(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
 category_updates_per_catalog = NULL # list[CategoryUpdatesPerCatalog] | The list of categories to be enabled/disabled, grouped by catalog.
 
@@ -105,7 +121,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 

@@ -13,6 +13,8 @@ Method | HTTP request | Description
 Gets portfolio
 
 ### Example
+
+* Api Key Authentication (Authorization): 
 ```python
 from __future__ import print_function
 import time
@@ -20,8 +22,14 @@ import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
 
+# Configure API key authorization: Authorization
+configuration = criteo_marketing.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
 # create an instance of the API class
-api_instance = criteo_marketing.PortfolioApi()
+api_instance = criteo_marketing.PortfolioApi(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
 
 try:
@@ -44,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 

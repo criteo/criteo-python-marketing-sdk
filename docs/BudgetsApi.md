@@ -15,6 +15,8 @@ Gets budgets
 Get the list of budgets with the specified filters.  If an advertiser or a budget is requested but is missing from current user's portfolio, it will not be included in the list.  If neither budgets ids nor advertisers ids are provided, then the user's portfolio will be used.
 
 ### Example
+
+* Api Key Authentication (Authorization): 
 ```python
 from __future__ import print_function
 import time
@@ -22,8 +24,14 @@ import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
 
+# Configure API key authorization: Authorization
+configuration = criteo_marketing.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
 # create an instance of the API class
-api_instance = criteo_marketing.BudgetsApi()
+api_instance = criteo_marketing.BudgetsApi(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
 advertiser_ids = 'advertiser_ids_example' # str | Optional. One or more advertiser ids, E.g. 78, 12932, 45236. If the requested advertiser ids are not part of the user's portfolio, they will be skipped. (optional)
 budget_ids = 'budget_ids_example' # str | Optional. One or more budget ids, E.g. 75, 1931, 532. If the requested budget ids are not part of the user's portfolio, they will be skipped. (optional)
@@ -52,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 

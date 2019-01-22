@@ -134,7 +134,7 @@ class CampaignsApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml', 'text/html'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['Authorization']  # noqa: E501
 
         return self.api_client.call_api(
             '/v1/campaigns/bids', 'GET',
@@ -238,7 +238,7 @@ class CampaignsApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml', 'text/html'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['Authorization']  # noqa: E501
 
         return self.api_client.call_api(
             '/v1/campaigns/{campaignId}', 'GET',
@@ -350,7 +350,7 @@ class CampaignsApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml', 'text/html'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['Authorization']  # noqa: E501
 
         return self.api_client.call_api(
             '/v1/campaigns', 'GET',
@@ -458,7 +458,7 @@ class CampaignsApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml', 'text/html'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['Authorization']  # noqa: E501
 
         return self.api_client.call_api(
             '/v1/campaigns/{campaignId}/categories', 'GET',
@@ -570,7 +570,7 @@ class CampaignsApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml', 'text/html'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['Authorization']  # noqa: E501
 
         return self.api_client.call_api(
             '/v1/campaigns/{campaignId}/categories/{categoryHashCode}', 'GET',
@@ -678,7 +678,7 @@ class CampaignsApi(object):
             ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded', 'text/html'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['Authorization']  # noqa: E501
 
         return self.api_client.call_api(
             '/v1/campaigns/bids', 'PUT',
