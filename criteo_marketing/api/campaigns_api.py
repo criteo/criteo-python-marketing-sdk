@@ -381,7 +381,7 @@ class CampaignsApi(object):
         :param int campaign_id: Mandatory. The id of the campaign the categories are linked to. (required)
         :param str authorization: JWT Bearer Token (required)
         :param bool enabled_only: Optional. Returns only categories you can bid on. Defaults to false.
-        :return: CampaignMessage
+        :return: CategoryMessage
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -405,7 +405,7 @@ class CampaignsApi(object):
         :param int campaign_id: Mandatory. The id of the campaign the categories are linked to. (required)
         :param str authorization: JWT Bearer Token (required)
         :param bool enabled_only: Optional. Returns only categories you can bid on. Defaults to false.
-        :return: CampaignMessage
+        :return: CategoryMessage
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -468,7 +468,7 @@ class CampaignsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='CampaignMessage',  # noqa: E501
+            response_type='CategoryMessage',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
@@ -489,7 +489,7 @@ class CampaignsApi(object):
         :param int campaign_id: Mandatory. The id of the campaign the categories are linked to. (required)
         :param int category_hash_code: Mandatory. The id of the category to return. (required)
         :param str authorization: JWT Bearer Token (required)
-        :return: CampaignMessage
+        :return: CategoryMessage
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -513,7 +513,7 @@ class CampaignsApi(object):
         :param int campaign_id: Mandatory. The id of the campaign the categories are linked to. (required)
         :param int category_hash_code: Mandatory. The id of the category to return. (required)
         :param str authorization: JWT Bearer Token (required)
-        :return: CampaignMessage
+        :return: CategoryMessage
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -580,7 +580,7 @@ class CampaignsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='CampaignMessage',  # noqa: E501
+            response_type='CategoryMessage',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501

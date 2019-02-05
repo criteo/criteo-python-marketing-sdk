@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_categories**
-> CampaignMessage get_categories(campaign_id, authorization, enabled_only=enabled_only)
+> CategoryMessage get_categories(campaign_id, authorization, enabled_only=enabled_only)
 
 Gets categories
 
@@ -249,7 +249,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CampaignMessage**](CampaignMessage.md)
+[**CategoryMessage**](CategoryMessage.md)
 
 ### Authorization
 
@@ -263,7 +263,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_category**
-> CampaignMessage get_category(campaign_id, category_hash_code, authorization)
+> CategoryMessage get_category(campaign_id, category_hash_code, authorization)
 
 Gets a specific category
 
@@ -309,7 +309,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CampaignMessage**](CampaignMessage.md)
+[**CategoryMessage**](CategoryMessage.md)
 
 ### Authorization
 
