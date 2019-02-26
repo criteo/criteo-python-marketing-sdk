@@ -39,8 +39,7 @@ class AudienceResponse(object):
         'updated': 'int',
         'nb_lines': 'int',
         'nb_lines_email': 'int',
-        'nb_matches_email': 'int',
-        'last_run': 'int'
+        'nb_matches_email': 'int'
     }
 
     attribute_map = {
@@ -52,11 +51,10 @@ class AudienceResponse(object):
         'updated': 'updated',
         'nb_lines': 'nbLines',
         'nb_lines_email': 'nbLinesEmail',
-        'nb_matches_email': 'nbMatchesEmail',
-        'last_run': 'lastRun'
+        'nb_matches_email': 'nbMatchesEmail'
     }
 
-    def __init__(self, id=None, advertiser_id=None, name=None, description=None, created=None, updated=None, nb_lines=None, nb_lines_email=None, nb_matches_email=None, last_run=None):  # noqa: E501
+    def __init__(self, id=None, advertiser_id=None, name=None, description=None, created=None, updated=None, nb_lines=None, nb_lines_email=None, nb_matches_email=None):  # noqa: E501
         """AudienceResponse - a model defined in OpenAPI"""  # noqa: E501
 
         self._id = None
@@ -68,7 +66,6 @@ class AudienceResponse(object):
         self._nb_lines = None
         self._nb_lines_email = None
         self._nb_matches_email = None
-        self._last_run = None
         self.discriminator = None
 
         if id is not None:
@@ -89,8 +86,6 @@ class AudienceResponse(object):
             self.nb_lines_email = nb_lines_email
         if nb_matches_email is not None:
             self.nb_matches_email = nb_matches_email
-        if last_run is not None:
-            self.last_run = last_run
 
     @property
     def id(self):
@@ -290,29 +285,6 @@ class AudienceResponse(object):
         """
 
         self._nb_matches_email = nb_matches_email
-
-    @property
-    def last_run(self):
-        """Gets the last_run of this AudienceResponse.  # noqa: E501
-
-        Unix timestamp in seconds of audience last computation  # noqa: E501
-
-        :return: The last_run of this AudienceResponse.  # noqa: E501
-        :rtype: int
-        """
-        return self._last_run
-
-    @last_run.setter
-    def last_run(self, last_run):
-        """Sets the last_run of this AudienceResponse.
-
-        Unix timestamp in seconds of audience last computation  # noqa: E501
-
-        :param last_run: The last_run of this AudienceResponse.  # noqa: E501
-        :type: int
-        """
-
-        self._last_run = last_run
 
     def to_dict(self):
         """Returns the model properties as a dict"""
