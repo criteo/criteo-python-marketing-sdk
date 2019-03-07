@@ -135,7 +135,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_campaigns**
-> list[SellerCampaignMessage] get_campaigns(authorization, campaign_ids=campaign_ids, advertiser_ids=advertiser_ids, status=status)
+> list[MarketplaceCampaignMessage] get_campaigns(authorization, campaign_ids=campaign_ids, advertiser_ids=advertiser_ids, status=status)
 
 Gets campaigns
 
@@ -183,7 +183,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[SellerCampaignMessage]**](SellerCampaignMessage.md)
+[**list[MarketplaceCampaignMessage]**](MarketplaceCampaignMessage.md)
 
 ### Authorization
 

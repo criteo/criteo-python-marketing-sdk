@@ -14,7 +14,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "1.0.98"
+__version__ = "1.0.119"
 
 # import apis into sdk package
 from criteo_marketing.api.advertisers_api import AdvertisersApi
@@ -63,6 +63,7 @@ from criteo_marketing.models.installment import Installment
 from criteo_marketing.models.installment_amount import InstallmentAmount
 from criteo_marketing.models.loyaty_points import LoyatyPoints
 from criteo_marketing.models.mapi_user_message import MapiUserMessage
+from criteo_marketing.models.marketplace_campaign_message import MarketplaceCampaignMessage
 from criteo_marketing.models.message_with_details_campaign_bid_change_response import MessageWithDetailsCampaignBidChangeResponse
 from criteo_marketing.models.message_with_details_category_updates_per_catalog_error import MessageWithDetailsCategoryUpdatesPerCatalogError
 from criteo_marketing.models.policy_route_info import PolicyRouteInfo
@@ -82,7 +83,6 @@ from criteo_marketing.models.seller_budget_update_message import SellerBudgetUpd
 from criteo_marketing.models.seller_budgets_create_message import SellerBudgetsCreateMessage
 from criteo_marketing.models.seller_budgets_message import SellerBudgetsMessage
 from criteo_marketing.models.seller_budgets_update_message import SellerBudgetsUpdateMessage
-from criteo_marketing.models.seller_campaign_message import SellerCampaignMessage
 from criteo_marketing.models.seller_info_message import SellerInfoMessage
 from criteo_marketing.models.seller_message import SellerMessage
 from criteo_marketing.models.service_status_check_result import ServiceStatusCheckResult

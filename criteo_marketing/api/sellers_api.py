@@ -266,7 +266,7 @@ class SellersApi(object):
         :param str campaign_ids: Optional. One or more campaign ids, E.g. 78, 12932, 45236. If any of the requested campaign ids are not Criteo Reseller Program or are not liked to advertisers in the user's portfolio, the call will fail.
         :param str advertiser_ids: Optional. One or more advertiser ids, E.g. 78, 12932, 45236. If the requested advertiser ids are not part of the user's portfolio, the call will fail.
         :param str status: Optional. Status of the campaign. By default, all campaigns are returned, regardless of their status.
-        :return: list[SellerCampaignMessage]
+        :return: list[MarketplaceCampaignMessage]
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -291,7 +291,7 @@ class SellersApi(object):
         :param str campaign_ids: Optional. One or more campaign ids, E.g. 78, 12932, 45236. If any of the requested campaign ids are not Criteo Reseller Program or are not liked to advertisers in the user's portfolio, the call will fail.
         :param str advertiser_ids: Optional. One or more advertiser ids, E.g. 78, 12932, 45236. If the requested advertiser ids are not part of the user's portfolio, the call will fail.
         :param str status: Optional. Status of the campaign. By default, all campaigns are returned, regardless of their status.
-        :return: list[SellerCampaignMessage]
+        :return: list[MarketplaceCampaignMessage]
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -352,7 +352,7 @@ class SellersApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='list[SellerCampaignMessage]',  # noqa: E501
+            response_type='list[MarketplaceCampaignMessage]',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
