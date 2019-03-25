@@ -1,9 +1,8 @@
-# SellerCampaignMessage
+# SellerCampaignBase
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**suspended_since** | **datetime** |  | [optional] 
 **seller_id** | **int** |  | [optional] 
 **campaign_id** | **int** |  | [optional] 
 **bid** | **float** |  | [optional] 
