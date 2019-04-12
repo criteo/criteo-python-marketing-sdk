@@ -32,7 +32,7 @@ class SellerBudgetMessage(object):
     """
     openapi_types = {
         'id': 'str',
-        'type': 'str',
+        'seller_id': 'int',
         'campaign_ids': 'list[int]',
         'budget_type': 'str',
         'amount': 'float',
@@ -44,7 +44,7 @@ class SellerBudgetMessage(object):
 
     attribute_map = {
         'id': 'id',
-        'type': 'type',
+        'seller_id': 'sellerId',
         'campaign_ids': 'campaignIds',
         'budget_type': 'budgetType',
         'amount': 'amount',
@@ -54,11 +54,11 @@ class SellerBudgetMessage(object):
         'status': 'status'
     }
 
-    def __init__(self, id=None, type=None, campaign_ids=None, budget_type=None, amount=None, start_date=None, end_date=None, spend=None, status=None):  # noqa: E501
+    def __init__(self, id=None, seller_id=None, campaign_ids=None, budget_type=None, amount=None, start_date=None, end_date=None, spend=None, status=None):  # noqa: E501
         """SellerBudgetMessage - a model defined in OpenAPI"""  # noqa: E501
 
         self._id = None
-        self._type = None
+        self._seller_id = None
         self._campaign_ids = None
         self._budget_type = None
         self._amount = None
@@ -70,8 +70,8 @@ class SellerBudgetMessage(object):
 
         if id is not None:
             self.id = id
-        if type is not None:
-            self.type = type
+        if seller_id is not None:
+            self.seller_id = seller_id
         if campaign_ids is not None:
             self.campaign_ids = campaign_ids
         if budget_type is not None:
@@ -109,25 +109,25 @@ class SellerBudgetMessage(object):
         self._id = id
 
     @property
-    def type(self):
-        """Gets the type of this SellerBudgetMessage.  # noqa: E501
+    def seller_id(self):
+        """Gets the seller_id of this SellerBudgetMessage.  # noqa: E501
 
 
-        :return: The type of this SellerBudgetMessage.  # noqa: E501
-        :rtype: str
+        :return: The seller_id of this SellerBudgetMessage.  # noqa: E501
+        :rtype: int
         """
-        return self._type
+        return self._seller_id
 
-    @type.setter
-    def type(self, type):
-        """Sets the type of this SellerBudgetMessage.
+    @seller_id.setter
+    def seller_id(self, seller_id):
+        """Sets the seller_id of this SellerBudgetMessage.
 
 
-        :param type: The type of this SellerBudgetMessage.  # noqa: E501
-        :type: str
+        :param seller_id: The seller_id of this SellerBudgetMessage.  # noqa: E501
+        :type: int
         """
 
-        self._type = type
+        self._seller_id = seller_id
 
     @property
     def campaign_ids(self):
