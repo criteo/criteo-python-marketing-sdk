@@ -32,9 +32,9 @@ class UpdateSellerBudgetMessage(object):
     """
     openapi_types = {
         'budget_id': 'int',
-        'amount': 'float',
+        'amount': 'str',
         'start_date': 'datetime',
-        'end_date': 'datetime',
+        'end_date': 'str',
         'campaign_ids': 'list[int]',
         'status': 'str'
     }
@@ -99,7 +99,7 @@ class UpdateSellerBudgetMessage(object):
 
 
         :return: The amount of this UpdateSellerBudgetMessage.  # noqa: E501
-        :rtype: float
+        :rtype: str
         """
         return self._amount
 
@@ -109,7 +109,7 @@ class UpdateSellerBudgetMessage(object):
 
 
         :param amount: The amount of this UpdateSellerBudgetMessage.  # noqa: E501
-        :type: float
+        :type: str
         """
 
         self._amount = amount
@@ -141,7 +141,7 @@ class UpdateSellerBudgetMessage(object):
 
 
         :return: The end_date of this UpdateSellerBudgetMessage.  # noqa: E501
-        :rtype: datetime
+        :rtype: str
         """
         return self._end_date
 
@@ -151,7 +151,7 @@ class UpdateSellerBudgetMessage(object):
 
 
         :param end_date: The end_date of this UpdateSellerBudgetMessage.  # noqa: E501
-        :type: datetime
+        :type: str
         """
 
         self._end_date = end_date

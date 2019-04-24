@@ -4,9 +4,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **budget_id** | **int** |  | [optional] 
-**amount** | **float** |  | [optional] 
+**amount** | **str** |  | [optional] 
 **start_date** | **datetime** |  | [optional] 
-**end_date** | **datetime** |  | [optional] 
+**end_date** | **str** |  | [optional] 
 **campaign_ids** | **list[int]** |  | [optional] 
 **status** | **str** |  | [optional] 
 

@@ -14,7 +14,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "1.0.144"
+__version__ = "1.0.145"
 
 # import apis into sdk package
 from criteo_marketing.api.advertisers_api import AdvertisersApi
@@ -26,6 +26,7 @@ from criteo_marketing.api.categories_api import CategoriesApi
 from criteo_marketing.api.portfolio_api import PortfolioApi
 from criteo_marketing.api.publishers_api import PublishersApi
 from criteo_marketing.api.sellers_api import SellersApi
+from criteo_marketing.api.sellers_v2_api import SellersV2Api
 from criteo_marketing.api.statistics_api import StatisticsApi
 
 # import ApiClient
@@ -68,7 +69,7 @@ from criteo_marketing.models.mapi_user_message import MapiUserMessage
 from criteo_marketing.models.marketplace_campaign_message import MarketplaceCampaignMessage
 from criteo_marketing.models.message_with_details_campaign_bid_change_response import MessageWithDetailsCampaignBidChangeResponse
 from criteo_marketing.models.message_with_details_category_updates_per_catalog_error import MessageWithDetailsCategoryUpdatesPerCatalogError
-from criteo_marketing.models.message_with_details_error_response import MessageWithDetailsErrorResponse
+from criteo_marketing.models.message_with_details_i_list_error_response import MessageWithDetailsIListErrorResponse
 from criteo_marketing.models.policy_route_info import PolicyRouteInfo
 from criteo_marketing.models.portfolio_message import PortfolioMessage
 from criteo_marketing.models.price import Price

@@ -31,9 +31,9 @@ class CreateSellerBudgetMapiMessage(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'amount': 'float',
+        'amount': 'str',
         'start_date': 'datetime',
-        'end_date': 'datetime',
+        'end_date': 'str',
         'seller_id': 'int',
         'campaign_ids': 'list[int]',
         'budget_type': 'str'
@@ -78,7 +78,7 @@ class CreateSellerBudgetMapiMessage(object):
 
 
         :return: The amount of this CreateSellerBudgetMapiMessage.  # noqa: E501
-        :rtype: float
+        :rtype: str
         """
         return self._amount
 
@@ -88,7 +88,7 @@ class CreateSellerBudgetMapiMessage(object):
 
 
         :param amount: The amount of this CreateSellerBudgetMapiMessage.  # noqa: E501
-        :type: float
+        :type: str
         """
 
         self._amount = amount
@@ -120,7 +120,7 @@ class CreateSellerBudgetMapiMessage(object):
 
 
         :return: The end_date of this CreateSellerBudgetMapiMessage.  # noqa: E501
-        :rtype: datetime
+        :rtype: str
         """
         return self._end_date
 
@@ -130,7 +130,7 @@ class CreateSellerBudgetMapiMessage(object):
 
 
         :param end_date: The end_date of this CreateSellerBudgetMapiMessage.  # noqa: E501
-        :type: datetime
+        :type: str
         """
 
         self._end_date = end_date
