@@ -31,47 +31,47 @@ class SellerBase(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'seller_id': 'int',
+        'id': 'int',
         'seller_name': 'str'
     }
 
     attribute_map = {
-        'seller_id': 'sellerId',
+        'id': 'id',
         'seller_name': 'sellerName'
     }
 
-    def __init__(self, seller_id=None, seller_name=None):  # noqa: E501
+    def __init__(self, id=None, seller_name=None):  # noqa: E501
         """SellerBase - a model defined in OpenAPI"""  # noqa: E501
 
-        self._seller_id = None
+        self._id = None
         self._seller_name = None
         self.discriminator = None
 
-        if seller_id is not None:
-            self.seller_id = seller_id
+        if id is not None:
+            self.id = id
         if seller_name is not None:
             self.seller_name = seller_name
 
     @property
-    def seller_id(self):
-        """Gets the seller_id of this SellerBase.  # noqa: E501
+    def id(self):
+        """Gets the id of this SellerBase.  # noqa: E501
 
 
-        :return: The seller_id of this SellerBase.  # noqa: E501
+        :return: The id of this SellerBase.  # noqa: E501
         :rtype: int
         """
-        return self._seller_id
+        return self._id
 
-    @seller_id.setter
-    def seller_id(self, seller_id):
-        """Sets the seller_id of this SellerBase.
+    @id.setter
+    def id(self, id):
+        """Sets the id of this SellerBase.
 
 
-        :param seller_id: The seller_id of this SellerBase.  # noqa: E501
+        :param id: The id of this SellerBase.  # noqa: E501
         :type: int
         """
 
-        self._seller_id = seller_id
+        self._id = id
 
     @property
     def seller_name(self):

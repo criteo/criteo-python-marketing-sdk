@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 **seller_id** | **int** |  | [optional] 
 **campaign_ids** | **list[int]** |  | [optional] 
 **budget_type** | **str** |  | [optional] 
-**amount** | **float** |  | [optional] 
+**amount** | **str** |  | [optional] 
 **start_date** | **datetime** |  | [optional] 
-**end_date** | **datetime** |  | [optional] 
+**end_date** | **str** |  | [optional] 
 **spend** | **float** |  | [optional] 
 **status** | **str** |  | [optional] 
 
