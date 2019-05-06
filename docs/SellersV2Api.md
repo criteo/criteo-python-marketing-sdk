@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_budgets_by_seller**
-> list[SellerBudgetMessage] get_budgets_by_seller(seller_id, authorization, status=status, with_balance=with_balance, with_spend=with_spend, end_after_date=end_after_date, start_before_date=start_before_date, campaign_id=campaign_id)
+> list[SellerBudgetMessage] get_budgets_by_seller(seller_id, authorization, status=status, with_balance=with_balance, with_spend=with_spend, end_after_date=end_after_date, start_before_date=start_before_date, campaign_id=campaign_id, type=type)
 
 Get a collection of budgets for this seller.
 
@@ -111,10 +111,11 @@ with_spend = True # bool | Return budgets with any positive spend. (optional)
 end_after_date = '2013-10-20T19:20:30+01:00' # datetime | Return budgets that end after the given date. (optional)
 start_before_date = '2013-10-20T19:20:30+01:00' # datetime | Return budgets that start on or before the given date. (optional)
 campaign_id = 56 # int | Return only budgets that pay for a given campaign. (optional)
+type = 'type_example' # str | Return only budgets with the given budget type. (optional)
 
 try:
     # Get a collection of budgets for this seller.
-    api_response = api_instance.get_budgets_by_seller(seller_id, authorization, status=status, with_balance=with_balance, with_spend=with_spend, end_after_date=end_after_date, start_before_date=start_before_date, campaign_id=campaign_id)
+    api_response = api_instance.get_budgets_by_seller(seller_id, authorization, status=status, with_balance=with_balance, with_spend=with_spend, end_after_date=end_after_date, start_before_date=start_before_date, campaign_id=campaign_id, type=type)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SellersV2Api->get_budgets_by_seller: %s\n" % e)
@@ -132,6 +133,7 @@ Name | Type | Description  | Notes
  **end_after_date** | **datetime**| Return budgets that end after the given date. | [optional] 
  **start_before_date** | **datetime**| Return budgets that start on or before the given date. | [optional] 
  **campaign_id** | **int**| Return only budgets that pay for a given campaign. | [optional] 
+ **type** | **str**| Return only budgets with the given budget type. | [optional] 
 
 ### Return type
 
@@ -149,11 +151,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_budgets_by_seller_campaign_id**
-> list[SellerBudgetMessage] get_budgets_by_seller_campaign_id(seller_campaign_id, authorization, status=status, with_balance=with_balance, with_spend=with_spend, end_after_date=end_after_date, start_before_date=start_before_date)
+> list[SellerBudgetMessage] get_budgets_by_seller_campaign_id(seller_campaign_id, authorization, status=status, with_balance=with_balance, with_spend=with_spend, end_after_date=end_after_date, start_before_date=start_before_date, type=type)
 
 Get a collection of budgets for this seller campaign.
 
-Return a collection of budgets for this seller campaign filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                See the budgets endpoint for additional details.
+Return a collection of budgets for this seller campaign filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.    See the budgets endpoint for additional details.
 
 ### Example
 
@@ -180,10 +182,11 @@ with_balance = True # bool | Return only budgets with a positive balance. (optio
 with_spend = True # bool | Return budgets with a positive spend. (optional)
 end_after_date = '2013-10-20T19:20:30+01:00' # datetime | Return budgets that end after the given date. (optional)
 start_before_date = '2013-10-20T19:20:30+01:00' # datetime | Return budgets that start on or before the given date. (optional)
+type = 'type_example' # str | Return only budgets with the given budget type. (optional)
 
 try:
     # Get a collection of budgets for this seller campaign.
-    api_response = api_instance.get_budgets_by_seller_campaign_id(seller_campaign_id, authorization, status=status, with_balance=with_balance, with_spend=with_spend, end_after_date=end_after_date, start_before_date=start_before_date)
+    api_response = api_instance.get_budgets_by_seller_campaign_id(seller_campaign_id, authorization, status=status, with_balance=with_balance, with_spend=with_spend, end_after_date=end_after_date, start_before_date=start_before_date, type=type)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SellersV2Api->get_budgets_by_seller_campaign_id: %s\n" % e)
@@ -200,6 +203,7 @@ Name | Type | Description  | Notes
  **with_spend** | **bool**| Return budgets with a positive spend. | [optional] 
  **end_after_date** | **datetime**| Return budgets that end after the given date. | [optional] 
  **start_before_date** | **datetime**| Return budgets that start on or before the given date. | [optional] 
+ **type** | **str**| Return only budgets with the given budget type. | [optional] 
 
 ### Return type
 
@@ -333,11 +337,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_seller_budgets**
-> list[SellerBudgetMessage] get_seller_budgets(authorization, status=status, with_balance=with_balance, with_spend=with_spend, end_after_date=end_after_date, start_before_date=start_before_date, campaign_id=campaign_id, seller_id=seller_id)
+> list[SellerBudgetMessage] get_seller_budgets(authorization, status=status, with_balance=with_balance, with_spend=with_spend, end_after_date=end_after_date, start_before_date=start_before_date, campaign_id=campaign_id, seller_id=seller_id, type=type)
 
 Get a collection of budgets.
 
-Return a collection of budgets filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                <b>Date filter.</b> Filtering can return only budgets that were active for a  date range by specifying the startBeforeDate and endAfterDate. Leaving off  either value makes the range open ended.  To get budgets that were active  on a specific date, set both values to that day.                <b>Spend.</b> If the endAfterDate is supplied, the spend excludes spend that  happened after that date. In the case of a daily budget, only the spend for  the final day is displayed.                See the budgets endpoint for additional details.
+Return a collection of budgets filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.    <b>Date filter.</b> Filtering can return only budgets that were active for a  date range by specifying the startBeforeDate and endAfterDate. Leaving off  either value makes the range open ended.  To get budgets that were active  on a specific date, set both values to that day.    <b>Spend.</b> If the endAfterDate is supplied, the spend excludes spend that  happened after that date. In the case of a daily budget, only the spend for  the final day is displayed.    See the budgets endpoint for additional details.
 
 ### Example
 
@@ -365,10 +369,11 @@ end_after_date = '2013-10-20T19:20:30+01:00' # datetime | Return budgets that en
 start_before_date = '2013-10-20T19:20:30+01:00' # datetime | Return budgets that start on or before the given date. (optional)
 campaign_id = 56 # int | Return only budgets that pay for a given campaign. (optional)
 seller_id = 56 # int | Return only budgets belonging to the given seller. (optional)
+type = 'type_example' # str | Return only budgets with the given budget type. (optional)
 
 try:
     # Get a collection of budgets.
-    api_response = api_instance.get_seller_budgets(authorization, status=status, with_balance=with_balance, with_spend=with_spend, end_after_date=end_after_date, start_before_date=start_before_date, campaign_id=campaign_id, seller_id=seller_id)
+    api_response = api_instance.get_seller_budgets(authorization, status=status, with_balance=with_balance, with_spend=with_spend, end_after_date=end_after_date, start_before_date=start_before_date, campaign_id=campaign_id, seller_id=seller_id, type=type)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SellersV2Api->get_seller_budgets: %s\n" % e)
@@ -386,6 +391,7 @@ Name | Type | Description  | Notes
  **start_before_date** | **datetime**| Return budgets that start on or before the given date. | [optional] 
  **campaign_id** | **int**| Return only budgets that pay for a given campaign. | [optional] 
  **seller_id** | **int**| Return only budgets belonging to the given seller. | [optional] 
+ **type** | **str**| Return only budgets with the given budget type. | [optional] 
 
 ### Return type
 
@@ -651,7 +657,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_seller_budget**
-> list[SellerBudgetMessage] update_seller_budget(budget_id, start_date, status, amount, end_date, authorization, request_body)
+> list[SellerBudgetMessage] update_seller_budget(budget_id, start_date, suspended, amount, end_date, authorization, request_body)
 
 Modify a single budget.
 
@@ -677,7 +683,7 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 api_instance = criteo_marketing.SellersV2Api(criteo_marketing.ApiClient(configuration))
 budget_id = 56 # int | Id of the budget being modified.
 start_date = '2013-10-20T19:20:30+01:00' # datetime | Future start date for this budget.
-status = 'status_example' # str | Status of this budget.
+suspended = True # bool | Indicates if a budget should be suspended or not.
 amount = 'amount_example' # str | Limit for this budget (type must not be Uncapped).
 end_date = 'end_date_example' # str | Future end date for this budget.
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
@@ -685,7 +691,7 @@ request_body = NULL # list[int] | Campaigns funded by this budget.
 
 try:
     # Modify a single budget.
-    api_response = api_instance.update_seller_budget(budget_id, start_date, status, amount, end_date, authorization, request_body)
+    api_response = api_instance.update_seller_budget(budget_id, start_date, suspended, amount, end_date, authorization, request_body)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SellersV2Api->update_seller_budget: %s\n" % e)
@@ -697,7 +703,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **budget_id** | **int**| Id of the budget being modified. | 
  **start_date** | **datetime**| Future start date for this budget. | 
- **status** | **str**| Status of this budget. | 
+ **suspended** | **bool**| Indicates if a budget should be suspended or not. | 
  **amount** | **str**| Limit for this budget (type must not be Uncapped). | 
  **end_date** | **str**| Future end date for this budget. | 
  **authorization** | **str**| JWT Bearer Token | [default to &#39;Bearer VALID_JWT_TOKEN_BASE64&#39;]
@@ -837,7 +843,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_seller_campaigns**
-> list[SellerCampaignMessage] update_seller_campaigns(authorization, seller_campaign_base)
+> list[SellerCampaignMessage] update_seller_campaigns(authorization, seller_campaign_update)
 
 Update a collection of seller campaigns.
 
@@ -862,11 +868,11 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = criteo_marketing.SellersV2Api(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
-seller_campaign_base = NULL # list[SellerCampaignBase] | 
+seller_campaign_update = NULL # list[SellerCampaignUpdate] | 
 
 try:
     # Update a collection of seller campaigns.
-    api_response = api_instance.update_seller_campaigns(authorization, seller_campaign_base)
+    api_response = api_instance.update_seller_campaigns(authorization, seller_campaign_update)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SellersV2Api->update_seller_campaigns: %s\n" % e)
@@ -877,7 +883,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **str**| JWT Bearer Token | [default to &#39;Bearer VALID_JWT_TOKEN_BASE64&#39;]
- **seller_campaign_base** | [**list[SellerCampaignBase]**](list.md)|  | 
+ **seller_campaign_update** | [**list[SellerCampaignUpdate]**](list.md)|  | 
 
 ### Return type
 

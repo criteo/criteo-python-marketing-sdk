@@ -158,6 +158,7 @@ class SellersV2Api(object):
         :param datetime end_after_date: Return budgets that end after the given date.
         :param datetime start_before_date: Return budgets that start on or before the given date.
         :param int campaign_id: Return only budgets that pay for a given campaign.
+        :param str type: Return only budgets with the given budget type.
         :return: list[SellerBudgetMessage]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -187,6 +188,7 @@ class SellersV2Api(object):
         :param datetime end_after_date: Return budgets that end after the given date.
         :param datetime start_before_date: Return budgets that start on or before the given date.
         :param int campaign_id: Return only budgets that pay for a given campaign.
+        :param str type: Return only budgets with the given budget type.
         :return: list[SellerBudgetMessage]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -194,7 +196,7 @@ class SellersV2Api(object):
 
         local_var_params = locals()
 
-        all_params = ['seller_id', 'authorization', 'status', 'with_balance', 'with_spend', 'end_after_date', 'start_before_date', 'campaign_id']  # noqa: E501
+        all_params = ['seller_id', 'authorization', 'status', 'with_balance', 'with_spend', 'end_after_date', 'start_before_date', 'campaign_id', 'type']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -236,6 +238,8 @@ class SellersV2Api(object):
             query_params.append(('startBeforeDate', local_var_params['start_before_date']))  # noqa: E501
         if 'campaign_id' in local_var_params:
             query_params.append(('campaignId', local_var_params['campaign_id']))  # noqa: E501
+        if 'type' in local_var_params:
+            query_params.append(('type', local_var_params['type']))  # noqa: E501
 
         header_params = {}
         if 'authorization' in local_var_params:
@@ -271,7 +275,7 @@ class SellersV2Api(object):
     def get_budgets_by_seller_campaign_id(self, seller_campaign_id, authorization, **kwargs):  # noqa: E501
         """Get a collection of budgets for this seller campaign.  # noqa: E501
 
-        Return a collection of budgets for this seller campaign filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                See the budgets endpoint for additional details.  # noqa: E501
+        Return a collection of budgets for this seller campaign filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.    See the budgets endpoint for additional details.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_budgets_by_seller_campaign_id(seller_campaign_id, authorization, async_req=True)
@@ -285,6 +289,7 @@ class SellersV2Api(object):
         :param bool with_spend: Return budgets with a positive spend.
         :param datetime end_after_date: Return budgets that end after the given date.
         :param datetime start_before_date: Return budgets that start on or before the given date.
+        :param str type: Return only budgets with the given budget type.
         :return: list[SellerBudgetMessage]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -299,7 +304,7 @@ class SellersV2Api(object):
     def get_budgets_by_seller_campaign_id_with_http_info(self, seller_campaign_id, authorization, **kwargs):  # noqa: E501
         """Get a collection of budgets for this seller campaign.  # noqa: E501
 
-        Return a collection of budgets for this seller campaign filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                See the budgets endpoint for additional details.  # noqa: E501
+        Return a collection of budgets for this seller campaign filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.    See the budgets endpoint for additional details.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_budgets_by_seller_campaign_id_with_http_info(seller_campaign_id, authorization, async_req=True)
@@ -313,6 +318,7 @@ class SellersV2Api(object):
         :param bool with_spend: Return budgets with a positive spend.
         :param datetime end_after_date: Return budgets that end after the given date.
         :param datetime start_before_date: Return budgets that start on or before the given date.
+        :param str type: Return only budgets with the given budget type.
         :return: list[SellerBudgetMessage]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -320,7 +326,7 @@ class SellersV2Api(object):
 
         local_var_params = locals()
 
-        all_params = ['seller_campaign_id', 'authorization', 'status', 'with_balance', 'with_spend', 'end_after_date', 'start_before_date']  # noqa: E501
+        all_params = ['seller_campaign_id', 'authorization', 'status', 'with_balance', 'with_spend', 'end_after_date', 'start_before_date', 'type']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -360,6 +366,8 @@ class SellersV2Api(object):
             query_params.append(('endAfterDate', local_var_params['end_after_date']))  # noqa: E501
         if 'start_before_date' in local_var_params:
             query_params.append(('startBeforeDate', local_var_params['start_before_date']))  # noqa: E501
+        if 'type' in local_var_params:
+            query_params.append(('type', local_var_params['type']))  # noqa: E501
 
         header_params = {}
         if 'authorization' in local_var_params:
@@ -603,7 +611,7 @@ class SellersV2Api(object):
     def get_seller_budgets(self, authorization, **kwargs):  # noqa: E501
         """Get a collection of budgets.  # noqa: E501
 
-        Return a collection of budgets filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                <b>Date filter.</b> Filtering can return only budgets that were active for a  date range by specifying the startBeforeDate and endAfterDate. Leaving off  either value makes the range open ended.  To get budgets that were active  on a specific date, set both values to that day.                <b>Spend.</b> If the endAfterDate is supplied, the spend excludes spend that  happened after that date. In the case of a daily budget, only the spend for  the final day is displayed.                See the budgets endpoint for additional details.  # noqa: E501
+        Return a collection of budgets filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.    <b>Date filter.</b> Filtering can return only budgets that were active for a  date range by specifying the startBeforeDate and endAfterDate. Leaving off  either value makes the range open ended.  To get budgets that were active  on a specific date, set both values to that day.    <b>Spend.</b> If the endAfterDate is supplied, the spend excludes spend that  happened after that date. In the case of a daily budget, only the spend for  the final day is displayed.    See the budgets endpoint for additional details.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_seller_budgets(authorization, async_req=True)
@@ -618,6 +626,7 @@ class SellersV2Api(object):
         :param datetime start_before_date: Return budgets that start on or before the given date.
         :param int campaign_id: Return only budgets that pay for a given campaign.
         :param int seller_id: Return only budgets belonging to the given seller.
+        :param str type: Return only budgets with the given budget type.
         :return: list[SellerBudgetMessage]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -632,7 +641,7 @@ class SellersV2Api(object):
     def get_seller_budgets_with_http_info(self, authorization, **kwargs):  # noqa: E501
         """Get a collection of budgets.  # noqa: E501
 
-        Return a collection of budgets filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                <b>Date filter.</b> Filtering can return only budgets that were active for a  date range by specifying the startBeforeDate and endAfterDate. Leaving off  either value makes the range open ended.  To get budgets that were active  on a specific date, set both values to that day.                <b>Spend.</b> If the endAfterDate is supplied, the spend excludes spend that  happened after that date. In the case of a daily budget, only the spend for  the final day is displayed.                See the budgets endpoint for additional details.  # noqa: E501
+        Return a collection of budgets filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.    <b>Date filter.</b> Filtering can return only budgets that were active for a  date range by specifying the startBeforeDate and endAfterDate. Leaving off  either value makes the range open ended.  To get budgets that were active  on a specific date, set both values to that day.    <b>Spend.</b> If the endAfterDate is supplied, the spend excludes spend that  happened after that date. In the case of a daily budget, only the spend for  the final day is displayed.    See the budgets endpoint for additional details.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_seller_budgets_with_http_info(authorization, async_req=True)
@@ -647,6 +656,7 @@ class SellersV2Api(object):
         :param datetime start_before_date: Return budgets that start on or before the given date.
         :param int campaign_id: Return only budgets that pay for a given campaign.
         :param int seller_id: Return only budgets belonging to the given seller.
+        :param str type: Return only budgets with the given budget type.
         :return: list[SellerBudgetMessage]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -654,7 +664,7 @@ class SellersV2Api(object):
 
         local_var_params = locals()
 
-        all_params = ['authorization', 'status', 'with_balance', 'with_spend', 'end_after_date', 'start_before_date', 'campaign_id', 'seller_id']  # noqa: E501
+        all_params = ['authorization', 'status', 'with_balance', 'with_spend', 'end_after_date', 'start_before_date', 'campaign_id', 'seller_id', 'type']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -692,6 +702,8 @@ class SellersV2Api(object):
             query_params.append(('campaignId', local_var_params['campaign_id']))  # noqa: E501
         if 'seller_id' in local_var_params:
             query_params.append(('sellerId', local_var_params['seller_id']))  # noqa: E501
+        if 'type' in local_var_params:
+            query_params.append(('type', local_var_params['type']))  # noqa: E501
 
         header_params = {}
         if 'authorization' in local_var_params:
@@ -1164,19 +1176,19 @@ class SellersV2Api(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def update_seller_budget(self, budget_id, start_date, status, amount, end_date, authorization, request_body, **kwargs):  # noqa: E501
+    def update_seller_budget(self, budget_id, start_date, suspended, amount, end_date, authorization, request_body, **kwargs):  # noqa: E501
         """Modify a single budget.  # noqa: E501
 
         Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_seller_budget(budget_id, start_date, status, amount, end_date, authorization, request_body, async_req=True)
+        >>> thread = api.update_seller_budget(budget_id, start_date, suspended, amount, end_date, authorization, request_body, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param int budget_id: Id of the budget being modified. (required)
         :param datetime start_date: Future start date for this budget. (required)
-        :param str status: Status of this budget. (required)
+        :param bool suspended: Indicates if a budget should be suspended or not. (required)
         :param str amount: Limit for this budget (type must not be Uncapped). (required)
         :param str end_date: Future end date for this budget. (required)
         :param str authorization: JWT Bearer Token (required)
@@ -1187,24 +1199,24 @@ class SellersV2Api(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.update_seller_budget_with_http_info(budget_id, start_date, status, amount, end_date, authorization, request_body, **kwargs)  # noqa: E501
+            return self.update_seller_budget_with_http_info(budget_id, start_date, suspended, amount, end_date, authorization, request_body, **kwargs)  # noqa: E501
         else:
-            (data) = self.update_seller_budget_with_http_info(budget_id, start_date, status, amount, end_date, authorization, request_body, **kwargs)  # noqa: E501
+            (data) = self.update_seller_budget_with_http_info(budget_id, start_date, suspended, amount, end_date, authorization, request_body, **kwargs)  # noqa: E501
             return data
 
-    def update_seller_budget_with_http_info(self, budget_id, start_date, status, amount, end_date, authorization, request_body, **kwargs):  # noqa: E501
+    def update_seller_budget_with_http_info(self, budget_id, start_date, suspended, amount, end_date, authorization, request_body, **kwargs):  # noqa: E501
         """Modify a single budget.  # noqa: E501
 
         Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_seller_budget_with_http_info(budget_id, start_date, status, amount, end_date, authorization, request_body, async_req=True)
+        >>> thread = api.update_seller_budget_with_http_info(budget_id, start_date, suspended, amount, end_date, authorization, request_body, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param int budget_id: Id of the budget being modified. (required)
         :param datetime start_date: Future start date for this budget. (required)
-        :param str status: Status of this budget. (required)
+        :param bool suspended: Indicates if a budget should be suspended or not. (required)
         :param str amount: Limit for this budget (type must not be Uncapped). (required)
         :param str end_date: Future end date for this budget. (required)
         :param str authorization: JWT Bearer Token (required)
@@ -1216,7 +1228,7 @@ class SellersV2Api(object):
 
         local_var_params = locals()
 
-        all_params = ['budget_id', 'start_date', 'status', 'amount', 'end_date', 'authorization', 'request_body']  # noqa: E501
+        all_params = ['budget_id', 'start_date', 'suspended', 'amount', 'end_date', 'authorization', 'request_body']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1238,10 +1250,10 @@ class SellersV2Api(object):
         if ('start_date' not in local_var_params or
                 local_var_params['start_date'] is None):
             raise ValueError("Missing the required parameter `start_date` when calling `update_seller_budget`")  # noqa: E501
-        # verify the required parameter 'status' is set
-        if ('status' not in local_var_params or
-                local_var_params['status'] is None):
-            raise ValueError("Missing the required parameter `status` when calling `update_seller_budget`")  # noqa: E501
+        # verify the required parameter 'suspended' is set
+        if ('suspended' not in local_var_params or
+                local_var_params['suspended'] is None):
+            raise ValueError("Missing the required parameter `suspended` when calling `update_seller_budget`")  # noqa: E501
         # verify the required parameter 'amount' is set
         if ('amount' not in local_var_params or
                 local_var_params['amount'] is None):
@@ -1268,8 +1280,8 @@ class SellersV2Api(object):
         query_params = []
         if 'start_date' in local_var_params:
             query_params.append(('startDate', local_var_params['start_date']))  # noqa: E501
-        if 'status' in local_var_params:
-            query_params.append(('status', local_var_params['status']))  # noqa: E501
+        if 'suspended' in local_var_params:
+            query_params.append(('suspended', local_var_params['suspended']))  # noqa: E501
         if 'amount' in local_var_params:
             query_params.append(('amount', local_var_params['amount']))  # noqa: E501
         if 'end_date' in local_var_params:
@@ -1532,41 +1544,41 @@ class SellersV2Api(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def update_seller_campaigns(self, authorization, seller_campaign_base, **kwargs):  # noqa: E501
+    def update_seller_campaigns(self, authorization, seller_campaign_update, **kwargs):  # noqa: E501
         """Update a collection of seller campaigns.  # noqa: E501
 
         Patching a collection of seller campaigns allows their bids to be modified.  Each bid must be a non-negative value. Setting the bid to zero will make a seller campaign inactive.                The currency used for bids will be the default currency of the campaign.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_seller_campaigns(authorization, seller_campaign_base, async_req=True)
+        >>> thread = api.update_seller_campaigns(authorization, seller_campaign_update, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str authorization: JWT Bearer Token (required)
-        :param list[SellerCampaignBase] seller_campaign_base: (required)
+        :param list[SellerCampaignUpdate] seller_campaign_update: (required)
         :return: list[SellerCampaignMessage]
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.update_seller_campaigns_with_http_info(authorization, seller_campaign_base, **kwargs)  # noqa: E501
+            return self.update_seller_campaigns_with_http_info(authorization, seller_campaign_update, **kwargs)  # noqa: E501
         else:
-            (data) = self.update_seller_campaigns_with_http_info(authorization, seller_campaign_base, **kwargs)  # noqa: E501
+            (data) = self.update_seller_campaigns_with_http_info(authorization, seller_campaign_update, **kwargs)  # noqa: E501
             return data
 
-    def update_seller_campaigns_with_http_info(self, authorization, seller_campaign_base, **kwargs):  # noqa: E501
+    def update_seller_campaigns_with_http_info(self, authorization, seller_campaign_update, **kwargs):  # noqa: E501
         """Update a collection of seller campaigns.  # noqa: E501
 
         Patching a collection of seller campaigns allows their bids to be modified.  Each bid must be a non-negative value. Setting the bid to zero will make a seller campaign inactive.                The currency used for bids will be the default currency of the campaign.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_seller_campaigns_with_http_info(authorization, seller_campaign_base, async_req=True)
+        >>> thread = api.update_seller_campaigns_with_http_info(authorization, seller_campaign_update, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str authorization: JWT Bearer Token (required)
-        :param list[SellerCampaignBase] seller_campaign_base: (required)
+        :param list[SellerCampaignUpdate] seller_campaign_update: (required)
         :return: list[SellerCampaignMessage]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1574,7 +1586,7 @@ class SellersV2Api(object):
 
         local_var_params = locals()
 
-        all_params = ['authorization', 'seller_campaign_base']  # noqa: E501
+        all_params = ['authorization', 'seller_campaign_update']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1592,10 +1604,10 @@ class SellersV2Api(object):
         if ('authorization' not in local_var_params or
                 local_var_params['authorization'] is None):
             raise ValueError("Missing the required parameter `authorization` when calling `update_seller_campaigns`")  # noqa: E501
-        # verify the required parameter 'seller_campaign_base' is set
-        if ('seller_campaign_base' not in local_var_params or
-                local_var_params['seller_campaign_base'] is None):
-            raise ValueError("Missing the required parameter `seller_campaign_base` when calling `update_seller_campaigns`")  # noqa: E501
+        # verify the required parameter 'seller_campaign_update' is set
+        if ('seller_campaign_update' not in local_var_params or
+                local_var_params['seller_campaign_update'] is None):
+            raise ValueError("Missing the required parameter `seller_campaign_update` when calling `update_seller_campaigns`")  # noqa: E501
 
         collection_formats = {}
 
@@ -1611,8 +1623,8 @@ class SellersV2Api(object):
         local_var_files = {}
 
         body_params = None
-        if 'seller_campaign_base' in local_var_params:
-            body_params = local_var_params['seller_campaign_base']
+        if 'seller_campaign_update' in local_var_params:
+            body_params = local_var_params['seller_campaign_update']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json', 'text/json', 'application/xml', 'text/xml', 'text/html'])  # noqa: E501

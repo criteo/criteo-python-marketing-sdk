@@ -14,7 +14,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "1.0.146"
+__version__ = "1.0.147"
 
 # import apis into sdk package
 from criteo_marketing.api.advertisers_api import AdvertisersApi
@@ -89,8 +89,8 @@ from criteo_marketing.models.seller_budget_update_message import SellerBudgetUpd
 from criteo_marketing.models.seller_budgets_create_message import SellerBudgetsCreateMessage
 from criteo_marketing.models.seller_budgets_message import SellerBudgetsMessage
 from criteo_marketing.models.seller_budgets_update_message import SellerBudgetsUpdateMessage
-from criteo_marketing.models.seller_campaign_base import SellerCampaignBase
 from criteo_marketing.models.seller_campaign_message import SellerCampaignMessage
+from criteo_marketing.models.seller_campaign_update import SellerCampaignUpdate
 from criteo_marketing.models.seller_info_message import SellerInfoMessage
 from criteo_marketing.models.seller_message import SellerMessage
 from criteo_marketing.models.service_status_check_result import ServiceStatusCheckResult

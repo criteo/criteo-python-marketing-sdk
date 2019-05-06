@@ -31,57 +31,62 @@ class SellerCampaignMessage(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'suspended_since': 'datetime',
+        'id': 'str',
         'seller_id': 'int',
         'campaign_id': 'int',
-        'bid': 'float'
+        'bid': 'float',
+        'suspended_since': 'datetime'
     }
 
     attribute_map = {
-        'suspended_since': 'suspendedSince',
+        'id': 'id',
         'seller_id': 'sellerId',
         'campaign_id': 'campaignId',
-        'bid': 'bid'
+        'bid': 'bid',
+        'suspended_since': 'suspendedSince'
     }
 
-    def __init__(self, suspended_since=None, seller_id=None, campaign_id=None, bid=None):  # noqa: E501
+    def __init__(self, id=None, seller_id=None, campaign_id=None, bid=None, suspended_since=None):  # noqa: E501
         """SellerCampaignMessage - a model defined in OpenAPI"""  # noqa: E501
 
-        self._suspended_since = None
+        self._id = None
         self._seller_id = None
         self._campaign_id = None
         self._bid = None
+        self._suspended_since = None
         self.discriminator = None
 
-        if suspended_since is not None:
-            self.suspended_since = suspended_since
+        if id is not None:
+            self.id = id
         if seller_id is not None:
             self.seller_id = seller_id
         if campaign_id is not None:
             self.campaign_id = campaign_id
         if bid is not None:
             self.bid = bid
+        if suspended_since is not None:
+            self.suspended_since = suspended_since
 
     @property
-    def suspended_since(self):
-        """Gets the suspended_since of this SellerCampaignMessage.  # noqa: E501
+    def id(self):
+        """Gets the id of this SellerCampaignMessage.  # noqa: E501
 
 
-        :return: The suspended_since of this SellerCampaignMessage.  # noqa: E501
-        :rtype: datetime
+        :return: The id of this SellerCampaignMessage.  # noqa: E501
+        :rtype: str
         """
-        return self._suspended_since
+        return self._id
 
-    @suspended_since.setter
-    def suspended_since(self, suspended_since):
-        """Sets the suspended_since of this SellerCampaignMessage.
+    @id.setter
+    def id(self, id):
+        """Sets the id of this SellerCampaignMessage.
 
 
-        :param suspended_since: The suspended_since of this SellerCampaignMessage.  # noqa: E501
-        :type: datetime
+        :param id: The id of this SellerCampaignMessage.  # noqa: E501
+        :type: str
         """
 
-        self._suspended_since = suspended_since
+        self._id = id
 
     @property
     def seller_id(self):
@@ -145,6 +150,27 @@ class SellerCampaignMessage(object):
         """
 
         self._bid = bid
+
+    @property
+    def suspended_since(self):
+        """Gets the suspended_since of this SellerCampaignMessage.  # noqa: E501
+
+
+        :return: The suspended_since of this SellerCampaignMessage.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._suspended_since
+
+    @suspended_since.setter
+    def suspended_since(self, suspended_since):
+        """Sets the suspended_since of this SellerCampaignMessage.
+
+
+        :param suspended_since: The suspended_since of this SellerCampaignMessage.  # noqa: E501
+        :type: datetime
+        """
+
+        self._suspended_since = suspended_since
 
     def to_dict(self):
         """Returns the model properties as a dict"""
