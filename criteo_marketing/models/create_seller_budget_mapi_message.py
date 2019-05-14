@@ -34,29 +34,29 @@ class CreateSellerBudgetMapiMessage(object):
         'amount': 'str',
         'start_date': 'datetime',
         'end_date': 'str',
-        'seller_id': 'int',
         'campaign_ids': 'list[int]',
-        'budget_type': 'str'
+        'budget_type': 'str',
+        'seller_id': 'str'
     }
 
     attribute_map = {
         'amount': 'amount',
         'start_date': 'startDate',
         'end_date': 'endDate',
-        'seller_id': 'sellerId',
         'campaign_ids': 'campaignIds',
-        'budget_type': 'budgetType'
+        'budget_type': 'budgetType',
+        'seller_id': 'sellerId'
     }
 
-    def __init__(self, amount=None, start_date=None, end_date=None, seller_id=None, campaign_ids=None, budget_type=None):  # noqa: E501
+    def __init__(self, amount=None, start_date=None, end_date=None, campaign_ids=None, budget_type=None, seller_id=None):  # noqa: E501
         """CreateSellerBudgetMapiMessage - a model defined in OpenAPI"""  # noqa: E501
 
         self._amount = None
         self._start_date = None
         self._end_date = None
-        self._seller_id = None
         self._campaign_ids = None
         self._budget_type = None
+        self._seller_id = None
         self.discriminator = None
 
         if amount is not None:
@@ -65,12 +65,12 @@ class CreateSellerBudgetMapiMessage(object):
             self.start_date = start_date
         if end_date is not None:
             self.end_date = end_date
-        if seller_id is not None:
-            self.seller_id = seller_id
         if campaign_ids is not None:
             self.campaign_ids = campaign_ids
         if budget_type is not None:
             self.budget_type = budget_type
+        if seller_id is not None:
+            self.seller_id = seller_id
 
     @property
     def amount(self):
@@ -136,27 +136,6 @@ class CreateSellerBudgetMapiMessage(object):
         self._end_date = end_date
 
     @property
-    def seller_id(self):
-        """Gets the seller_id of this CreateSellerBudgetMapiMessage.  # noqa: E501
-
-
-        :return: The seller_id of this CreateSellerBudgetMapiMessage.  # noqa: E501
-        :rtype: int
-        """
-        return self._seller_id
-
-    @seller_id.setter
-    def seller_id(self, seller_id):
-        """Sets the seller_id of this CreateSellerBudgetMapiMessage.
-
-
-        :param seller_id: The seller_id of this CreateSellerBudgetMapiMessage.  # noqa: E501
-        :type: int
-        """
-
-        self._seller_id = seller_id
-
-    @property
     def campaign_ids(self):
         """Gets the campaign_ids of this CreateSellerBudgetMapiMessage.  # noqa: E501
 
@@ -197,6 +176,27 @@ class CreateSellerBudgetMapiMessage(object):
         """
 
         self._budget_type = budget_type
+
+    @property
+    def seller_id(self):
+        """Gets the seller_id of this CreateSellerBudgetMapiMessage.  # noqa: E501
+
+
+        :return: The seller_id of this CreateSellerBudgetMapiMessage.  # noqa: E501
+        :rtype: str
+        """
+        return self._seller_id
+
+    @seller_id.setter
+    def seller_id(self, seller_id):
+        """Sets the seller_id of this CreateSellerBudgetMapiMessage.
+
+
+        :param seller_id: The seller_id of this CreateSellerBudgetMapiMessage.  # noqa: E501
+        :type: str
+        """
+
+        self._seller_id = seller_id
 
     def to_dict(self):
         """Returns the model properties as a dict"""

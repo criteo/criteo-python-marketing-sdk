@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
-**seller_id** | **int** |  | [optional] 
+**seller_id** | **str** |  | [optional] 
 **campaign_id** | **int** |  | [optional] 
 **bid** | **float** |  | [optional] 
 **suspended_since** | **datetime** |  | [optional] 

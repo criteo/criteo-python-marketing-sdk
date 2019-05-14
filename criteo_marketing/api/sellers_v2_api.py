@@ -150,7 +150,7 @@ class SellersV2Api(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param int seller_id: Return only budgets belonging to the given seller. (required)
+        :param str seller_id: Return only budgets belonging to the given seller. (required)
         :param str authorization: JWT Bearer Token (required)
         :param str status: Return only budgets with the given status.
         :param bool with_balance: Return only budgets with the given status.
@@ -180,7 +180,7 @@ class SellersV2Api(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param int seller_id: Return only budgets belonging to the given seller. (required)
+        :param str seller_id: Return only budgets belonging to the given seller. (required)
         :param str authorization: JWT Bearer Token (required)
         :param str status: Return only budgets with the given status.
         :param bool with_balance: Return only budgets with the given status.
@@ -410,7 +410,7 @@ class SellersV2Api(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param int seller_id: Id of the seller. (required)
+        :param str seller_id: Id of the seller. (required)
         :param str authorization: JWT Bearer Token (required)
         :return: SellerBase
                  If the method is called asynchronously,
@@ -433,7 +433,7 @@ class SellersV2Api(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param int seller_id: Id of the seller. (required)
+        :param str seller_id: Id of the seller. (required)
         :param str authorization: JWT Bearer Token (required)
         :return: SellerBase
                  If the method is called asynchronously,
@@ -507,7 +507,7 @@ class SellersV2Api(object):
     def get_seller_budget(self, budget_id, authorization, **kwargs):  # noqa: E501
         """Get details for a budget.  # noqa: E501
 
-        Return a budget. For example:                    {          \"id\": \"1759183\",          \"sellerId\": 321392,          \"campaignIds\": [              143962          ],          \"budgetType\": \"Capped\",          \"amount\": 1000,          \"startDate\": \"2021-01-11\",          \"endDate\": \"2021-01-12\",          \"spend\": null,          \"status\": \"Active\"      }                A budget limits the spend of a seller for one or more campaigns.                There are three types of budget:<br /><b>Uncapped</b> budgets put no limit on the total amount of spend.<br /><b>Capped</b> budgets limit the total spend to a fixed amount.<br /><b>Daily</b> budgets limit daily spend to a fixed amount.<br />                In addition, budgets can limit the spend to a specific range of dates using  the start and end date attributes. Finally a budget must be active to be used.                <b>Spend</b> approximates the current spend against this budget. There may be a lag  between when an ad is clicked and the time it accrues to the spend.  Daily budgets  show spend against the most recent day only.  # noqa: E501
+        Return a budget. For example:                    {          \"id\": \"1759183\",          \"sellerId\": \"321392\",          \"campaignIds\": [              143962          ],          \"budgetType\": \"Capped\",          \"amount\": 1000,          \"startDate\": \"2021-01-11\",          \"endDate\": \"2021-01-12\",          \"spend\": null,          \"status\": \"Active\"      }                A budget limits the spend of a seller for one or more campaigns.                There are three types of budget:<br /><b>Uncapped</b> budgets put no limit on the total amount of spend.<br /><b>Capped</b> budgets limit the total spend to a fixed amount.<br /><b>Daily</b> budgets limit daily spend to a fixed amount.<br />                In addition, budgets can limit the spend to a specific range of dates using  the start and end date attributes. Finally a budget must be active to be used.                <b>Spend</b> approximates the current spend against this budget. There may be a lag  between when an ad is clicked and the time it accrues to the spend.  Daily budgets  show spend against the most recent day only.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_seller_budget(budget_id, authorization, async_req=True)
@@ -530,7 +530,7 @@ class SellersV2Api(object):
     def get_seller_budget_with_http_info(self, budget_id, authorization, **kwargs):  # noqa: E501
         """Get details for a budget.  # noqa: E501
 
-        Return a budget. For example:                    {          \"id\": \"1759183\",          \"sellerId\": 321392,          \"campaignIds\": [              143962          ],          \"budgetType\": \"Capped\",          \"amount\": 1000,          \"startDate\": \"2021-01-11\",          \"endDate\": \"2021-01-12\",          \"spend\": null,          \"status\": \"Active\"      }                A budget limits the spend of a seller for one or more campaigns.                There are three types of budget:<br /><b>Uncapped</b> budgets put no limit on the total amount of spend.<br /><b>Capped</b> budgets limit the total spend to a fixed amount.<br /><b>Daily</b> budgets limit daily spend to a fixed amount.<br />                In addition, budgets can limit the spend to a specific range of dates using  the start and end date attributes. Finally a budget must be active to be used.                <b>Spend</b> approximates the current spend against this budget. There may be a lag  between when an ad is clicked and the time it accrues to the spend.  Daily budgets  show spend against the most recent day only.  # noqa: E501
+        Return a budget. For example:                    {          \"id\": \"1759183\",          \"sellerId\": \"321392\",          \"campaignIds\": [              143962          ],          \"budgetType\": \"Capped\",          \"amount\": 1000,          \"startDate\": \"2021-01-11\",          \"endDate\": \"2021-01-12\",          \"spend\": null,          \"status\": \"Active\"      }                A budget limits the spend of a seller for one or more campaigns.                There are three types of budget:<br /><b>Uncapped</b> budgets put no limit on the total amount of spend.<br /><b>Capped</b> budgets limit the total spend to a fixed amount.<br /><b>Daily</b> budgets limit daily spend to a fixed amount.<br />                In addition, budgets can limit the spend to a specific range of dates using  the start and end date attributes. Finally a budget must be active to be used.                <b>Spend</b> approximates the current spend against this budget. There may be a lag  between when an ad is clicked and the time it accrues to the spend.  Daily budgets  show spend against the most recent day only.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_seller_budget_with_http_info(budget_id, authorization, async_req=True)
@@ -625,7 +625,7 @@ class SellersV2Api(object):
         :param datetime end_after_date: Return budgets that end after the given date.
         :param datetime start_before_date: Return budgets that start on or before the given date.
         :param int campaign_id: Return only budgets that pay for a given campaign.
-        :param int seller_id: Return only budgets belonging to the given seller.
+        :param str seller_id: Return only budgets belonging to the given seller.
         :param str type: Return only budgets with the given budget type.
         :return: list[SellerBudgetMessage]
                  If the method is called asynchronously,
@@ -655,7 +655,7 @@ class SellersV2Api(object):
         :param datetime end_after_date: Return budgets that end after the given date.
         :param datetime start_before_date: Return budgets that start on or before the given date.
         :param int campaign_id: Return only budgets that pay for a given campaign.
-        :param int seller_id: Return only budgets belonging to the given seller.
+        :param str seller_id: Return only budgets belonging to the given seller.
         :param str type: Return only budgets with the given budget type.
         :return: list[SellerBudgetMessage]
                  If the method is called asynchronously,
@@ -739,7 +739,7 @@ class SellersV2Api(object):
     def get_seller_campaign(self, seller_campaign_id, authorization, **kwargs):  # noqa: E501
         """Get details for a seller campaign.  # noqa: E501
 
-        Return details for a seller campaign.  For example,                    {          \"id\": \"543210.123456\",          \"suspendedSince\": \"2018-07-30\",          \"sellerId\": 543210,          \"campaignId\": 123456,          \"bid\": 1.55      }                An active seller campaign is one for which the value of <b>suspendedSince</b> is null and  the <b>bid</b> is positive. The currency of the bid is the <b>bidCurrency</b> of the  associated campaign.                Any active seller campaign must also have an active total (capped or uncapped) budget.  It may optionally have an active daily budget as well to further limit spending.  # noqa: E501
+        Return details for a seller campaign.  For example,                    {          \"id\": \"543210.123456\",          \"suspendedSince\": \"2018-07-30\",          \"sellerId\": \"543210\",          \"campaignId\": 123456,          \"bid\": 1.55      }                An active seller campaign is one for which the value of <b>suspendedSince</b> is null and  the <b>bid</b> is positive. The currency of the bid is the <b>bidCurrency</b> of the  associated campaign.                Any active seller campaign must also have an active total (capped or uncapped) budget.  It may optionally have an active daily budget as well to further limit spending.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_seller_campaign(seller_campaign_id, authorization, async_req=True)
@@ -762,7 +762,7 @@ class SellersV2Api(object):
     def get_seller_campaign_with_http_info(self, seller_campaign_id, authorization, **kwargs):  # noqa: E501
         """Get details for a seller campaign.  # noqa: E501
 
-        Return details for a seller campaign.  For example,                    {          \"id\": \"543210.123456\",          \"suspendedSince\": \"2018-07-30\",          \"sellerId\": 543210,          \"campaignId\": 123456,          \"bid\": 1.55      }                An active seller campaign is one for which the value of <b>suspendedSince</b> is null and  the <b>bid</b> is positive. The currency of the bid is the <b>bidCurrency</b> of the  associated campaign.                Any active seller campaign must also have an active total (capped or uncapped) budget.  It may optionally have an active daily budget as well to further limit spending.  # noqa: E501
+        Return details for a seller campaign.  For example,                    {          \"id\": \"543210.123456\",          \"suspendedSince\": \"2018-07-30\",          \"sellerId\": \"543210\",          \"campaignId\": 123456,          \"bid\": 1.55      }                An active seller campaign is one for which the value of <b>suspendedSince</b> is null and  the <b>bid</b> is positive. The currency of the bid is the <b>bidCurrency</b> of the  associated campaign.                Any active seller campaign must also have an active total (capped or uncapped) budget.  It may optionally have an active daily budget as well to further limit spending.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_seller_campaign_with_http_info(seller_campaign_id, authorization, async_req=True)
@@ -852,7 +852,7 @@ class SellersV2Api(object):
         :param async_req bool
         :param str authorization: JWT Bearer Token (required)
         :param str seller_status: Return only seller campaigns for sellers with the given status.
-        :param int seller_id: Return only seller campaigns belonging to the given seller.
+        :param str seller_id: Return only seller campaigns belonging to the given seller.
         :param int campaign_id: Return only seller campaigns associated with the given campaign.
         :param str budget_status: Return only seller campaigns whose budget has the given status.
         :return: list[SellerCampaignMessage]
@@ -878,7 +878,7 @@ class SellersV2Api(object):
         :param async_req bool
         :param str authorization: JWT Bearer Token (required)
         :param str seller_status: Return only seller campaigns for sellers with the given status.
-        :param int seller_id: Return only seller campaigns belonging to the given seller.
+        :param str seller_id: Return only seller campaigns belonging to the given seller.
         :param int campaign_id: Return only seller campaigns associated with the given campaign.
         :param str budget_status: Return only seller campaigns whose budget has the given status.
         :return: list[SellerCampaignMessage]
@@ -962,7 +962,7 @@ class SellersV2Api(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param int seller_id: Return only seller campaigns belonging to the given seller. (required)
+        :param str seller_id: Return only seller campaigns belonging to the given seller. (required)
         :param str authorization: JWT Bearer Token (required)
         :param str seller_status: Return only seller campaigns for sellers with the given status.
         :param int campaign_id: Return only seller campaigns associated with the given campaign.
@@ -988,7 +988,7 @@ class SellersV2Api(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param int seller_id: Return only seller campaigns belonging to the given seller. (required)
+        :param str seller_id: Return only seller campaigns belonging to the given seller. (required)
         :param str authorization: JWT Bearer Token (required)
         :param str seller_status: Return only seller campaigns for sellers with the given status.
         :param int campaign_id: Return only seller campaigns associated with the given campaign.

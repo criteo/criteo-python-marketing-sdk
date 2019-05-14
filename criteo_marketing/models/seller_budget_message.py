@@ -32,14 +32,15 @@ class SellerBudgetMessage(object):
     """
     openapi_types = {
         'id': 'str',
-        'seller_id': 'int',
+        'seller_id': 'str',
         'campaign_ids': 'list[int]',
         'budget_type': 'str',
         'amount': 'str',
         'start_date': 'datetime',
         'end_date': 'str',
         'spend': 'float',
-        'status': 'str'
+        'status': 'str',
+        'is_suspended': 'bool'
     }
 
     attribute_map = {
@@ -51,10 +52,11 @@ class SellerBudgetMessage(object):
         'start_date': 'startDate',
         'end_date': 'endDate',
         'spend': 'spend',
-        'status': 'status'
+        'status': 'status',
+        'is_suspended': 'isSuspended'
     }
 
-    def __init__(self, id=None, seller_id=None, campaign_ids=None, budget_type=None, amount=None, start_date=None, end_date=None, spend=None, status=None):  # noqa: E501
+    def __init__(self, id=None, seller_id=None, campaign_ids=None, budget_type=None, amount=None, start_date=None, end_date=None, spend=None, status=None, is_suspended=None):  # noqa: E501
         """SellerBudgetMessage - a model defined in OpenAPI"""  # noqa: E501
 
         self._id = None
@@ -66,6 +68,7 @@ class SellerBudgetMessage(object):
         self._end_date = None
         self._spend = None
         self._status = None
+        self._is_suspended = None
         self.discriminator = None
 
         if id is not None:
@@ -86,6 +89,8 @@ class SellerBudgetMessage(object):
             self.spend = spend
         if status is not None:
             self.status = status
+        if is_suspended is not None:
+            self.is_suspended = is_suspended
 
     @property
     def id(self):
@@ -114,7 +119,7 @@ class SellerBudgetMessage(object):
 
 
         :return: The seller_id of this SellerBudgetMessage.  # noqa: E501
-        :rtype: int
+        :rtype: str
         """
         return self._seller_id
 
@@ -124,7 +129,7 @@ class SellerBudgetMessage(object):
 
 
         :param seller_id: The seller_id of this SellerBudgetMessage.  # noqa: E501
-        :type: int
+        :type: str
         """
 
         self._seller_id = seller_id
@@ -275,6 +280,27 @@ class SellerBudgetMessage(object):
         """
 
         self._status = status
+
+    @property
+    def is_suspended(self):
+        """Gets the is_suspended of this SellerBudgetMessage.  # noqa: E501
+
+
+        :return: The is_suspended of this SellerBudgetMessage.  # noqa: E501
+        :rtype: bool
+        """
+        return self._is_suspended
+
+    @is_suspended.setter
+    def is_suspended(self, is_suspended):
+        """Sets the is_suspended of this SellerBudgetMessage.
+
+
+        :param is_suspended: The is_suspended of this SellerBudgetMessage.  # noqa: E501
+        :type: bool
+        """
+
+        self._is_suspended = is_suspended
 
     def to_dict(self):
         """Returns the model properties as a dict"""

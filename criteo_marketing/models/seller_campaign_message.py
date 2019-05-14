@@ -32,7 +32,7 @@ class SellerCampaignMessage(object):
     """
     openapi_types = {
         'id': 'str',
-        'seller_id': 'int',
+        'seller_id': 'str',
         'campaign_id': 'int',
         'bid': 'float',
         'suspended_since': 'datetime'
@@ -94,7 +94,7 @@ class SellerCampaignMessage(object):
 
 
         :return: The seller_id of this SellerCampaignMessage.  # noqa: E501
-        :rtype: int
+        :rtype: str
         """
         return self._seller_id
 
@@ -104,7 +104,7 @@ class SellerCampaignMessage(object):
 
 
         :param seller_id: The seller_id of this SellerCampaignMessage.  # noqa: E501
-        :type: int
+        :type: str
         """
 
         self._seller_id = seller_id

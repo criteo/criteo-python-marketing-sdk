@@ -14,7 +14,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "1.0.147"
+__version__ = "1.0.148"
 
 # import apis into sdk package
 from criteo_marketing.api.advertisers_api import AdvertisersApi
@@ -58,7 +58,7 @@ from criteo_marketing.models.check_result import CheckResult
 from criteo_marketing.models.client_registration_request_message import ClientRegistrationRequestMessage
 from criteo_marketing.models.client_registration_response_message import ClientRegistrationResponseMessage
 from criteo_marketing.models.create_seller_budget_mapi_message import CreateSellerBudgetMapiMessage
-from criteo_marketing.models.error_response import ErrorResponse
+from criteo_marketing.models.error_source import ErrorSource
 from criteo_marketing.models.google_product import GoogleProduct
 from criteo_marketing.models.i_throttling_configuration import IThrottlingConfiguration
 from criteo_marketing.models.inline_response200 import InlineResponse200
@@ -69,7 +69,6 @@ from criteo_marketing.models.mapi_user_message import MapiUserMessage
 from criteo_marketing.models.marketplace_campaign_message import MarketplaceCampaignMessage
 from criteo_marketing.models.message_with_details_campaign_bid_change_response import MessageWithDetailsCampaignBidChangeResponse
 from criteo_marketing.models.message_with_details_category_updates_per_catalog_error import MessageWithDetailsCategoryUpdatesPerCatalogError
-from criteo_marketing.models.message_with_details_i_list_error_response import MessageWithDetailsIListErrorResponse
 from criteo_marketing.models.policy_route_info import PolicyRouteInfo
 from criteo_marketing.models.portfolio_message import PortfolioMessage
 from criteo_marketing.models.price import Price

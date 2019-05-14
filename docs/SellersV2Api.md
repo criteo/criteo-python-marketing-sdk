@@ -103,7 +103,7 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = criteo_marketing.SellersV2Api(criteo_marketing.ApiClient(configuration))
-seller_id = 56 # int | Return only budgets belonging to the given seller.
+seller_id = 'seller_id_example' # str | Return only budgets belonging to the given seller.
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
 status = 'status_example' # str | Return only budgets with the given status. (optional)
 with_balance = True # bool | Return only budgets with the given status. (optional)
@@ -125,7 +125,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **seller_id** | **int**| Return only budgets belonging to the given seller. | 
+ **seller_id** | **str**| Return only budgets belonging to the given seller. | 
  **authorization** | **str**| JWT Bearer Token | [default to &#39;Bearer VALID_JWT_TOKEN_BASE64&#39;]
  **status** | **str**| Return only budgets with the given status. | [optional] 
  **with_balance** | **bool**| Return only budgets with the given status. | [optional] 
@@ -245,7 +245,7 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = criteo_marketing.SellersV2Api(criteo_marketing.ApiClient(configuration))
-seller_id = 56 # int | Id of the seller.
+seller_id = 'seller_id_example' # str | Id of the seller.
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
 
 try:
@@ -260,7 +260,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **seller_id** | **int**| Id of the seller. | 
+ **seller_id** | **str**| Id of the seller. | 
  **authorization** | **str**| JWT Bearer Token | [default to &#39;Bearer VALID_JWT_TOKEN_BASE64&#39;]
 
 ### Return type
@@ -283,7 +283,7 @@ Name | Type | Description  | Notes
 
 Get details for a budget.
 
-Return a budget. For example:                    {          \"id\": \"1759183\",          \"sellerId\": 321392,          \"campaignIds\": [              143962          ],          \"budgetType\": \"Capped\",          \"amount\": 1000,          \"startDate\": \"2021-01-11\",          \"endDate\": \"2021-01-12\",          \"spend\": null,          \"status\": \"Active\"      }                A budget limits the spend of a seller for one or more campaigns.                There are three types of budget:<br /><b>Uncapped</b> budgets put no limit on the total amount of spend.<br /><b>Capped</b> budgets limit the total spend to a fixed amount.<br /><b>Daily</b> budgets limit daily spend to a fixed amount.<br />                In addition, budgets can limit the spend to a specific range of dates using  the start and end date attributes. Finally a budget must be active to be used.                <b>Spend</b> approximates the current spend against this budget. There may be a lag  between when an ad is clicked and the time it accrues to the spend.  Daily budgets  show spend against the most recent day only.
+Return a budget. For example:                    {          \"id\": \"1759183\",          \"sellerId\": \"321392\",          \"campaignIds\": [              143962          ],          \"budgetType\": \"Capped\",          \"amount\": 1000,          \"startDate\": \"2021-01-11\",          \"endDate\": \"2021-01-12\",          \"spend\": null,          \"status\": \"Active\"      }                A budget limits the spend of a seller for one or more campaigns.                There are three types of budget:<br /><b>Uncapped</b> budgets put no limit on the total amount of spend.<br /><b>Capped</b> budgets limit the total spend to a fixed amount.<br /><b>Daily</b> budgets limit daily spend to a fixed amount.<br />                In addition, budgets can limit the spend to a specific range of dates using  the start and end date attributes. Finally a budget must be active to be used.                <b>Spend</b> approximates the current spend against this budget. There may be a lag  between when an ad is clicked and the time it accrues to the spend.  Daily budgets  show spend against the most recent day only.
 
 ### Example
 
@@ -368,7 +368,7 @@ with_spend = True # bool | Return budgets with any positive spend. (optional)
 end_after_date = '2013-10-20T19:20:30+01:00' # datetime | Return budgets that end after the given date. (optional)
 start_before_date = '2013-10-20T19:20:30+01:00' # datetime | Return budgets that start on or before the given date. (optional)
 campaign_id = 56 # int | Return only budgets that pay for a given campaign. (optional)
-seller_id = 56 # int | Return only budgets belonging to the given seller. (optional)
+seller_id = 'seller_id_example' # str | Return only budgets belonging to the given seller. (optional)
 type = 'type_example' # str | Return only budgets with the given budget type. (optional)
 
 try:
@@ -390,7 +390,7 @@ Name | Type | Description  | Notes
  **end_after_date** | **datetime**| Return budgets that end after the given date. | [optional] 
  **start_before_date** | **datetime**| Return budgets that start on or before the given date. | [optional] 
  **campaign_id** | **int**| Return only budgets that pay for a given campaign. | [optional] 
- **seller_id** | **int**| Return only budgets belonging to the given seller. | [optional] 
+ **seller_id** | **str**| Return only budgets belonging to the given seller. | [optional] 
  **type** | **str**| Return only budgets with the given budget type. | [optional] 
 
 ### Return type
@@ -413,7 +413,7 @@ Name | Type | Description  | Notes
 
 Get details for a seller campaign.
 
-Return details for a seller campaign.  For example,                    {          \"id\": \"543210.123456\",          \"suspendedSince\": \"2018-07-30\",          \"sellerId\": 543210,          \"campaignId\": 123456,          \"bid\": 1.55      }                An active seller campaign is one for which the value of <b>suspendedSince</b> is null and  the <b>bid</b> is positive. The currency of the bid is the <b>bidCurrency</b> of the  associated campaign.                Any active seller campaign must also have an active total (capped or uncapped) budget.  It may optionally have an active daily budget as well to further limit spending.
+Return details for a seller campaign.  For example,                    {          \"id\": \"543210.123456\",          \"suspendedSince\": \"2018-07-30\",          \"sellerId\": \"543210\",          \"campaignId\": 123456,          \"bid\": 1.55      }                An active seller campaign is one for which the value of <b>suspendedSince</b> is null and  the <b>bid</b> is positive. The currency of the bid is the <b>bidCurrency</b> of the  associated campaign.                Any active seller campaign must also have an active total (capped or uncapped) budget.  It may optionally have an active daily budget as well to further limit spending.
 
 ### Example
 
@@ -493,7 +493,7 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 api_instance = criteo_marketing.SellersV2Api(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
 seller_status = 'seller_status_example' # str | Return only seller campaigns for sellers with the given status. (optional)
-seller_id = 56 # int | Return only seller campaigns belonging to the given seller. (optional)
+seller_id = 'seller_id_example' # str | Return only seller campaigns belonging to the given seller. (optional)
 campaign_id = 56 # int | Return only seller campaigns associated with the given campaign. (optional)
 budget_status = 'budget_status_example' # str | Return only seller campaigns whose budget has the given status. (optional)
 
@@ -511,7 +511,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **str**| JWT Bearer Token | [default to &#39;Bearer VALID_JWT_TOKEN_BASE64&#39;]
  **seller_status** | **str**| Return only seller campaigns for sellers with the given status. | [optional] 
- **seller_id** | **int**| Return only seller campaigns belonging to the given seller. | [optional] 
+ **seller_id** | **str**| Return only seller campaigns belonging to the given seller. | [optional] 
  **campaign_id** | **int**| Return only seller campaigns associated with the given campaign. | [optional] 
  **budget_status** | **str**| Return only seller campaigns whose budget has the given status. | [optional] 
 
@@ -555,7 +555,7 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = criteo_marketing.SellersV2Api(criteo_marketing.ApiClient(configuration))
-seller_id = 56 # int | Return only seller campaigns belonging to the given seller.
+seller_id = 'seller_id_example' # str | Return only seller campaigns belonging to the given seller.
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
 seller_status = 'seller_status_example' # str | Return only seller campaigns for sellers with the given status. (optional)
 campaign_id = 56 # int | Return only seller campaigns associated with the given campaign. (optional)
@@ -573,7 +573,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **seller_id** | **int**| Return only seller campaigns belonging to the given seller. | 
+ **seller_id** | **str**| Return only seller campaigns belonging to the given seller. | 
  **authorization** | **str**| JWT Bearer Token | [default to &#39;Bearer VALID_JWT_TOKEN_BASE64&#39;]
  **seller_status** | **str**| Return only seller campaigns for sellers with the given status. | [optional] 
  **campaign_id** | **int**| Return only seller campaigns associated with the given campaign. | [optional] 

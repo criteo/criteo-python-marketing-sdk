@@ -31,7 +31,7 @@ class SellerBase(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'id': 'int',
+        'id': 'str',
         'seller_name': 'str'
     }
 
@@ -58,7 +58,7 @@ class SellerBase(object):
 
 
         :return: The id of this SellerBase.  # noqa: E501
-        :rtype: int
+        :rtype: str
         """
         return self._id
 
@@ -68,7 +68,7 @@ class SellerBase(object):
 
 
         :param id: The id of this SellerBase.  # noqa: E501
-        :type: int
+        :type: str
         """
 
         self._id = id
