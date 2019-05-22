@@ -35,7 +35,7 @@ class SellerBudgetMessage(object):
         'seller_id': 'str',
         'campaign_ids': 'list[int]',
         'budget_type': 'str',
-        'amount': 'str',
+        'amount': 'float',
         'start_date': 'datetime',
         'end_date': 'str',
         'spend': 'float',
@@ -182,7 +182,7 @@ class SellerBudgetMessage(object):
 
 
         :return: The amount of this SellerBudgetMessage.  # noqa: E501
-        :rtype: str
+        :rtype: float
         """
         return self._amount
 
@@ -192,7 +192,7 @@ class SellerBudgetMessage(object):
 
 
         :param amount: The amount of this SellerBudgetMessage.  # noqa: E501
-        :type: str
+        :type: float
         """
 
         self._amount = amount
