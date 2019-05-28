@@ -1082,6 +1082,7 @@ class SellersV2Api(object):
         :param str seller_status: Return only sellers with specific status.
         :param bool with_products: Return only sellers with or without products in catalog.
         :param str with_budget_status: Return only sellers with specific budget status.
+        :param str seller_name: Return only sellers with the matching name.
         :return: list[SellerBase]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1107,6 +1108,7 @@ class SellersV2Api(object):
         :param str seller_status: Return only sellers with specific status.
         :param bool with_products: Return only sellers with or without products in catalog.
         :param str with_budget_status: Return only sellers with specific budget status.
+        :param str seller_name: Return only sellers with the matching name.
         :return: list[SellerBase]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1114,7 +1116,7 @@ class SellersV2Api(object):
 
         local_var_params = locals()
 
-        all_params = ['authorization', 'seller_status', 'with_products', 'with_budget_status']  # noqa: E501
+        all_params = ['authorization', 'seller_status', 'with_products', 'with_budget_status', 'seller_name']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1144,6 +1146,8 @@ class SellersV2Api(object):
             query_params.append(('withProducts', local_var_params['with_products']))  # noqa: E501
         if 'with_budget_status' in local_var_params:
             query_params.append(('withBudgetStatus', local_var_params['with_budget_status']))  # noqa: E501
+        if 'seller_name' in local_var_params:
+            query_params.append(('sellerName', local_var_params['seller_name']))  # noqa: E501
 
         header_params = {}
         if 'authorization' in local_var_params:

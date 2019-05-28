@@ -595,7 +595,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_sellers**
-> list[SellerBase] get_sellers(authorization, seller_status=seller_status, with_products=with_products, with_budget_status=with_budget_status)
+> list[SellerBase] get_sellers(authorization, seller_status=seller_status, with_products=with_products, with_budget_status=with_budget_status, seller_name=seller_name)
 
 Get a collection of sellers.
 
@@ -623,10 +623,11 @@ authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (defaul
 seller_status = 'seller_status_example' # str | Return only sellers with specific status. (optional)
 with_products = True # bool | Return only sellers with or without products in catalog. (optional)
 with_budget_status = 'with_budget_status_example' # str | Return only sellers with specific budget status. (optional)
+seller_name = 'seller_name_example' # str | Return only sellers with the matching name. (optional)
 
 try:
     # Get a collection of sellers.
-    api_response = api_instance.get_sellers(authorization, seller_status=seller_status, with_products=with_products, with_budget_status=with_budget_status)
+    api_response = api_instance.get_sellers(authorization, seller_status=seller_status, with_products=with_products, with_budget_status=with_budget_status, seller_name=seller_name)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SellersV2Api->get_sellers: %s\n" % e)
@@ -640,6 +641,7 @@ Name | Type | Description  | Notes
  **seller_status** | **str**| Return only sellers with specific status. | [optional] 
  **with_products** | **bool**| Return only sellers with or without products in catalog. | [optional] 
  **with_budget_status** | **str**| Return only sellers with specific budget status. | [optional] 
+ **seller_name** | **str**| Return only sellers with the matching name. | [optional] 
 
 ### Return type
 
