@@ -13,4 +13,5 @@ from criteo_marketing.api.portfolio_api import PortfolioApi
 from criteo_marketing.api.publishers_api import PublishersApi
 from criteo_marketing.api.sellers_api import SellersApi
 from criteo_marketing.api.sellers_v2_api import SellersV2Api
+from criteo_marketing.api.sellers_v2_stats_api import SellersV2StatsApi
 from criteo_marketing.api.statistics_api import StatisticsApi

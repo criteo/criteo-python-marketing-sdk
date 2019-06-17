@@ -36,7 +36,7 @@ class UpdateSellerBudgetMessage(object):
         'start_date': 'datetime',
         'end_date': 'str',
         'campaign_ids': 'list[int]',
-        'suspended': 'bool'
+        'is_suspended': 'bool'
     }
 
     attribute_map = {
@@ -45,10 +45,10 @@ class UpdateSellerBudgetMessage(object):
         'start_date': 'startDate',
         'end_date': 'endDate',
         'campaign_ids': 'campaignIds',
-        'suspended': 'suspended'
+        'is_suspended': 'isSuspended'
     }
 
-    def __init__(self, budget_id=None, amount=None, start_date=None, end_date=None, campaign_ids=None, suspended=None):  # noqa: E501
+    def __init__(self, budget_id=None, amount=None, start_date=None, end_date=None, campaign_ids=None, is_suspended=None):  # noqa: E501
         """UpdateSellerBudgetMessage - a model defined in OpenAPI"""  # noqa: E501
 
         self._budget_id = None
@@ -56,7 +56,7 @@ class UpdateSellerBudgetMessage(object):
         self._start_date = None
         self._end_date = None
         self._campaign_ids = None
-        self._suspended = None
+        self._is_suspended = None
         self.discriminator = None
 
         if budget_id is not None:
@@ -69,8 +69,8 @@ class UpdateSellerBudgetMessage(object):
             self.end_date = end_date
         if campaign_ids is not None:
             self.campaign_ids = campaign_ids
-        if suspended is not None:
-            self.suspended = suspended
+        if is_suspended is not None:
+            self.is_suspended = is_suspended
 
     @property
     def budget_id(self):
@@ -178,25 +178,25 @@ class UpdateSellerBudgetMessage(object):
         self._campaign_ids = campaign_ids
 
     @property
-    def suspended(self):
-        """Gets the suspended of this UpdateSellerBudgetMessage.  # noqa: E501
+    def is_suspended(self):
+        """Gets the is_suspended of this UpdateSellerBudgetMessage.  # noqa: E501
 
 
-        :return: The suspended of this UpdateSellerBudgetMessage.  # noqa: E501
+        :return: The is_suspended of this UpdateSellerBudgetMessage.  # noqa: E501
         :rtype: bool
         """
-        return self._suspended
+        return self._is_suspended
 
-    @suspended.setter
-    def suspended(self, suspended):
-        """Sets the suspended of this UpdateSellerBudgetMessage.
+    @is_suspended.setter
+    def is_suspended(self, is_suspended):
+        """Sets the is_suspended of this UpdateSellerBudgetMessage.
 
 
-        :param suspended: The suspended of this UpdateSellerBudgetMessage.  # noqa: E501
+        :param is_suspended: The is_suspended of this UpdateSellerBudgetMessage.  # noqa: E501
         :type: bool
         """
 
-        self._suspended = suspended
+        self._is_suspended = is_suspended
 
     def to_dict(self):
         """Returns the model properties as a dict"""

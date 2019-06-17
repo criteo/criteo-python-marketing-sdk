@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 Get a collection of budgets for this seller.
 
-Return a collection of budgets for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used. See the budgets endpoint for additional details.
+Return a collection of budgets for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned, except those whose endDate is in the past. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used. See the budgets endpoint for additional details.
 
 ### Example
 
@@ -108,7 +108,7 @@ authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (defaul
 status = 'status_example' # str | Return only budgets with the given status. (optional)
 with_balance = True # bool | Return only budgets with the given status. (optional)
 with_spend = True # bool | Return budgets with any positive spend. (optional)
-end_after_date = '2013-10-20T19:20:30+01:00' # datetime | Return budgets that end after the given date. (optional)
+end_after_date = '2013-10-20T19:20:30+01:00' # datetime | Return budgets that end after the given date.              If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
 start_before_date = '2013-10-20T19:20:30+01:00' # datetime | Return budgets that start on or before the given date. (optional)
 campaign_id = 56 # int | Return only budgets that pay for a given campaign. (optional)
 type = 'type_example' # str | Return only budgets with the given budget type. (optional)
@@ -130,7 +130,7 @@ Name | Type | Description  | Notes
  **status** | **str**| Return only budgets with the given status. | [optional] 
  **with_balance** | **bool**| Return only budgets with the given status. | [optional] 
  **with_spend** | **bool**| Return budgets with any positive spend. | [optional] 
- **end_after_date** | **datetime**| Return budgets that end after the given date. | [optional] 
+ **end_after_date** | **datetime**| Return budgets that end after the given date.              If param is not provided, default behavior is to only return budgets that have not yet ended. | [optional] 
  **start_before_date** | **datetime**| Return budgets that start on or before the given date. | [optional] 
  **campaign_id** | **int**| Return only budgets that pay for a given campaign. | [optional] 
  **type** | **str**| Return only budgets with the given budget type. | [optional] 
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 Get a collection of budgets for this seller campaign.
 
-Return a collection of budgets for this seller campaign filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                See the budgets endpoint for additional details.
+Return a collection of budgets for this seller campaign filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned, except those whose endDate is in the past. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                See the budgets endpoint for additional details.
 
 ### Example
 
@@ -180,7 +180,7 @@ authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (defaul
 status = 'status_example' # str | Return only budgets with the given status. (optional)
 with_balance = True # bool | Return only budgets with a positive balance. (optional)
 with_spend = True # bool | Return budgets with a positive spend. (optional)
-end_after_date = '2013-10-20T19:20:30+01:00' # datetime | Return budgets that end after the given date. (optional)
+end_after_date = '2013-10-20T19:20:30+01:00' # datetime | Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
 start_before_date = '2013-10-20T19:20:30+01:00' # datetime | Return budgets that start on or before the given date. (optional)
 type = 'type_example' # str | Return only budgets with the given budget type. (optional)
 
@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
  **status** | **str**| Return only budgets with the given status. | [optional] 
  **with_balance** | **bool**| Return only budgets with a positive balance. | [optional] 
  **with_spend** | **bool**| Return budgets with a positive spend. | [optional] 
- **end_after_date** | **datetime**| Return budgets that end after the given date. | [optional] 
+ **end_after_date** | **datetime**| Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended. | [optional] 
  **start_before_date** | **datetime**| Return budgets that start on or before the given date. | [optional] 
  **type** | **str**| Return only budgets with the given budget type. | [optional] 
 
@@ -341,7 +341,7 @@ Name | Type | Description  | Notes
 
 Get a collection of budgets.
 
-Return a collection of budgets filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                <b>Date filter.</b> Filtering can return only budgets that were active for a  date range by specifying the startBeforeDate and endAfterDate. Leaving off  either value makes the range open ended.  To get budgets that were active  on a specific date, set both values to that day.                <b>Spend.</b> If the endAfterDate is supplied, the spend excludes spend that  happened after that date. In the case of a daily budget, only the spend for  the final day is displayed.                See the budgets endpoint for additional details.
+Return a collection of budgets filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned, except those whose endDate is in the past. Returned budgets must satisfy all supplied filter  criteria if multiple parameters are used.                <b>Date filter.</b> Filtering can return only budgets that were active for a  date range by specifying the startBeforeDate and endAfterDate. Leaving off the startBeforeDate  value makes budgets with any startDate qualify, whereas when leaving off the endAfterDate value will only return  budgets whose endDate has not already passed. To get budgets that were active  on a specific date, set both values to that day.                <b>Spend.</b> If the endAfterDate is supplied, the spend excludes spend that  happened after that date. In the case of a daily budget, only the spend for  the final day is displayed.                See the budgets endpoint for additional details.
 
 ### Example
 
@@ -365,7 +365,7 @@ authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (defaul
 status = 'status_example' # str | Return only budgets with the given status. (optional)
 with_balance = True # bool | Return only budgets with the given status. (optional)
 with_spend = True # bool | Return budgets with any positive spend. (optional)
-end_after_date = '2013-10-20T19:20:30+01:00' # datetime | Return budgets that end after the given date. (optional)
+end_after_date = '2013-10-20T19:20:30+01:00' # datetime | Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
 start_before_date = '2013-10-20T19:20:30+01:00' # datetime | Return budgets that start on or before the given date. (optional)
 campaign_id = 56 # int | Return only budgets that pay for a given campaign. (optional)
 seller_id = 'seller_id_example' # str | Return only budgets belonging to the given seller. (optional)
@@ -387,7 +387,7 @@ Name | Type | Description  | Notes
  **status** | **str**| Return only budgets with the given status. | [optional] 
  **with_balance** | **bool**| Return only budgets with the given status. | [optional] 
  **with_spend** | **bool**| Return budgets with any positive spend. | [optional] 
- **end_after_date** | **datetime**| Return budgets that end after the given date. | [optional] 
+ **end_after_date** | **datetime**| Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended. | [optional] 
  **start_before_date** | **datetime**| Return budgets that start on or before the given date. | [optional] 
  **campaign_id** | **int**| Return only budgets that pay for a given campaign. | [optional] 
  **seller_id** | **str**| Return only budgets belonging to the given seller. | [optional] 
@@ -659,7 +659,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_seller_budget**
-> list[SellerBudgetMessage] update_seller_budget(budget_id, start_date, suspended, amount, end_date, authorization, request_body)
+> list[SellerBudgetMessage] update_seller_budget(budget_id, authorization, update_seller_budget_message)
 
 Modify a single budget.
 
@@ -683,17 +683,13 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = criteo_marketing.SellersV2Api(criteo_marketing.ApiClient(configuration))
-budget_id = 56 # int | Id of the budget being modified.
-start_date = '2013-10-20T19:20:30+01:00' # datetime | Future start date for this budget.
-suspended = True # bool | Indicates if a budget should be suspended or not.
-amount = 'amount_example' # str | Limit for this budget (type must not be Uncapped).
-end_date = 'end_date_example' # str | Future end date for this budget.
+budget_id = 'budget_id_example' # str | 
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
-request_body = NULL # list[int] | Campaigns funded by this budget.
+update_seller_budget_message = criteo_marketing.UpdateSellerBudgetMessage() # UpdateSellerBudgetMessage | 
 
 try:
     # Modify a single budget.
-    api_response = api_instance.update_seller_budget(budget_id, start_date, suspended, amount, end_date, authorization, request_body)
+    api_response = api_instance.update_seller_budget(budget_id, authorization, update_seller_budget_message)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SellersV2Api->update_seller_budget: %s\n" % e)
@@ -703,13 +699,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **budget_id** | **int**| Id of the budget being modified. | 
- **start_date** | **datetime**| Future start date for this budget. | 
- **suspended** | **bool**| Indicates if a budget should be suspended or not. | 
- **amount** | **str**| Limit for this budget (type must not be Uncapped). | 
- **end_date** | **str**| Future end date for this budget. | 
+ **budget_id** | **str**|  | 
  **authorization** | **str**| JWT Bearer Token | [default to &#39;Bearer VALID_JWT_TOKEN_BASE64&#39;]
- **request_body** | [**list[int]**](list.md)| Campaigns funded by this budget. | 
+ **update_seller_budget_message** | [**UpdateSellerBudgetMessage**](UpdateSellerBudgetMessage.md)|  | 
 
 ### Return type
 
@@ -721,7 +713,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded, text/html
+ - **Content-Type**: application/json, text/json, application/x-www-form-urlencoded, text/html
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -731,7 +723,7 @@ Name | Type | Description  | Notes
 
 Modify a collection of budgets.
 
-Modify one or more existing active budgets to change their limitations or status.  All three types of budgets can be modified.                The following constraints apply when modifying an existing budget.                • <b>campaignIds</b>: a non-empty subset of the original campaign ids MUST be supplied<br />  • <b>amount</b>: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative<br />  • <b>startDate</b>: a future start date MAY be supplied for budgets that have not yet started<br />  • <b>endDate</b>: an end date MAY be supplied and if supplied MUST be a future date greater than the start date<br />                Other attributes MUST NOT be supplied.                Adding new campaigns to a budget is not allowed. In addition, reducing the amount for  a Capped budget to a value less than the current spend not allowed.
+Modify one or more existing active budgets to change their limitations or status.  All three types of budgets can be modified.                The following constraints apply when modifying an existing budget.                • <b>campaignIds</b>: a non-empty subset of the original campaign ids MAY be supplied<br />  • <b>amount</b>: an amount MAY be supplied only if the type is not Uncapped and if supplied it MUST be non-negative<br />  • <b>startDate</b>: a future start date MAY be supplied for budgets that have not yet started<br />  • <b>endDate</b>: an end date MAY be supplied and if supplied MUST be a future date greater than the start date<br />                Other attributes MUST NOT be supplied.                Adding new campaigns to a budget is not allowed. In addition, reducing the amount for  a Capped budget to a value less than the current spend not allowed.
 
 ### Example
 
