@@ -659,11 +659,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_seller_budget**
-> list[SellerBudgetMessage] update_seller_budget(budget_id, authorization, update_seller_budget_message)
+> SellerBudgetMessage update_seller_budget(budget_id, authorization, update_seller_budget_message_base)
 
 Modify a single budget.
 
-Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.
+Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.    See the additional restrictions listed in the PATCH budgets endpoint.
 
 ### Example
 
@@ -683,13 +683,13 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = criteo_marketing.SellersV2Api(criteo_marketing.ApiClient(configuration))
-budget_id = 'budget_id_example' # str | 
+budget_id = 56 # int | 
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
-update_seller_budget_message = criteo_marketing.UpdateSellerBudgetMessage() # UpdateSellerBudgetMessage | 
+update_seller_budget_message_base = criteo_marketing.UpdateSellerBudgetMessageBase() # UpdateSellerBudgetMessageBase | 
 
 try:
     # Modify a single budget.
-    api_response = api_instance.update_seller_budget(budget_id, authorization, update_seller_budget_message)
+    api_response = api_instance.update_seller_budget(budget_id, authorization, update_seller_budget_message_base)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SellersV2Api->update_seller_budget: %s\n" % e)
@@ -699,13 +699,13 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **budget_id** | **str**|  | 
+ **budget_id** | **int**|  | 
  **authorization** | **str**| JWT Bearer Token | [default to &#39;Bearer VALID_JWT_TOKEN_BASE64&#39;]
- **update_seller_budget_message** | [**UpdateSellerBudgetMessage**](UpdateSellerBudgetMessage.md)|  | 
+ **update_seller_budget_message_base** | [**UpdateSellerBudgetMessageBase**](UpdateSellerBudgetMessageBase.md)|  | 
 
 ### Return type
 
-[**list[SellerBudgetMessage]**](SellerBudgetMessage.md)
+[**SellerBudgetMessage**](SellerBudgetMessage.md)
 
 ### Authorization
 
@@ -714,7 +714,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json, text/json, application/x-www-form-urlencoded, text/html
- - **Accept**: application/json, text/json, application/xml, text/xml, text/html
+ - **Accept**: application/json, text/json, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

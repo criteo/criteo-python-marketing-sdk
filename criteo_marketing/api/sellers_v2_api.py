@@ -1180,51 +1180,51 @@ class SellersV2Api(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def update_seller_budget(self, budget_id, authorization, update_seller_budget_message, **kwargs):  # noqa: E501
+    def update_seller_budget(self, budget_id, authorization, update_seller_budget_message_base, **kwargs):  # noqa: E501
         """Modify a single budget.  # noqa: E501
 
-        Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.  # noqa: E501
+        Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.    See the additional restrictions listed in the PATCH budgets endpoint.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_seller_budget(budget_id, authorization, update_seller_budget_message, async_req=True)
+        >>> thread = api.update_seller_budget(budget_id, authorization, update_seller_budget_message_base, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str budget_id: (required)
+        :param int budget_id: (required)
         :param str authorization: JWT Bearer Token (required)
-        :param UpdateSellerBudgetMessage update_seller_budget_message: (required)
-        :return: list[SellerBudgetMessage]
+        :param UpdateSellerBudgetMessageBase update_seller_budget_message_base: (required)
+        :return: SellerBudgetMessage
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.update_seller_budget_with_http_info(budget_id, authorization, update_seller_budget_message, **kwargs)  # noqa: E501
+            return self.update_seller_budget_with_http_info(budget_id, authorization, update_seller_budget_message_base, **kwargs)  # noqa: E501
         else:
-            (data) = self.update_seller_budget_with_http_info(budget_id, authorization, update_seller_budget_message, **kwargs)  # noqa: E501
+            (data) = self.update_seller_budget_with_http_info(budget_id, authorization, update_seller_budget_message_base, **kwargs)  # noqa: E501
             return data
 
-    def update_seller_budget_with_http_info(self, budget_id, authorization, update_seller_budget_message, **kwargs):  # noqa: E501
+    def update_seller_budget_with_http_info(self, budget_id, authorization, update_seller_budget_message_base, **kwargs):  # noqa: E501
         """Modify a single budget.  # noqa: E501
 
-        Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.  # noqa: E501
+        Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.    See the additional restrictions listed in the PATCH budgets endpoint.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_seller_budget_with_http_info(budget_id, authorization, update_seller_budget_message, async_req=True)
+        >>> thread = api.update_seller_budget_with_http_info(budget_id, authorization, update_seller_budget_message_base, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str budget_id: (required)
+        :param int budget_id: (required)
         :param str authorization: JWT Bearer Token (required)
-        :param UpdateSellerBudgetMessage update_seller_budget_message: (required)
-        :return: list[SellerBudgetMessage]
+        :param UpdateSellerBudgetMessageBase update_seller_budget_message_base: (required)
+        :return: SellerBudgetMessage
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
         local_var_params = locals()
 
-        all_params = ['budget_id', 'authorization', 'update_seller_budget_message']  # noqa: E501
+        all_params = ['budget_id', 'authorization', 'update_seller_budget_message_base']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1246,10 +1246,10 @@ class SellersV2Api(object):
         if ('authorization' not in local_var_params or
                 local_var_params['authorization'] is None):
             raise ValueError("Missing the required parameter `authorization` when calling `update_seller_budget`")  # noqa: E501
-        # verify the required parameter 'update_seller_budget_message' is set
-        if ('update_seller_budget_message' not in local_var_params or
-                local_var_params['update_seller_budget_message'] is None):
-            raise ValueError("Missing the required parameter `update_seller_budget_message` when calling `update_seller_budget`")  # noqa: E501
+        # verify the required parameter 'update_seller_budget_message_base' is set
+        if ('update_seller_budget_message_base' not in local_var_params or
+                local_var_params['update_seller_budget_message_base'] is None):
+            raise ValueError("Missing the required parameter `update_seller_budget_message_base` when calling `update_seller_budget`")  # noqa: E501
 
         collection_formats = {}
 
@@ -1267,11 +1267,11 @@ class SellersV2Api(object):
         local_var_files = {}
 
         body_params = None
-        if 'update_seller_budget_message' in local_var_params:
-            body_params = local_var_params['update_seller_budget_message']
+        if 'update_seller_budget_message_base' in local_var_params:
+            body_params = local_var_params['update_seller_budget_message_base']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/json', 'application/xml', 'text/xml', 'text/html'])  # noqa: E501
+            ['application/json', 'text/json', 'text/html'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
@@ -1288,7 +1288,7 @@ class SellersV2Api(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='list[SellerBudgetMessage]',  # noqa: E501
+            response_type='SellerBudgetMessage',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501

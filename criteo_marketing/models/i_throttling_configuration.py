@@ -31,52 +31,52 @@ class IThrottlingConfiguration(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'default_throttle_policy': 'ThrottlePolicy',
+        'default_throttle_policies': 'list[ThrottlePolicy]',
         'assembly': 'object',
         'enabled': 'bool'
     }
 
     attribute_map = {
-        'default_throttle_policy': 'defaultThrottlePolicy',
+        'default_throttle_policies': 'defaultThrottlePolicies',
         'assembly': 'assembly',
         'enabled': 'enabled'
     }
 
-    def __init__(self, default_throttle_policy=None, assembly=None, enabled=None):  # noqa: E501
+    def __init__(self, default_throttle_policies=None, assembly=None, enabled=None):  # noqa: E501
         """IThrottlingConfiguration - a model defined in OpenAPI"""  # noqa: E501
 
-        self._default_throttle_policy = None
+        self._default_throttle_policies = None
         self._assembly = None
         self._enabled = None
         self.discriminator = None
 
-        if default_throttle_policy is not None:
-            self.default_throttle_policy = default_throttle_policy
+        if default_throttle_policies is not None:
+            self.default_throttle_policies = default_throttle_policies
         if assembly is not None:
             self.assembly = assembly
         if enabled is not None:
             self.enabled = enabled
 
     @property
-    def default_throttle_policy(self):
-        """Gets the default_throttle_policy of this IThrottlingConfiguration.  # noqa: E501
+    def default_throttle_policies(self):
+        """Gets the default_throttle_policies of this IThrottlingConfiguration.  # noqa: E501
 
 
-        :return: The default_throttle_policy of this IThrottlingConfiguration.  # noqa: E501
-        :rtype: ThrottlePolicy
+        :return: The default_throttle_policies of this IThrottlingConfiguration.  # noqa: E501
+        :rtype: list[ThrottlePolicy]
         """
-        return self._default_throttle_policy
+        return self._default_throttle_policies
 
-    @default_throttle_policy.setter
-    def default_throttle_policy(self, default_throttle_policy):
-        """Sets the default_throttle_policy of this IThrottlingConfiguration.
+    @default_throttle_policies.setter
+    def default_throttle_policies(self, default_throttle_policies):
+        """Sets the default_throttle_policies of this IThrottlingConfiguration.
 
 
-        :param default_throttle_policy: The default_throttle_policy of this IThrottlingConfiguration.  # noqa: E501
-        :type: ThrottlePolicy
+        :param default_throttle_policies: The default_throttle_policies of this IThrottlingConfiguration.  # noqa: E501
+        :type: list[ThrottlePolicy]
         """
 
-        self._default_throttle_policy = default_throttle_policy
+        self._default_throttle_policies = default_throttle_policies
 
     @property
     def assembly(self):

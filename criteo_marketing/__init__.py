@@ -14,7 +14,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "1.0.151"
+__version__ = "1.0.152"
 
 # import apis into sdk package
 from criteo_marketing.api.advertisers_api import AdvertisersApi
@@ -103,3 +103,4 @@ from criteo_marketing.models.throttle_policy import ThrottlePolicy
 from criteo_marketing.models.throttle_policy_rates import ThrottlePolicyRates
 from criteo_marketing.models.unit_measure import UnitMeasure
 from criteo_marketing.models.update_seller_budget_message import UpdateSellerBudgetMessage
+from criteo_marketing.models.update_seller_budget_message_base import UpdateSellerBudgetMessageBase

@@ -83,3 +83,4 @@ from criteo_marketing.models.throttle_policy import ThrottlePolicy
 from criteo_marketing.models.throttle_policy_rates import ThrottlePolicyRates
 from criteo_marketing.models.unit_measure import UnitMeasure
 from criteo_marketing.models.update_seller_budget_message import UpdateSellerBudgetMessage
+from criteo_marketing.models.update_seller_budget_message_base import UpdateSellerBudgetMessageBase
