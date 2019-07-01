@@ -155,8 +155,8 @@ class SellersV2Api(object):
         :param str status: Return only budgets with the given status.
         :param bool with_balance: Return only budgets with the given status.
         :param bool with_spend: Return budgets with any positive spend.
-        :param datetime end_after_date: Return budgets that end after the given date.              If param is not provided, default behavior is to only return budgets that have not yet ended.
-        :param datetime start_before_date: Return budgets that start on or before the given date.
+        :param datetime end_after_date: Return budgets that end after the given date using the `yyyy-MM-DD` format.              If param is not provided, default behavior is to only return budgets that have not yet ended.
+        :param datetime start_before_date: Return budgets that start on or before the given date using the `yyyy-MM-DD` format.
         :param int campaign_id: Return only budgets that pay for a given campaign.
         :param str type: Return only budgets with the given budget type.
         :return: list[SellerBudgetMessage]
@@ -185,8 +185,8 @@ class SellersV2Api(object):
         :param str status: Return only budgets with the given status.
         :param bool with_balance: Return only budgets with the given status.
         :param bool with_spend: Return budgets with any positive spend.
-        :param datetime end_after_date: Return budgets that end after the given date.              If param is not provided, default behavior is to only return budgets that have not yet ended.
-        :param datetime start_before_date: Return budgets that start on or before the given date.
+        :param datetime end_after_date: Return budgets that end after the given date using the `yyyy-MM-DD` format.              If param is not provided, default behavior is to only return budgets that have not yet ended.
+        :param datetime start_before_date: Return budgets that start on or before the given date using the `yyyy-MM-DD` format.
         :param int campaign_id: Return only budgets that pay for a given campaign.
         :param str type: Return only budgets with the given budget type.
         :return: list[SellerBudgetMessage]
@@ -287,8 +287,8 @@ class SellersV2Api(object):
         :param str status: Return only budgets with the given status.
         :param bool with_balance: Return only budgets with a positive balance.
         :param bool with_spend: Return budgets with a positive spend.
-        :param datetime end_after_date: Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended.
-        :param datetime start_before_date: Return budgets that start on or before the given date.
+        :param datetime end_after_date: Return budgets that end after the given date using the `yyyy-MM-DD` format.               If param is not provided, default behavior is to only return budgets that have not yet ended.
+        :param datetime start_before_date: Return budgets that start on or before the given date using the `yyyy-MM-DD` format.
         :param str type: Return only budgets with the given budget type.
         :return: list[SellerBudgetMessage]
                  If the method is called asynchronously,
@@ -316,8 +316,8 @@ class SellersV2Api(object):
         :param str status: Return only budgets with the given status.
         :param bool with_balance: Return only budgets with a positive balance.
         :param bool with_spend: Return budgets with a positive spend.
-        :param datetime end_after_date: Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended.
-        :param datetime start_before_date: Return budgets that start on or before the given date.
+        :param datetime end_after_date: Return budgets that end after the given date using the `yyyy-MM-DD` format.               If param is not provided, default behavior is to only return budgets that have not yet ended.
+        :param datetime start_before_date: Return budgets that start on or before the given date using the `yyyy-MM-DD` format.
         :param str type: Return only budgets with the given budget type.
         :return: list[SellerBudgetMessage]
                  If the method is called asynchronously,
@@ -622,8 +622,8 @@ class SellersV2Api(object):
         :param str status: Return only budgets with the given status.
         :param bool with_balance: Return only budgets with the given status.
         :param bool with_spend: Return budgets with any positive spend.
-        :param datetime end_after_date: Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended.
-        :param datetime start_before_date: Return budgets that start on or before the given date.
+        :param datetime end_after_date: Return budgets that end after the given date using the `yyyy-MM-DD` format.               If param is not provided, default behavior is to only return budgets that have not yet ended.
+        :param datetime start_before_date: Return budgets that start on or before the given date using the `yyyy-MM-DD` format.
         :param int campaign_id: Return only budgets that pay for a given campaign.
         :param str seller_id: Return only budgets belonging to the given seller.
         :param str type: Return only budgets with the given budget type.
@@ -652,8 +652,8 @@ class SellersV2Api(object):
         :param str status: Return only budgets with the given status.
         :param bool with_balance: Return only budgets with the given status.
         :param bool with_spend: Return budgets with any positive spend.
-        :param datetime end_after_date: Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended.
-        :param datetime start_before_date: Return budgets that start on or before the given date.
+        :param datetime end_after_date: Return budgets that end after the given date using the `yyyy-MM-DD` format.               If param is not provided, default behavior is to only return budgets that have not yet ended.
+        :param datetime start_before_date: Return budgets that start on or before the given date using the `yyyy-MM-DD` format.
         :param int campaign_id: Return only budgets that pay for a given campaign.
         :param str seller_id: Return only budgets belonging to the given seller.
         :param str type: Return only budgets with the given budget type.
@@ -1183,7 +1183,7 @@ class SellersV2Api(object):
     def update_seller_budget(self, budget_id, authorization, update_seller_budget_message_base, **kwargs):  # noqa: E501
         """Modify a single budget.  # noqa: E501
 
-        Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.    See the additional restrictions listed in the PATCH budgets endpoint.  # noqa: E501
+        Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.update_seller_budget(budget_id, authorization, update_seller_budget_message_base, async_req=True)
@@ -1207,7 +1207,7 @@ class SellersV2Api(object):
     def update_seller_budget_with_http_info(self, budget_id, authorization, update_seller_budget_message_base, **kwargs):  # noqa: E501
         """Modify a single budget.  # noqa: E501
 
-        Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.    See the additional restrictions listed in the PATCH budgets endpoint.  # noqa: E501
+        Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.update_seller_budget_with_http_info(budget_id, authorization, update_seller_budget_message_base, async_req=True)

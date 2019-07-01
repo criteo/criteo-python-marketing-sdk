@@ -108,8 +108,8 @@ authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (defaul
 status = 'status_example' # str | Return only budgets with the given status. (optional)
 with_balance = True # bool | Return only budgets with the given status. (optional)
 with_spend = True # bool | Return budgets with any positive spend. (optional)
-end_after_date = '2013-10-20T19:20:30+01:00' # datetime | Return budgets that end after the given date.              If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
-start_before_date = '2013-10-20T19:20:30+01:00' # datetime | Return budgets that start on or before the given date. (optional)
+end_after_date = '2013-10-20T19:20:30+01:00' # datetime | Return budgets that end after the given date using the `yyyy-MM-DD` format.              If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
+start_before_date = '2013-10-20T19:20:30+01:00' # datetime | Return budgets that start on or before the given date using the `yyyy-MM-DD` format. (optional)
 campaign_id = 56 # int | Return only budgets that pay for a given campaign. (optional)
 type = 'type_example' # str | Return only budgets with the given budget type. (optional)
 
@@ -130,8 +130,8 @@ Name | Type | Description  | Notes
  **status** | **str**| Return only budgets with the given status. | [optional] 
  **with_balance** | **bool**| Return only budgets with the given status. | [optional] 
  **with_spend** | **bool**| Return budgets with any positive spend. | [optional] 
- **end_after_date** | **datetime**| Return budgets that end after the given date.              If param is not provided, default behavior is to only return budgets that have not yet ended. | [optional] 
- **start_before_date** | **datetime**| Return budgets that start on or before the given date. | [optional] 
+ **end_after_date** | **datetime**| Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.              If param is not provided, default behavior is to only return budgets that have not yet ended. | [optional] 
+ **start_before_date** | **datetime**| Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. | [optional] 
  **campaign_id** | **int**| Return only budgets that pay for a given campaign. | [optional] 
  **type** | **str**| Return only budgets with the given budget type. | [optional] 
 
@@ -180,8 +180,8 @@ authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (defaul
 status = 'status_example' # str | Return only budgets with the given status. (optional)
 with_balance = True # bool | Return only budgets with a positive balance. (optional)
 with_spend = True # bool | Return budgets with a positive spend. (optional)
-end_after_date = '2013-10-20T19:20:30+01:00' # datetime | Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
-start_before_date = '2013-10-20T19:20:30+01:00' # datetime | Return budgets that start on or before the given date. (optional)
+end_after_date = '2013-10-20T19:20:30+01:00' # datetime | Return budgets that end after the given date using the `yyyy-MM-DD` format.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
+start_before_date = '2013-10-20T19:20:30+01:00' # datetime | Return budgets that start on or before the given date using the `yyyy-MM-DD` format. (optional)
 type = 'type_example' # str | Return only budgets with the given budget type. (optional)
 
 try:
@@ -201,8 +201,8 @@ Name | Type | Description  | Notes
  **status** | **str**| Return only budgets with the given status. | [optional] 
  **with_balance** | **bool**| Return only budgets with a positive balance. | [optional] 
  **with_spend** | **bool**| Return budgets with a positive spend. | [optional] 
- **end_after_date** | **datetime**| Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended. | [optional] 
- **start_before_date** | **datetime**| Return budgets that start on or before the given date. | [optional] 
+ **end_after_date** | **datetime**| Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.               If param is not provided, default behavior is to only return budgets that have not yet ended. | [optional] 
+ **start_before_date** | **datetime**| Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. | [optional] 
  **type** | **str**| Return only budgets with the given budget type. | [optional] 
 
 ### Return type
@@ -365,8 +365,8 @@ authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (defaul
 status = 'status_example' # str | Return only budgets with the given status. (optional)
 with_balance = True # bool | Return only budgets with the given status. (optional)
 with_spend = True # bool | Return budgets with any positive spend. (optional)
-end_after_date = '2013-10-20T19:20:30+01:00' # datetime | Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
-start_before_date = '2013-10-20T19:20:30+01:00' # datetime | Return budgets that start on or before the given date. (optional)
+end_after_date = '2013-10-20T19:20:30+01:00' # datetime | Return budgets that end after the given date using the `yyyy-MM-DD` format.               If param is not provided, default behavior is to only return budgets that have not yet ended. (optional)
+start_before_date = '2013-10-20T19:20:30+01:00' # datetime | Return budgets that start on or before the given date using the `yyyy-MM-DD` format. (optional)
 campaign_id = 56 # int | Return only budgets that pay for a given campaign. (optional)
 seller_id = 'seller_id_example' # str | Return only budgets belonging to the given seller. (optional)
 type = 'type_example' # str | Return only budgets with the given budget type. (optional)
@@ -387,8 +387,8 @@ Name | Type | Description  | Notes
  **status** | **str**| Return only budgets with the given status. | [optional] 
  **with_balance** | **bool**| Return only budgets with the given status. | [optional] 
  **with_spend** | **bool**| Return budgets with any positive spend. | [optional] 
- **end_after_date** | **datetime**| Return budgets that end after the given date.               If param is not provided, default behavior is to only return budgets that have not yet ended. | [optional] 
- **start_before_date** | **datetime**| Return budgets that start on or before the given date. | [optional] 
+ **end_after_date** | **datetime**| Return budgets that end after the given date using the &#x60;yyyy-MM-DD&#x60; format.               If param is not provided, default behavior is to only return budgets that have not yet ended. | [optional] 
+ **start_before_date** | **datetime**| Return budgets that start on or before the given date using the &#x60;yyyy-MM-DD&#x60; format. | [optional] 
  **campaign_id** | **int**| Return only budgets that pay for a given campaign. | [optional] 
  **seller_id** | **str**| Return only budgets belonging to the given seller. | [optional] 
  **type** | **str**| Return only budgets with the given budget type. | [optional] 
@@ -663,7 +663,7 @@ Name | Type | Description  | Notes
 
 Modify a single budget.
 
-Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.    See the additional restrictions listed in the PATCH budgets endpoint.
+Modify an existing active budget to change its limitations or status.  All three types of budgets can be modified.                See the additional restrictions listed in the PATCH budgets endpoint.
 
 ### Example
 
