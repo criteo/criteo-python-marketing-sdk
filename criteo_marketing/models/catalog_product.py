@@ -35,6 +35,7 @@ class CatalogProduct(object):
         'catalog_id': 'int',
         'method': 'str',
         'product_id': 'str',
+        'item_group_id': 'str',
         'product': 'GoogleProduct'
     }
 
@@ -43,16 +44,18 @@ class CatalogProduct(object):
         'catalog_id': 'catalogId',
         'method': 'method',
         'product_id': 'productId',
+        'item_group_id': 'itemGroupId',
         'product': 'product'
     }
 
-    def __init__(self, batch_id=None, catalog_id=None, method=None, product_id=None, product=None):  # noqa: E501
+    def __init__(self, batch_id=None, catalog_id=None, method=None, product_id=None, item_group_id=None, product=None):  # noqa: E501
         """CatalogProduct - a model defined in OpenAPI"""  # noqa: E501
 
         self._batch_id = None
         self._catalog_id = None
         self._method = None
         self._product_id = None
+        self._item_group_id = None
         self._product = None
         self.discriminator = None
 
@@ -64,6 +67,8 @@ class CatalogProduct(object):
             self.method = method
         if product_id is not None:
             self.product_id = product_id
+        if item_group_id is not None:
+            self.item_group_id = item_group_id
         if product is not None:
             self.product = product
 
@@ -158,6 +163,29 @@ class CatalogProduct(object):
         """
 
         self._product_id = product_id
+
+    @property
+    def item_group_id(self):
+        """Gets the item_group_id of this CatalogProduct.  # noqa: E501
+
+        Mandatory if the method is delete and the product is a variant. This id is the grouping key (parent id) for variants  # noqa: E501
+
+        :return: The item_group_id of this CatalogProduct.  # noqa: E501
+        :rtype: str
+        """
+        return self._item_group_id
+
+    @item_group_id.setter
+    def item_group_id(self, item_group_id):
+        """Sets the item_group_id of this CatalogProduct.
+
+        Mandatory if the method is delete and the product is a variant. This id is the grouping key (parent id) for variants  # noqa: E501
+
+        :param item_group_id: The item_group_id of this CatalogProduct.  # noqa: E501
+        :type: str
+        """
+
+        self._item_group_id = item_group_id
 
     @property
     def product(self):

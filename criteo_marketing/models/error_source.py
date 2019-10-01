@@ -31,31 +31,52 @@ class ErrorSource(object):
                             and the value is json key in definition.
     """
     openapi_types = {
+        'detail': 'str',
         'status': 'str',
-        'source': 'dict(str, str)',
-        'detail': 'str'
+        'source': 'dict(str, str)'
     }
 
     attribute_map = {
+        'detail': 'detail',
         'status': 'status',
-        'source': 'source',
-        'detail': 'detail'
+        'source': 'source'
     }
 
-    def __init__(self, status=None, source=None, detail=None):  # noqa: E501
+    def __init__(self, detail=None, status=None, source=None):  # noqa: E501
         """ErrorSource - a model defined in OpenAPI"""  # noqa: E501
 
+        self._detail = None
         self._status = None
         self._source = None
-        self._detail = None
         self.discriminator = None
 
+        if detail is not None:
+            self.detail = detail
         if status is not None:
             self.status = status
         if source is not None:
             self.source = source
-        if detail is not None:
-            self.detail = detail
+
+    @property
+    def detail(self):
+        """Gets the detail of this ErrorSource.  # noqa: E501
+
+
+        :return: The detail of this ErrorSource.  # noqa: E501
+        :rtype: str
+        """
+        return self._detail
+
+    @detail.setter
+    def detail(self, detail):
+        """Sets the detail of this ErrorSource.
+
+
+        :param detail: The detail of this ErrorSource.  # noqa: E501
+        :type: str
+        """
+
+        self._detail = detail
 
     @property
     def status(self):
@@ -98,27 +119,6 @@ class ErrorSource(object):
         """
 
         self._source = source
-
-    @property
-    def detail(self):
-        """Gets the detail of this ErrorSource.  # noqa: E501
-
-
-        :return: The detail of this ErrorSource.  # noqa: E501
-        :rtype: str
-        """
-        return self._detail
-
-    @detail.setter
-    def detail(self, detail):
-        """Sets the detail of this ErrorSource.
-
-
-        :param detail: The detail of this ErrorSource.  # noqa: E501
-        :type: str
-        """
-
-        self._detail = detail
 
     def to_dict(self):
         """Returns the model properties as a dict"""
