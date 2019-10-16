@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **get_stats**
-> str get_stats(authorization, stats_query_message_ex)
+> str get_stats(authorization, stats_query)
 
 Generates a statistics report
 
@@ -16,28 +16,29 @@ Generates a statistics report
 
 ### Example
 
-* Api Key Authentication (Authorization): 
+* Api Key Authentication (Authorization):
 ```python
 from __future__ import print_function
 import time
 import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Authorization
 configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
 api_instance = criteo_marketing.StatisticsApi(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
-stats_query_message_ex = criteo_marketing.StatsQueryMessageEx() # StatsQueryMessageEx | The report query details
+stats_query = criteo_marketing.StatsQueryMessageEx() # StatsQueryMessageEx | The report query details
 
 try:
     # Generates a statistics report
-    api_response = api_instance.get_stats(authorization, stats_query_message_ex)
+    api_response = api_instance.get_stats(authorization, stats_query)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling StatisticsApi->get_stats: %s\n" % e)
@@ -48,7 +49,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **str**| JWT Bearer Token | [default to &#39;Bearer VALID_JWT_TOKEN_BASE64&#39;]
- **stats_query_message_ex** | [**StatsQueryMessageEx**](StatsQueryMessageEx.md)| The report query details | 
+ **stats_query** | [**StatsQueryMessageEx**](StatsQueryMessageEx.md)| The report query details | 
 
 ### Return type
 
@@ -62,6 +63,16 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded, text/html
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Statistics report generated OK. |  -  |
+**400** | Bad request, invalid syntax or validation error. |  -  |
+**401** | Authentication failed. |  -  |
+**403** | No campaigns found. |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -17,21 +17,22 @@ Get the list of categories with the specified filters.  If a category is request
 
 ### Example
 
-* Api Key Authentication (Authorization): 
+* Api Key Authentication (Authorization):
 ```python
 from __future__ import print_function
 import time
 import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Authorization
 configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
 api_instance = criteo_marketing.CategoriesApi(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
 campaign_ids = 'campaign_ids_example' # str | Optional. One or more campaign ids, E.g., 78, 12932, 45236. If the campaign ids requested are not liked to advertisers in the user's portfolio, they will be skipped. (optional)
@@ -70,10 +71,19 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Categories returned OK. |  -  |
+**400** | There is not even one valid advertiserId or campaignId requested. |  -  |
+**401** | Authentication failed. |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_categories**
-> list[CategoryUpdatesPerCatalog] update_categories(authorization, category_updates_per_catalog)
+> list[CategoryUpdatesPerCatalog] update_categories(authorization, categories_per_catalog)
 
 Enables/disables categories
 
@@ -81,28 +91,29 @@ Update categories for multiple catalogs.<br />  Please note that all validations
 
 ### Example
 
-* Api Key Authentication (Authorization): 
+* Api Key Authentication (Authorization):
 ```python
 from __future__ import print_function
 import time
 import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Authorization
 configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
 api_instance = criteo_marketing.CategoriesApi(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
-category_updates_per_catalog = NULL # list[CategoryUpdatesPerCatalog] | The list of categories to be enabled/disabled, grouped by catalog.
+categories_per_catalog = [criteo_marketing.CategoryUpdatesPerCatalog()] # list[CategoryUpdatesPerCatalog] | The list of categories to be enabled/disabled, grouped by catalog.
 
 try:
     # Enables/disables categories
-    api_response = api_instance.update_categories(authorization, category_updates_per_catalog)
+    api_response = api_instance.update_categories(authorization, categories_per_catalog)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CategoriesApi->update_categories: %s\n" % e)
@@ -113,7 +124,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **str**| JWT Bearer Token | [default to &#39;Bearer VALID_JWT_TOKEN_BASE64&#39;]
- **category_updates_per_catalog** | [**list[CategoryUpdatesPerCatalog]**](list.md)| The list of categories to be enabled/disabled, grouped by catalog. | 
+ **categories_per_catalog** | [**list[CategoryUpdatesPerCatalog]**](CategoryUpdatesPerCatalog.md)| The list of categories to be enabled/disabled, grouped by catalog. | 
 
 ### Return type
 
@@ -127,6 +138,15 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded, text/html
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Categories updated OK. |  -  |
+**400** | Invalid input. Please check returned message for details. |  -  |
+**401** | Authentication failed. |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

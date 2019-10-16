@@ -16,21 +16,22 @@ Get the list of budgets with the specified filters.  If an advertiser or a budge
 
 ### Example
 
-* Api Key Authentication (Authorization): 
+* Api Key Authentication (Authorization):
 ```python
 from __future__ import print_function
 import time
 import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Authorization
 configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
 api_instance = criteo_marketing.BudgetsApi(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
 advertiser_ids = 'advertiser_ids_example' # str | Optional. One or more advertiser ids, E.g. 78, 12932, 45236. If the requested advertiser ids are not part of the user's portfolio, they will be skipped. (optional)
@@ -66,6 +67,15 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Budgets returned OK. |  -  |
+**400** | No advertiser was specified and user does not have a portfolio. |  -  |
+**401** | Authentication failed. |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 
 # **create_seller_budgets**
-> list[SellerBudgetMessage] create_seller_budgets(authorization, create_seller_budget_mapi_message)
+> list[SellerBudgetMessage] create_seller_budgets(authorization, create_seller_budgets)
 
 Create a collection of budgets.
 
@@ -29,28 +29,29 @@ Create one or more new budgets to enable spending with the given limitations.  A
 
 ### Example
 
-* Api Key Authentication (Authorization): 
+* Api Key Authentication (Authorization):
 ```python
 from __future__ import print_function
 import time
 import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Authorization
 configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
 api_instance = criteo_marketing.SellersV2Api(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
-create_seller_budget_mapi_message = NULL # list[CreateSellerBudgetMapiMessage] | 
+create_seller_budgets = [criteo_marketing.CreateSellerBudgetMapiMessage()] # list[CreateSellerBudgetMapiMessage] | 
 
 try:
     # Create a collection of budgets.
-    api_response = api_instance.create_seller_budgets(authorization, create_seller_budget_mapi_message)
+    api_response = api_instance.create_seller_budgets(authorization, create_seller_budgets)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SellersV2Api->create_seller_budgets: %s\n" % e)
@@ -61,7 +62,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **str**| JWT Bearer Token | [default to &#39;Bearer VALID_JWT_TOKEN_BASE64&#39;]
- **create_seller_budget_mapi_message** | [**list[CreateSellerBudgetMapiMessage]**](list.md)|  | 
+ **create_seller_budgets** | [**list[CreateSellerBudgetMapiMessage]**](CreateSellerBudgetMapiMessage.md)|  | 
 
 ### Return type
 
@@ -76,6 +77,15 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded, text/html
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_budgets_by_seller**
@@ -87,21 +97,22 @@ Return a collection of budgets for this seller filtered by optional filter param
 
 ### Example
 
-* Api Key Authentication (Authorization): 
+* Api Key Authentication (Authorization):
 ```python
 from __future__ import print_function
 import time
 import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Authorization
 configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
 api_instance = criteo_marketing.SellersV2Api(criteo_marketing.ApiClient(configuration))
 seller_id = 'seller_id_example' # str | Return only budgets belonging to the given seller.
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
@@ -148,6 +159,16 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | List of errors encountered |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_budgets_by_seller_campaign_id**
@@ -159,21 +180,22 @@ Return a collection of budgets for this seller campaign filtered by optional fil
 
 ### Example
 
-* Api Key Authentication (Authorization): 
+* Api Key Authentication (Authorization):
 ```python
 from __future__ import print_function
 import time
 import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Authorization
 configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
 api_instance = criteo_marketing.SellersV2Api(criteo_marketing.ApiClient(configuration))
 seller_campaign_id = 'seller_campaign_id_example' # str | Return only budgets belonging to the given seller campaign.
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
@@ -218,6 +240,16 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | List of errors encountered |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_seller**
@@ -229,21 +261,22 @@ Returns details for the selected seller.  For example                    {      
 
 ### Example
 
-* Api Key Authentication (Authorization): 
+* Api Key Authentication (Authorization):
 ```python
 from __future__ import print_function
 import time
 import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Authorization
 configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
 api_instance = criteo_marketing.SellersV2Api(criteo_marketing.ApiClient(configuration))
 seller_id = 'seller_id_example' # str | Id of the seller.
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
@@ -276,6 +309,16 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | List of errors encountered |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_seller_budget**
@@ -287,21 +330,22 @@ Return a budget. For example:                    {          \"id\": \"1759183\",
 
 ### Example
 
-* Api Key Authentication (Authorization): 
+* Api Key Authentication (Authorization):
 ```python
 from __future__ import print_function
 import time
 import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Authorization
 configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
 api_instance = criteo_marketing.SellersV2Api(criteo_marketing.ApiClient(configuration))
 budget_id = 56 # int | 
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
@@ -334,6 +378,16 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/json, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | List of errors encountered |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_seller_budgets**
@@ -345,21 +399,22 @@ Return a collection of budgets filtered by optional filter parameters.  If all p
 
 ### Example
 
-* Api Key Authentication (Authorization): 
+* Api Key Authentication (Authorization):
 ```python
 from __future__ import print_function
 import time
 import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Authorization
 configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
 api_instance = criteo_marketing.SellersV2Api(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
 status = 'status_example' # str | Return only budgets with the given status. (optional)
@@ -406,6 +461,16 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | List of errors encountered |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_seller_campaign**
@@ -417,21 +482,22 @@ Return details for a seller campaign.  For example,                    {        
 
 ### Example
 
-* Api Key Authentication (Authorization): 
+* Api Key Authentication (Authorization):
 ```python
 from __future__ import print_function
 import time
 import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Authorization
 configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
 api_instance = criteo_marketing.SellersV2Api(criteo_marketing.ApiClient(configuration))
 seller_campaign_id = 'seller_campaign_id_example' # str | Id of the seller campaign.
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
@@ -464,6 +530,16 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/json, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | List of errors encountered |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_seller_campaigns**
@@ -475,21 +551,22 @@ Return a collection of seller campaigns filtered by optional filter parameters. 
 
 ### Example
 
-* Api Key Authentication (Authorization): 
+* Api Key Authentication (Authorization):
 ```python
 from __future__ import print_function
 import time
 import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Authorization
 configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
 api_instance = criteo_marketing.SellersV2Api(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
 seller_status = 'seller_status_example' # str | Return only seller campaigns for sellers with the given status. (optional)
@@ -528,6 +605,16 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | List of errors encountered |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_seller_campaigns_by_seller**
@@ -539,21 +626,22 @@ Return a collection of seller campaigns for this seller filtered by optional fil
 
 ### Example
 
-* Api Key Authentication (Authorization): 
+* Api Key Authentication (Authorization):
 ```python
 from __future__ import print_function
 import time
 import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Authorization
 configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
 api_instance = criteo_marketing.SellersV2Api(criteo_marketing.ApiClient(configuration))
 seller_id = 'seller_id_example' # str | Return only seller campaigns belonging to the given seller.
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
@@ -592,6 +680,16 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | List of errors encountered |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_sellers**
@@ -603,21 +701,22 @@ Return a collection of sellers filtered by optional filter parameters.  If all p
 
 ### Example
 
-* Api Key Authentication (Authorization): 
+* Api Key Authentication (Authorization):
 ```python
 from __future__ import print_function
 import time
 import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Authorization
 configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
 api_instance = criteo_marketing.SellersV2Api(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
 seller_status = 'seller_status_example' # str | Return only sellers with specific status. (optional)
@@ -656,10 +755,20 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | List of errors encountered |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_seller_budget**
-> SellerBudgetMessage update_seller_budget(budget_id, authorization, update_seller_budget_message_base)
+> SellerBudgetMessage update_seller_budget(budget_id, authorization, message)
 
 Modify a single budget.
 
@@ -667,29 +776,30 @@ Modify an existing active budget to change its limitations or status.  All three
 
 ### Example
 
-* Api Key Authentication (Authorization): 
+* Api Key Authentication (Authorization):
 ```python
 from __future__ import print_function
 import time
 import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Authorization
 configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
 api_instance = criteo_marketing.SellersV2Api(criteo_marketing.ApiClient(configuration))
 budget_id = 56 # int | 
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
-update_seller_budget_message_base = criteo_marketing.UpdateSellerBudgetMessageBase() # UpdateSellerBudgetMessageBase | 
+message = criteo_marketing.UpdateSellerBudgetMessageBase() # UpdateSellerBudgetMessageBase | 
 
 try:
     # Modify a single budget.
-    api_response = api_instance.update_seller_budget(budget_id, authorization, update_seller_budget_message_base)
+    api_response = api_instance.update_seller_budget(budget_id, authorization, message)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SellersV2Api->update_seller_budget: %s\n" % e)
@@ -701,7 +811,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **budget_id** | **int**|  | 
  **authorization** | **str**| JWT Bearer Token | [default to &#39;Bearer VALID_JWT_TOKEN_BASE64&#39;]
- **update_seller_budget_message_base** | [**UpdateSellerBudgetMessageBase**](UpdateSellerBudgetMessageBase.md)|  | 
+ **message** | [**UpdateSellerBudgetMessageBase**](UpdateSellerBudgetMessageBase.md)|  | 
 
 ### Return type
 
@@ -716,10 +826,19 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json, text/json, application/x-www-form-urlencoded, text/html
  - **Accept**: application/json, text/json, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_seller_budgets**
-> list[SellerBudgetMessage] update_seller_budgets(authorization, update_seller_budget_message)
+> list[SellerBudgetMessage] update_seller_budgets(authorization, update_seller_budgets)
 
 Modify a collection of budgets.
 
@@ -727,28 +846,29 @@ Modify one or more existing active budgets to change their limitations or status
 
 ### Example
 
-* Api Key Authentication (Authorization): 
+* Api Key Authentication (Authorization):
 ```python
 from __future__ import print_function
 import time
 import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Authorization
 configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
 api_instance = criteo_marketing.SellersV2Api(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
-update_seller_budget_message = NULL # list[UpdateSellerBudgetMessage] | 
+update_seller_budgets = [criteo_marketing.UpdateSellerBudgetMessage()] # list[UpdateSellerBudgetMessage] | 
 
 try:
     # Modify a collection of budgets.
-    api_response = api_instance.update_seller_budgets(authorization, update_seller_budget_message)
+    api_response = api_instance.update_seller_budgets(authorization, update_seller_budgets)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SellersV2Api->update_seller_budgets: %s\n" % e)
@@ -759,7 +879,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **str**| JWT Bearer Token | [default to &#39;Bearer VALID_JWT_TOKEN_BASE64&#39;]
- **update_seller_budget_message** | [**list[UpdateSellerBudgetMessage]**](list.md)|  | 
+ **update_seller_budgets** | [**list[UpdateSellerBudgetMessage]**](UpdateSellerBudgetMessage.md)|  | 
 
 ### Return type
 
@@ -774,6 +894,15 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded, text/html
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_seller_campaign**
@@ -785,21 +914,22 @@ Patching a seller campaign allows the bid to be modified. The bid must be a non-
 
 ### Example
 
-* Api Key Authentication (Authorization): 
+* Api Key Authentication (Authorization):
 ```python
 from __future__ import print_function
 import time
 import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Authorization
 configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
 api_instance = criteo_marketing.SellersV2Api(criteo_marketing.ApiClient(configuration))
 seller_campaign_id = 'seller_campaign_id_example' # str | Id of the existing seller campaign to update
 bid = 3.4 # float | The new bid for the seller campaign.
@@ -834,10 +964,20 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/json, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | List of errors encountered |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_seller_campaigns**
-> list[SellerCampaignMessage] update_seller_campaigns(authorization, seller_campaign_update)
+> list[SellerCampaignMessage] update_seller_campaigns(authorization, campaign_messages)
 
 Update a collection of seller campaigns.
 
@@ -845,28 +985,29 @@ Patching a collection of seller campaigns allows their bids to be modified.  Eac
 
 ### Example
 
-* Api Key Authentication (Authorization): 
+* Api Key Authentication (Authorization):
 ```python
 from __future__ import print_function
 import time
 import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Authorization
 configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
 api_instance = criteo_marketing.SellersV2Api(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
-seller_campaign_update = NULL # list[SellerCampaignUpdate] | 
+campaign_messages = [criteo_marketing.SellerCampaignUpdate()] # list[SellerCampaignUpdate] | 
 
 try:
     # Update a collection of seller campaigns.
-    api_response = api_instance.update_seller_campaigns(authorization, seller_campaign_update)
+    api_response = api_instance.update_seller_campaigns(authorization, campaign_messages)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SellersV2Api->update_seller_campaigns: %s\n" % e)
@@ -877,7 +1018,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **str**| JWT Bearer Token | [default to &#39;Bearer VALID_JWT_TOKEN_BASE64&#39;]
- **seller_campaign_update** | [**list[SellerCampaignUpdate]**](list.md)|  | 
+ **campaign_messages** | [**list[SellerCampaignUpdate]**](SellerCampaignUpdate.md)|  | 
 
 ### Return type
 
@@ -891,6 +1032,16 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded, text/html
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | List of errors encountered |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

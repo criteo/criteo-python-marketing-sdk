@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **add_remove_users_to_audience**
-> AudiencePatchResponse add_remove_users_to_audience(audience_id, authorization, audience_patch_request)
+> AudiencePatchResponse add_remove_users_to_audience(audience_id, authorization, request)
 
 Add/Remove users to an Audience.
 
@@ -21,29 +21,30 @@ Add/Remove users to an Audience.
 
 ### Example
 
-* Api Key Authentication (Authorization): 
+* Api Key Authentication (Authorization):
 ```python
 from __future__ import print_function
 import time
 import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Authorization
 configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
 api_instance = criteo_marketing.AudiencesApi(criteo_marketing.ApiClient(configuration))
 audience_id = 56 # int | Mandatory. The id of the audience to add or remove users to.
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
-audience_patch_request = criteo_marketing.AudiencePatchRequest() # AudiencePatchRequest | Mandatory. The request to create the Audience.
+request = criteo_marketing.AudiencePatchRequest() # AudiencePatchRequest | Mandatory. The request to create the Audience.
 
 try:
     # Add/Remove users to an Audience.
-    api_response = api_instance.add_remove_users_to_audience(audience_id, authorization, audience_patch_request)
+    api_response = api_instance.add_remove_users_to_audience(audience_id, authorization, request)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling AudiencesApi->add_remove_users_to_audience: %s\n" % e)
@@ -55,7 +56,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **audience_id** | **int**| Mandatory. The id of the audience to add or remove users to. | 
  **authorization** | **str**| JWT Bearer Token | [default to &#39;Bearer VALID_JWT_TOKEN_BASE64&#39;]
- **audience_patch_request** | [**AudiencePatchRequest**](AudiencePatchRequest.md)| Mandatory. The request to create the Audience. | 
+ **request** | [**AudiencePatchRequest**](AudiencePatchRequest.md)| Mandatory. The request to create the Audience. | 
 
 ### Return type
 
@@ -70,10 +71,21 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded, text/html
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Users were Added/Removed successfully. |  -  |
+**400** | Invalid Operation, Schema, no valid identifiers given, too many identifiers given in a single request or invalid use of Gum caller id field. |  -  |
+**401** | Authentication failed. |  -  |
+**403** | The Advertiser this Audience belongs to is not in current user&#39;s portfolio. |  -  |
+**404** | Audience not found. |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_audience**
-> AudienceCreateResponse create_audience(authorization, audience_create_request)
+> AudienceCreateResponse create_audience(authorization, create_request)
 
 Create a new Audience.
 
@@ -81,28 +93,29 @@ Create a new Audience for the given Advertiser.
 
 ### Example
 
-* Api Key Authentication (Authorization): 
+* Api Key Authentication (Authorization):
 ```python
 from __future__ import print_function
 import time
 import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Authorization
 configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
 api_instance = criteo_marketing.AudiencesApi(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
-audience_create_request = criteo_marketing.AudienceCreateRequest() # AudienceCreateRequest | 
+create_request = criteo_marketing.AudienceCreateRequest() # AudienceCreateRequest | 
 
 try:
     # Create a new Audience.
-    api_response = api_instance.create_audience(authorization, audience_create_request)
+    api_response = api_instance.create_audience(authorization, create_request)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling AudiencesApi->create_audience: %s\n" % e)
@@ -113,7 +126,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **str**| JWT Bearer Token | [default to &#39;Bearer VALID_JWT_TOKEN_BASE64&#39;]
- **audience_create_request** | [**AudienceCreateRequest**](AudienceCreateRequest.md)|  | 
+ **create_request** | [**AudienceCreateRequest**](AudienceCreateRequest.md)|  | 
 
 ### Return type
 
@@ -128,6 +141,17 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded, text/html
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Newly created Audience. |  -  |
+**400** | The Audience name is incorrect. Must not be empty. |  -  |
+**401** | Authentication failed. |  -  |
+**403** | The requested advertiser is missing from current user&#39;s portfolio. |  -  |
+**409** | The Audience name is already used for this Advertiser. |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_audience**
@@ -139,21 +163,22 @@ Delete an Audience.
 
 ### Example
 
-* Api Key Authentication (Authorization): 
+* Api Key Authentication (Authorization):
 ```python
 from __future__ import print_function
 import time
 import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Authorization
 configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
 api_instance = criteo_marketing.AudiencesApi(criteo_marketing.ApiClient(configuration))
 audience_id = 56 # int | Mandatory. The id of the audience to delete.
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
@@ -186,6 +211,17 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**204** | Audience was deleted. |  -  |
+**401** | Authentication failed. |  -  |
+**403** | The Advertiser this Audience belongs to is not in current user&#39;s portfolio. |  -  |
+**404** | Audience not found. |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_audiences**
@@ -197,21 +233,22 @@ Get the list of Audiences for the given Advertiser.
 
 ### Example
 
-* Api Key Authentication (Authorization): 
+* Api Key Authentication (Authorization):
 ```python
 from __future__ import print_function
 import time
 import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Authorization
 configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
 api_instance = criteo_marketing.AudiencesApi(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
 advertiser_id = 56 # int | Mandatory. Advertiser to get all Audiences for. (optional)
@@ -244,6 +281,15 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of Audiences. |  -  |
+**401** | Authentication failed. |  -  |
+**403** | The requested advertiser is missing from current user&#39;s portfolio. |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **remove_users_from_audience**
@@ -255,21 +301,22 @@ Remove all users from an Audience.
 
 ### Example
 
-* Api Key Authentication (Authorization): 
+* Api Key Authentication (Authorization):
 ```python
 from __future__ import print_function
 import time
 import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Authorization
 configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
 api_instance = criteo_marketing.AudiencesApi(criteo_marketing.ApiClient(configuration))
 audience_id = 56 # int | Mandatory. The id of the audience to empty.
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
@@ -302,10 +349,21 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**204** | Audience was emptied. |  -  |
+**401** | Authentication failed. |  -  |
+**403** | The Advertiser this Audience belongs to is not in current user&#39;s portfolio. |  -  |
+**404** | Audience not found. |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_audience_metadata**
-> object update_audience_metadata(audience_id, authorization, audience_put_request)
+> object update_audience_metadata(audience_id, authorization, request)
 
 Update an Audience metadata.
 
@@ -313,29 +371,30 @@ Update an Audience metadata.
 
 ### Example
 
-* Api Key Authentication (Authorization): 
+* Api Key Authentication (Authorization):
 ```python
 from __future__ import print_function
 import time
 import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Authorization
 configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
 api_instance = criteo_marketing.AudiencesApi(criteo_marketing.ApiClient(configuration))
 audience_id = 56 # int | Mandatory. The id of the Audience to update.
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
-audience_put_request = criteo_marketing.AudiencePutRequest() # AudiencePutRequest | Mandatory. The request to update the Audience metadata.
+request = criteo_marketing.AudiencePutRequest() # AudiencePutRequest | Mandatory. The request to update the Audience metadata.
 
 try:
     # Update an Audience metadata.
-    api_response = api_instance.update_audience_metadata(audience_id, authorization, audience_put_request)
+    api_response = api_instance.update_audience_metadata(audience_id, authorization, request)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling AudiencesApi->update_audience_metadata: %s\n" % e)
@@ -347,7 +406,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **audience_id** | **int**| Mandatory. The id of the Audience to update. | 
  **authorization** | **str**| JWT Bearer Token | [default to &#39;Bearer VALID_JWT_TOKEN_BASE64&#39;]
- **audience_put_request** | [**AudiencePutRequest**](AudiencePutRequest.md)| Mandatory. The request to update the Audience metadata. | 
+ **request** | [**AudiencePutRequest**](AudiencePutRequest.md)| Mandatory. The request to update the Audience metadata. | 
 
 ### Return type
 
@@ -361,6 +420,19 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded, text/html
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**204** | Audience metadata was successfully changed. |  -  |
+**400** | The Audience name is incorrect. Must not be empty. |  -  |
+**401** | Authentication failed. |  -  |
+**403** | The Advertiser this Audience belongs to is not in current user&#39;s portfolio. |  -  |
+**404** | Audience not found. |  -  |
+**409** | The Audience name is already used for this Advertiser. |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

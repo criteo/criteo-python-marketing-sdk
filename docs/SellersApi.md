@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **create_budgets**
-> SellerBudgetsMessage create_budgets(authorization, seller_budgets_create_message)
+> SellerBudgetsMessage create_budgets(authorization, seller_budgets)
 
 Creates a budget for a seller/list of sellers.
 
@@ -21,28 +21,29 @@ Creates a budget for a seller/list of sellers.
 
 ### Example
 
-* Api Key Authentication (Authorization): 
+* Api Key Authentication (Authorization):
 ```python
 from __future__ import print_function
 import time
 import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Authorization
 configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
 api_instance = criteo_marketing.SellersApi(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
-seller_budgets_create_message = criteo_marketing.SellerBudgetsCreateMessage() # SellerBudgetsCreateMessage | 
+seller_budgets = criteo_marketing.SellerBudgetsCreateMessage() # SellerBudgetsCreateMessage | 
 
 try:
     # Creates a budget for a seller/list of sellers.
-    api_response = api_instance.create_budgets(authorization, seller_budgets_create_message)
+    api_response = api_instance.create_budgets(authorization, seller_budgets)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SellersApi->create_budgets: %s\n" % e)
@@ -53,7 +54,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **str**| JWT Bearer Token | [default to &#39;Bearer VALID_JWT_TOKEN_BASE64&#39;]
- **seller_budgets_create_message** | [**SellerBudgetsCreateMessage**](SellerBudgetsCreateMessage.md)|  | 
+ **seller_budgets** | [**SellerBudgetsCreateMessage**](SellerBudgetsCreateMessage.md)|  | 
 
 ### Return type
 
@@ -68,6 +69,18 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded, text/html
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Seller budgets created successfully. |  -  |
+**400** | Bad request, invalid syntax or validation error (the whole batch will be dropped, no budget will be created). Response message will be different based on error. |  -  |
+**401** | Authentication failed. |  -  |
+**403** | The requested campaigns doesn&#39;t belong to the API user&#39;s portfolio which prevents from accessing its data. |  -  |
+**404** | One of the requested sellers is unknown. The whole batch will be dropped, no budget will be created. |  -  |
+**405** | Requested campaign isn&#39;t a Criteo Reseller Program one. |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get**
@@ -79,21 +92,22 @@ Returns a list of sellers with all their details.<br />  By default, this list w
 
 ### Example
 
-* Api Key Authentication (Authorization): 
+* Api Key Authentication (Authorization):
 ```python
 from __future__ import print_function
 import time
 import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Authorization
 configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
 api_instance = criteo_marketing.SellersApi(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
 campaign_ids = 'campaign_ids_example' # str | Optional. One or more campaign ids, E.g., 78, 12932, 45236. If any of the requested campaign ids are not Criteo Reseller Program or are not liked to advertisers in the user's portfolio, the call will fail. (optional)
@@ -132,6 +146,17 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of sellers successfully fetched. |  -  |
+**400** | Bad request, invalid syntax. |  -  |
+**401** | Authentication failed. |  -  |
+**403** | One of the requested campaigns doesn&#39;t belong to the API user&#39;s portfolio which prevents from accessing its data. |  -  |
+**405** | One of the requested campaigns isn&#39;t a Criteo Reseller Program one. |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_campaigns**
@@ -143,21 +168,22 @@ Get the list of campaigns with the specified filters.  If a campaign is requeste
 
 ### Example
 
-* Api Key Authentication (Authorization): 
+* Api Key Authentication (Authorization):
 ```python
 from __future__ import print_function
 import time
 import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Authorization
 configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
 api_instance = criteo_marketing.SellersApi(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
 campaign_ids = 'campaign_ids_example' # str | Optional. One or more campaign ids, E.g. 78, 12932, 45236. If any of the requested campaign ids are not Criteo Reseller Program or are not liked to advertisers in the user's portfolio, the call will fail. (optional)
@@ -194,10 +220,21 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Sellers campaigns returned OK. |  -  |
+**400** | API user&#39;s portfolio is empty and no campaignId/advertiserId is provided. |  -  |
+**401** | Authentication failed. |  -  |
+**403** | One of the requested campaigns doesn&#39;t belong to the API user&#39;s portfolio which prevents from accessing its data. |  -  |
+**405** | One of the requested campaigns isn&#39;t a Criteo Reseller Program one. |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_stats**
-> get_stats(authorization, stats_query_message)
+> get_stats(authorization, stats_query)
 
 Generates a statistics report
 
@@ -205,28 +242,29 @@ Generates a statistics report
 
 ### Example
 
-* Api Key Authentication (Authorization): 
+* Api Key Authentication (Authorization):
 ```python
 from __future__ import print_function
 import time
 import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Authorization
 configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
 api_instance = criteo_marketing.SellersApi(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
-stats_query_message = criteo_marketing.StatsQueryMessage() # StatsQueryMessage | The report query details
+stats_query = criteo_marketing.StatsQueryMessage() # StatsQueryMessage | The report query details
 
 try:
     # Generates a statistics report
-    api_instance.get_stats(authorization, stats_query_message)
+    api_instance.get_stats(authorization, stats_query)
 except ApiException as e:
     print("Exception when calling SellersApi->get_stats: %s\n" % e)
 ```
@@ -236,7 +274,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **str**| JWT Bearer Token | [default to &#39;Bearer VALID_JWT_TOKEN_BASE64&#39;]
- **stats_query_message** | [**StatsQueryMessage**](StatsQueryMessage.md)| The report query details | 
+ **stats_query** | [**StatsQueryMessage**](StatsQueryMessage.md)| The report query details | 
 
 ### Return type
 
@@ -251,10 +289,19 @@ void (empty response body)
  - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded, text/html
  - **Accept**: Not defined
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Statistics report generated OK. |  -  |
+**400** | Bad request, invalid syntax or validation error. |  -  |
+**401** | Authentication failed. |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_bids**
-> SellerBidsMessage update_bids(authorization, seller_bids_message)
+> SellerBidsMessage update_bids(authorization, seller_bids)
 
 Set or update a bid for a seller/list of sellers.
 
@@ -262,28 +309,29 @@ Set or update a bid for a seller/list of sellers.
 
 ### Example
 
-* Api Key Authentication (Authorization): 
+* Api Key Authentication (Authorization):
 ```python
 from __future__ import print_function
 import time
 import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Authorization
 configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
 api_instance = criteo_marketing.SellersApi(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
-seller_bids_message = criteo_marketing.SellerBidsMessage() # SellerBidsMessage | 
+seller_bids = criteo_marketing.SellerBidsMessage() # SellerBidsMessage | 
 
 try:
     # Set or update a bid for a seller/list of sellers.
-    api_response = api_instance.update_bids(authorization, seller_bids_message)
+    api_response = api_instance.update_bids(authorization, seller_bids)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SellersApi->update_bids: %s\n" % e)
@@ -294,7 +342,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **str**| JWT Bearer Token | [default to &#39;Bearer VALID_JWT_TOKEN_BASE64&#39;]
- **seller_bids_message** | [**SellerBidsMessage**](SellerBidsMessage.md)|  | 
+ **seller_bids** | [**SellerBidsMessage**](SellerBidsMessage.md)|  | 
 
 ### Return type
 
@@ -309,10 +357,22 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded, text/html
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Sellers bids successfully updated. |  -  |
+**400** | Bad request, invalid syntax or validation error (the whole batch will be dropped, no bid will be updated). Response message will be different based on error. |  -  |
+**401** | Authentication failed. |  -  |
+**403** | The requested campaign doesn&#39;t belong to the API user&#39;s portfolio which prevents from accessing its data. |  -  |
+**404** | One of the requested sellers is unknown which prevents from updating bids. To get the list of sellers and their IDs you can use the /sellers endpoint. |  -  |
+**405** | Requested campaign isn&#39;t a Criteo Reseller Program one. |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_budgets**
-> SellerBudgetsMessage update_budgets(authorization, seller_budgets_update_message)
+> SellerBudgetsMessage update_budgets(authorization, seller_budgets)
 
 Updates a budget for a seller/list of sellers.
 
@@ -320,28 +380,29 @@ Updates a budget for a seller/list of sellers.
 
 ### Example
 
-* Api Key Authentication (Authorization): 
+* Api Key Authentication (Authorization):
 ```python
 from __future__ import print_function
 import time
 import criteo_marketing
 from criteo_marketing.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Authorization
 configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
-# create an instance of the API class
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
 api_instance = criteo_marketing.SellersApi(criteo_marketing.ApiClient(configuration))
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
-seller_budgets_update_message = criteo_marketing.SellerBudgetsUpdateMessage() # SellerBudgetsUpdateMessage | 
+seller_budgets = criteo_marketing.SellerBudgetsUpdateMessage() # SellerBudgetsUpdateMessage | 
 
 try:
     # Updates a budget for a seller/list of sellers.
-    api_response = api_instance.update_budgets(authorization, seller_budgets_update_message)
+    api_response = api_instance.update_budgets(authorization, seller_budgets)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SellersApi->update_budgets: %s\n" % e)
@@ -352,7 +413,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **str**| JWT Bearer Token | [default to &#39;Bearer VALID_JWT_TOKEN_BASE64&#39;]
- **seller_budgets_update_message** | [**SellerBudgetsUpdateMessage**](SellerBudgetsUpdateMessage.md)|  | 
+ **seller_budgets** | [**SellerBudgetsUpdateMessage**](SellerBudgetsUpdateMessage.md)|  | 
 
 ### Return type
 
@@ -366,6 +427,18 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded, text/html
  - **Accept**: application/json, text/json, application/xml, text/xml, text/html
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Sellers budgets successfully updated. |  -  |
+**400** | Bad request, invalid syntax or validation error (the whole batch will be dropped, no budget will be updated). Response message will be different based on error. |  -  |
+**401** | Authentication failed. |  -  |
+**403** | The requested campaign doesn&#39;t belong to the API user&#39;s portfolio which prevents from updating budgets. |  -  |
+**404** | One of the requested budgets is unknown. The whole batch will be dropped, no budget will be updated. |  -  |
+**405** | Requested campaign isn&#39;t a Criteo Reseller Program one. |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
