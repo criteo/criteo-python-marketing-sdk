@@ -4,7 +4,7 @@ from setuptools import setup, find_packages  # noqa: H301
 import os
 
 NAME = "criteo_marketing"
-VERSION = "1.0.156"
+VERSION = "1.0.157"
 # To install the library, run the following
 #
 # python setup.py install
@@ -63,10 +63,12 @@ setup(
     long_description_content_type=README_CONTENT_TYPE,
     long_description=PACKAGE_LONG_DESCRIPTION,
     classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: Apache Software License",
         "Natural Language :: English",
+        "Operating System :: OS Independent",
+        "Topic :: Software Development :: Libraries",
         "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3.4",
         "Programming Language :: Python :: 3.7",
