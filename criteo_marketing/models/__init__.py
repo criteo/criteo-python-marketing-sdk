@@ -14,6 +14,8 @@
 from __future__ import absolute_import
 
 # import models into model package
+from criteo_marketing.models.advertiser_campaign_message import AdvertiserCampaignMessage
+from criteo_marketing.models.advertiser_info_message import AdvertiserInfoMessage
 from criteo_marketing.models.audience_create_request import AudienceCreateRequest
 from criteo_marketing.models.audience_create_response import AudienceCreateResponse
 from criteo_marketing.models.audience_patch_request import AudiencePatchRequest

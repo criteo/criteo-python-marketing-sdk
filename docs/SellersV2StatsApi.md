@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 **200** | OK |  -  |
 **400** | BadRequest |  -  |
 **401** | Authentication failed. |  -  |
-**403** | Forbidden |  -  |
+**403** | You do not have access to the requested records |  -  |
 **429** | Throttling failure. Maximum sending rate exceeded. |  -  |
-**500** | Unknown error. |  -  |
+**500** | InternalServerError |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -163,9 +163,9 @@ Name | Type | Description  | Notes
 **200** | OK |  -  |
 **400** | BadRequest |  -  |
 **401** | Authentication failed. |  -  |
-**403** | Forbidden |  -  |
+**403** | You do not have access to the requested records |  -  |
 **429** | Throttling failure. Maximum sending rate exceeded. |  -  |
-**500** | Unknown error. |  -  |
+**500** | InternalServerError |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -242,9 +242,9 @@ Name | Type | Description  | Notes
 **200** | OK |  -  |
 **400** | BadRequest |  -  |
 **401** | Authentication failed. |  -  |
-**403** | Forbidden |  -  |
+**403** | You do not have access to the requested records |  -  |
 **429** | Throttling failure. Maximum sending rate exceeded. |  -  |
-**500** | Unknown error. |  -  |
+**500** | InternalServerError |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

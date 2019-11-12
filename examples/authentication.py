@@ -14,9 +14,7 @@ if __name__ == '__main__':
     if len(sys.argv) != 3:
         raise ValueError("You need to specify the CLIENT_ID and the CLIENT_SECRET")
 
-    configuration = Configuration()
-    configuration.username = sys.argv[1]
-    configuration.password = sys.argv[2]
+    configuration = Configuration(username=sys.argv[1], password=sys.argv[2])
 
     # Enable/Disable debug httplib and criteo_marketing packages
     # logging.basicConfig(level=logging.DEBUG)
