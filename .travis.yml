@@ -1,29 +1,24 @@
 language: python
 dist: xenial
-
 matrix:
   include:
-    - python: '3.8'
-      env: TOX_ENV=py38
-    - python: '3.7'
-      env: TOX_ENV=py37
-    - python: '3.4'
-      env: TOX_ENV=py34
-    - python: '2.7'
-      env: TOX_ENV=py27
-
+  - python: '3.8'
+    env: TOX_ENV=py38
+  - python: '3.7'
+    env: TOX_ENV=py37
+  - python: '3.4'
+    env: TOX_ENV=py34
+  - python: '2.7'
+    env: TOX_ENV=py27
 install:
-  - pip install --upgrade pip
-  - pip install tox
-
+- pip install --upgrade pip
+- pip install tox
 script:
-  - tox -e $TOX_ENV
-
+- tox -e $TOX_ENV
 branches:
   only:
-    - master
-    - v0
-
+  - master
+  - v0
 deploy:
   provider: pypi
   user: criteo-marketing
@@ -33,7 +28,6 @@ deploy:
   skip_cleanup: true
   on:
     branch: master
-
 notifications:
   slack:
-    secure: VnvayHP64I2QJRDVvOXO3e/zjN+kD4s0FRVIA6/cFWIhP83tstwRmQ31tlUUSj9wfLPcH8AT9w9aMma78r2Bo47fCNwstIohK6r+Rf07XU8lsstXQqz32drWdOgED1Q0zuM6LI0uMsznWsj2K/HnKInWR6zPJhWFTLvsu2oR+nHe0W5PbOXekg4U8vhPqy0qwfOkWALOWWjYGEdR/YjI1TgL26KnbYFaSd4DLoKAR7oZSbmkwBoPmqxLoIANvfPZkahHVy3mtLJuO1gHeQ2/7ddxLzqxZTez5FhFIdZaLB2uTVanyqDevyJP14zzxHDmL71zjqcEMp2ea7ScpR6ChcDhZjOIZCAOhD/dNii1kekJwREhWPspj8QcxahCBgJQORaaEM4HFwrq1KWHbQHk4DiG85pPiRqzSspD9fwg99zUOjzHWASbP+UKz2TsnMhkxdqsL+gT3p4sWyACoyWDSIo2n0xosgJyFERTE/yNO4pVbS24ZT+kjOqGQxf4UzyV1A3sLzND4KCq2UXU6Rn2fcN7Nq5bBdGHTk4KluGlZ4Y2TuruGPSUyOskxLaLbfqr0Qf/5QsLhywtc6Um3Bhg9a+Ukygg+WgASEamc2tDCyTtGugnyrorHQO3EhyBnE4MNjyZOmUrZeGZWJQjIELCIn4kImSl+T1LbZI4xkbSJ4Y=
+    secure: E7C1irmC8PA5KDZHevHp+460vdaL3u6baxV3K2UNsVoOpwJHlIMKQkNOMjNghJTC4Vb7B1Wq95mO6GG/yuuF+0sVfuZH7UmvHc8ZTWI6lyOh2xHesDj8ywjpiC1YVww8vXo/QFNg17fQ7Qhposscs+1yyVURIgQIRrdyVNXPhHGfbGBlPKlFTHnNe1VlIQdjLvR613pVpe6B7FZHAz/sOeo7AuVwvmSjukwRYFDyuYKpJQutjVg/0iHRmBYoDC0zQ7BlEFnCbkbd+ZWRzniKkcfJ3iO1SGGZ6GbZR4tbHmM8jzy1g71tK5zrqeEuL9w4+cicXjEFw4h0cAzs2QZyAfRy0FjIw8G3PVKR9KE2huHap2Wlik+ZG8rGBYMwsHJUVkXXDPxwiW3QCxj1D25ozyh5cIunpKD5YTC5QYlHVpMkgzE6hdlbnVtzbuvouNd2QQfqIpAUn39AFrpTbD8pDcMIh1Vvb2CPff7GpCbp/FKkaBSpoLlLzNyF5tm6R1UYve8IHKrgXd+qbgPgjLyHrdnp+oB6ltUYuwwWUm3+c2Kn5PhpraWan/LLUw06d0Ns6NOjA6VA0QfK7FI2o0NNN/xOkvjCVoRfr5IYkfBJj/HA9dLSmDSqVZHqCRtlSvnSrpAYRFn8e4d+Rsx5cO8tg1rKRhyMXNIeLBF6h1gJffM=
