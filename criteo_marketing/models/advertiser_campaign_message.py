@@ -32,25 +32,35 @@ class AdvertiserCampaignMessage(object):
     """
     openapi_types = {
         'id': 'int',
-        'campaign_name': 'str'
+        'campaign_name': 'str',
+        'campaign_status': 'str',
+        'status': 'str'
     }
 
     attribute_map = {
         'id': 'id',
-        'campaign_name': 'campaignName'
+        'campaign_name': 'campaignName',
+        'campaign_status': 'campaignStatus',
+        'status': 'status'
     }
 
-    def __init__(self, id=None, campaign_name=None):  # noqa: E501
+    def __init__(self, id=None, campaign_name=None, campaign_status=None, status=None):  # noqa: E501
         """AdvertiserCampaignMessage - a model defined in OpenAPI"""  # noqa: E501
 
         self._id = None
         self._campaign_name = None
+        self._campaign_status = None
+        self._status = None
         self.discriminator = None
 
         if id is not None:
             self.id = id
         if campaign_name is not None:
             self.campaign_name = campaign_name
+        if campaign_status is not None:
+            self.campaign_status = campaign_status
+        if status is not None:
+            self.status = status
 
     @property
     def id(self):
@@ -93,6 +103,48 @@ class AdvertiserCampaignMessage(object):
         """
 
         self._campaign_name = campaign_name
+
+    @property
+    def campaign_status(self):
+        """Gets the campaign_status of this AdvertiserCampaignMessage.  # noqa: E501
+
+
+        :return: The campaign_status of this AdvertiserCampaignMessage.  # noqa: E501
+        :rtype: str
+        """
+        return self._campaign_status
+
+    @campaign_status.setter
+    def campaign_status(self, campaign_status):
+        """Sets the campaign_status of this AdvertiserCampaignMessage.
+
+
+        :param campaign_status: The campaign_status of this AdvertiserCampaignMessage.  # noqa: E501
+        :type: str
+        """
+
+        self._campaign_status = campaign_status
+
+    @property
+    def status(self):
+        """Gets the status of this AdvertiserCampaignMessage.  # noqa: E501
+
+
+        :return: The status of this AdvertiserCampaignMessage.  # noqa: E501
+        :rtype: str
+        """
+        return self._status
+
+    @status.setter
+    def status(self, status):
+        """Sets the status of this AdvertiserCampaignMessage.
+
+
+        :param status: The status of this AdvertiserCampaignMessage.  # noqa: E501
+        :type: str
+        """
+
+        self._status = status
 
     def to_dict(self):
         """Returns the model properties as a dict"""

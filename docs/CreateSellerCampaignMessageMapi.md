@@ -1,12 +1,10 @@
-# AdvertiserCampaignMessage
+# CreateSellerCampaignMessageMapi
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** |  | [optional] 
-**campaign_name** | **str** |  | [optional] 
-**campaign_status** | **str** |  | [optional] 
-**status** | **str** |  | [optional] 
+**campaign_id** | **int** |  | [optional] 
+**bid** | **float** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
