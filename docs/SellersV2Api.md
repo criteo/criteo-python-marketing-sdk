@@ -5,6 +5,8 @@ All URIs are relative to *https://api.criteo.com/marketing*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_seller_budgets**](SellersV2Api.md#create_seller_budgets) | **POST** /v2/crp/budgets | Create a collection of budgets.
+[**create_seller_campaigns_by_seller**](SellersV2Api.md#create_seller_campaigns_by_seller) | **POST** /v2/crp/sellers/{sellerId}/seller-campaigns | Create a SellerCampaign
+[**create_sellers**](SellersV2Api.md#create_sellers) | **POST** /v2/crp/advertisers/{advertiserId}/sellers | Create new sellers for an advertiser
 [**get_advertiser_campaigns**](SellersV2Api.md#get_advertiser_campaigns) | **GET** /v2/crp/advertisers/{advertiserId} | Get the collection of CRP campaigns associated with the advertiserId.
 [**get_advertisers**](SellersV2Api.md#get_advertisers) | **GET** /v2/crp/advertisers | Get the collection of advertisers associated with the user.
 [**get_budgets_by_seller**](SellersV2Api.md#get_budgets_by_seller) | **GET** /v2/crp/sellers/{sellerId}/budgets | Get a collection of budgets for this seller.
@@ -14,6 +16,7 @@ Method | HTTP request | Description
 [**get_seller_budgets**](SellersV2Api.md#get_seller_budgets) | **GET** /v2/crp/budgets | Get a collection of budgets.
 [**get_seller_campaign**](SellersV2Api.md#get_seller_campaign) | **GET** /v2/crp/seller-campaigns/{sellerCampaignId} | Get details for a seller campaign.
 [**get_seller_campaigns**](SellersV2Api.md#get_seller_campaigns) | **GET** /v2/crp/seller-campaigns | Get a collection of seller campaigns.
+[**get_seller_campaigns_by_seller**](SellersV2Api.md#get_seller_campaigns_by_seller) | **GET** /v2/crp/sellers/{sellerId}/seller-campaigns | Get a collection of seller campaigns for this seller.
 [**get_sellers**](SellersV2Api.md#get_sellers) | **GET** /v2/crp/sellers | Get a collection of sellers.
 [**update_seller_budget**](SellersV2Api.md#update_seller_budget) | **PATCH** /v2/crp/budgets/{budgetId} | Modify a single budget.
 [**update_seller_budgets**](SellersV2Api.md#update_seller_budgets) | **PATCH** /v2/crp/budgets | Modify a collection of budgets.
@@ -68,6 +71,146 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**list[SellerBudgetMessage]**](SellerBudgetMessage.md)
+
+### Authorization
+
+[Authorization](../README.md#Authorization)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded, text/html
+ - **Accept**: application/json, text/json, application/xml, text/xml, text/html
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_seller_campaigns_by_seller**
+> SellerCampaignMessage create_seller_campaigns_by_seller(seller_id, authorization, seller_campaign)
+
+Create a SellerCampaign
+
+Associate an existing Seller with an existing Campaign allowing for budget creation
+
+### Example
+
+* Api Key Authentication (Authorization):
+```python
+from __future__ import print_function
+import time
+import criteo_marketing
+from criteo_marketing.rest import ApiException
+from pprint import pprint
+configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
+api_instance = criteo_marketing.SellersV2Api(criteo_marketing.ApiClient(configuration))
+seller_id = 'seller_id_example' # str | Supply a generated Id of an existing Seller
+authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
+seller_campaign = criteo_marketing.CreateSellerCampaignMessageMapi() # CreateSellerCampaignMessageMapi | Supply the campaign Id and bid to create the mapping
+
+try:
+    # Create a SellerCampaign
+    api_response = api_instance.create_seller_campaigns_by_seller(seller_id, authorization, seller_campaign)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling SellersV2Api->create_seller_campaigns_by_seller: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **seller_id** | **str**| Supply a generated Id of an existing Seller | 
+ **authorization** | **str**| JWT Bearer Token | [default to &#39;Bearer VALID_JWT_TOKEN_BASE64&#39;]
+ **seller_campaign** | [**CreateSellerCampaignMessageMapi**](CreateSellerCampaignMessageMapi.md)| Supply the campaign Id and bid to create the mapping | 
+
+### Return type
+
+[**SellerCampaignMessage**](SellerCampaignMessage.md)
+
+### Authorization
+
+[Authorization](../README.md#Authorization)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/xml, text/xml, application/x-www-form-urlencoded, text/html
+ - **Accept**: application/json, text/json, text/html
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_sellers**
+> list[SellerBase] create_sellers(advertiser_id, authorization, seller_names, partner_id=partner_id)
+
+Create new sellers for an advertiser
+
+### Example
+
+* Api Key Authentication (Authorization):
+```python
+from __future__ import print_function
+import time
+import criteo_marketing
+from criteo_marketing.rest import ApiException
+from pprint import pprint
+configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
+api_instance = criteo_marketing.SellersV2Api(criteo_marketing.ApiClient(configuration))
+advertiser_id = 56 # int | 
+authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
+seller_names = ['seller_names_example'] # list[str] | 
+partner_id = 56 # int |  (optional)
+
+try:
+    # Create new sellers for an advertiser
+    api_response = api_instance.create_sellers(advertiser_id, authorization, seller_names, partner_id=partner_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling SellersV2Api->create_sellers: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **advertiser_id** | **int**|  | 
+ **authorization** | **str**| JWT Bearer Token | [default to &#39;Bearer VALID_JWT_TOKEN_BASE64&#39;]
+ **seller_names** | [**list[str]**](str.md)|  | 
+ **partner_id** | **int**|  | [optional] 
+
+### Return type
+
+[**list[SellerBase]**](SellerBase.md)
 
 ### Authorization
 
@@ -720,6 +863,81 @@ Name | Type | Description  | Notes
  **authorization** | **str**| JWT Bearer Token | [default to &#39;Bearer VALID_JWT_TOKEN_BASE64&#39;]
  **seller_status** | **str**| Return only seller campaigns for sellers with the given status. | [optional] 
  **seller_id** | **str**| Return only seller campaigns belonging to the given seller. | [optional] 
+ **campaign_id** | **int**| Return only seller campaigns associated with the given campaign. | [optional] 
+ **budget_status** | **str**| Return only seller campaigns whose budget has the given status. | [optional] 
+
+### Return type
+
+[**list[SellerCampaignMessage]**](SellerCampaignMessage.md)
+
+### Authorization
+
+[Authorization](../README.md#Authorization)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml, text/html
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | List of errors encountered |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_seller_campaigns_by_seller**
+> list[SellerCampaignMessage] get_seller_campaigns_by_seller(seller_id, authorization, seller_status=seller_status, campaign_id=campaign_id, budget_status=budget_status)
+
+Get a collection of seller campaigns for this seller.
+
+Return a collection of seller campaigns for this seller filtered by optional filter parameters.  If all parameters are omitted the entire collection to which the user has  access is returned. Returned sellers must satisfy all supplied filter  criteria if multiple parameters are used.  See the seller campaigns endpoint for additional details.
+
+### Example
+
+* Api Key Authentication (Authorization):
+```python
+from __future__ import print_function
+import time
+import criteo_marketing
+from criteo_marketing.rest import ApiException
+from pprint import pprint
+configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
+api_instance = criteo_marketing.SellersV2Api(criteo_marketing.ApiClient(configuration))
+seller_id = 'seller_id_example' # str | Return only seller campaigns belonging to the given seller.
+authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
+seller_status = 'seller_status_example' # str | Return only seller campaigns for sellers with the given status. (optional)
+campaign_id = 56 # int | Return only seller campaigns associated with the given campaign. (optional)
+budget_status = 'budget_status_example' # str | Return only seller campaigns whose budget has the given status. (optional)
+
+try:
+    # Get a collection of seller campaigns for this seller.
+    api_response = api_instance.get_seller_campaigns_by_seller(seller_id, authorization, seller_status=seller_status, campaign_id=campaign_id, budget_status=budget_status)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling SellersV2Api->get_seller_campaigns_by_seller: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **seller_id** | **str**| Return only seller campaigns belonging to the given seller. | 
+ **authorization** | **str**| JWT Bearer Token | [default to &#39;Bearer VALID_JWT_TOKEN_BASE64&#39;]
+ **seller_status** | **str**| Return only seller campaigns for sellers with the given status. | [optional] 
  **campaign_id** | **int**| Return only seller campaigns associated with the given campaign. | [optional] 
  **budget_status** | **str**| Return only seller campaigns whose budget has the given status. | [optional] 
 
