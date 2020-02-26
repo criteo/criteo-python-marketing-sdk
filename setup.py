@@ -4,7 +4,7 @@ from setuptools import setup, find_packages  # noqa: H301
 import os
 
 NAME = "criteo_marketing"
-VERSION = "1.0.161"
+VERSION = "1.0.162"
 # To install the library, run the following
 #
 # python setup.py install
@@ -23,7 +23,7 @@ IMPORTANT: This Python package links to Criteo production environment. Any test 
 
 ## Requirements.
 
-Python 2.7 and 3.5+
+Python 2.7 and 3.4+
 
 ## Installation & Usage
 ### pip install
@@ -70,9 +70,9 @@ setup(
         "Operating System :: OS Independent",
         "Topic :: Software Development :: Libraries",
         "Programming Language :: Python :: 2.7",
-        "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python :: 3.4",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
     ],
-    python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, <4',
+    python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, <4',
 )
