@@ -748,6 +748,152 @@ class SellersV2Api(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def get_budgets_by_advertiser(self, advertiser_id, authorization, **kwargs):  # noqa: E501
+        """Get CRP budgets for a specific advertiser  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_budgets_by_advertiser(advertiser_id, authorization, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param int advertiser_id: (required)
+        :param str authorization: JWT Bearer Token (required)
+        :param str status:
+        :param bool with_balance:
+        :param bool with_spend:
+        :param datetime end_after_date:
+        :param datetime start_before_date:
+        :param int budget_id:
+        :param int seller_id:
+        :param str type:
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: list[SellerBudgetMessage]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.get_budgets_by_advertiser_with_http_info(advertiser_id, authorization, **kwargs)  # noqa: E501
+
+    def get_budgets_by_advertiser_with_http_info(self, advertiser_id, authorization, **kwargs):  # noqa: E501
+        """Get CRP budgets for a specific advertiser  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_budgets_by_advertiser_with_http_info(advertiser_id, authorization, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param int advertiser_id: (required)
+        :param str authorization: JWT Bearer Token (required)
+        :param str status:
+        :param bool with_balance:
+        :param bool with_spend:
+        :param datetime end_after_date:
+        :param datetime start_before_date:
+        :param int budget_id:
+        :param int seller_id:
+        :param str type:
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(list[SellerBudgetMessage], status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['advertiser_id', 'authorization', 'status', 'with_balance', 'with_spend', 'end_after_date', 'start_before_date', 'budget_id', 'seller_id', 'type']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_budgets_by_advertiser" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'advertiser_id' is set
+        if ('advertiser_id' not in local_var_params or
+                local_var_params['advertiser_id'] is None):
+            raise ApiValueError("Missing the required parameter `advertiser_id` when calling `get_budgets_by_advertiser`")  # noqa: E501
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in local_var_params or
+                local_var_params['authorization'] is None):
+            raise ApiValueError("Missing the required parameter `authorization` when calling `get_budgets_by_advertiser`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'advertiser_id' in local_var_params:
+            path_params['advertiserId'] = local_var_params['advertiser_id']  # noqa: E501
+
+        query_params = []
+        if 'status' in local_var_params:
+            query_params.append(('status', local_var_params['status']))  # noqa: E501
+        if 'with_balance' in local_var_params:
+            query_params.append(('withBalance', local_var_params['with_balance']))  # noqa: E501
+        if 'with_spend' in local_var_params:
+            query_params.append(('withSpend', local_var_params['with_spend']))  # noqa: E501
+        if 'end_after_date' in local_var_params:
+            query_params.append(('endAfterDate', local_var_params['end_after_date']))  # noqa: E501
+        if 'start_before_date' in local_var_params:
+            query_params.append(('startBeforeDate', local_var_params['start_before_date']))  # noqa: E501
+        if 'budget_id' in local_var_params:
+            query_params.append(('budgetId', local_var_params['budget_id']))  # noqa: E501
+        if 'seller_id' in local_var_params:
+            query_params.append(('sellerId', local_var_params['seller_id']))  # noqa: E501
+        if 'type' in local_var_params:
+            query_params.append(('type', local_var_params['type']))  # noqa: E501
+
+        header_params = {}
+        if 'authorization' in local_var_params:
+            header_params['Authorization'] = local_var_params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', 'text/json', 'application/xml', 'text/xml', 'text/html'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['Authorization']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/v2/crp/advertisers/{advertiserId}/budgets', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='list[SellerBudgetMessage]',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def get_budgets_by_seller(self, seller_id, authorization, **kwargs):  # noqa: E501
         """Get a collection of budgets for this seller.  # noqa: E501
 
@@ -1630,6 +1776,120 @@ class SellersV2Api(object):
 
         return self.api_client.call_api(
             '/v2/crp/seller-campaigns', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='list[SellerCampaignMessage]',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def get_seller_campaigns_by_advertiser(self, advertiser_id, authorization, **kwargs):  # noqa: E501
+        """Get CRP seller-campaigns for a specific advertiser  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_seller_campaigns_by_advertiser(advertiser_id, authorization, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param int advertiser_id: (required)
+        :param str authorization: JWT Bearer Token (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: list[SellerCampaignMessage]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.get_seller_campaigns_by_advertiser_with_http_info(advertiser_id, authorization, **kwargs)  # noqa: E501
+
+    def get_seller_campaigns_by_advertiser_with_http_info(self, advertiser_id, authorization, **kwargs):  # noqa: E501
+        """Get CRP seller-campaigns for a specific advertiser  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_seller_campaigns_by_advertiser_with_http_info(advertiser_id, authorization, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param int advertiser_id: (required)
+        :param str authorization: JWT Bearer Token (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(list[SellerCampaignMessage], status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['advertiser_id', 'authorization']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_seller_campaigns_by_advertiser" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'advertiser_id' is set
+        if ('advertiser_id' not in local_var_params or
+                local_var_params['advertiser_id'] is None):
+            raise ApiValueError("Missing the required parameter `advertiser_id` when calling `get_seller_campaigns_by_advertiser`")  # noqa: E501
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in local_var_params or
+                local_var_params['authorization'] is None):
+            raise ApiValueError("Missing the required parameter `authorization` when calling `get_seller_campaigns_by_advertiser`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'advertiser_id' in local_var_params:
+            path_params['advertiserId'] = local_var_params['advertiser_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in local_var_params:
+            header_params['Authorization'] = local_var_params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', 'text/json', 'application/xml', 'text/xml', 'text/html'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['Authorization']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/v2/crp/advertisers/{advertiserId}/seller-campaigns', 'GET',
             path_params,
             query_params,
             header_params,

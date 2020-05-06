@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**get_advertiser**](SellersV2Api.md#get_advertiser) | **GET** /v2/crp/advertisers/{advertiserId} | Get an advertiser.
 [**get_advertiser_campaigns**](SellersV2Api.md#get_advertiser_campaigns) | **GET** /v2/crp/advertisers/{advertiserId}/campaigns | Get the collection of CRP campaigns associated with the advertiserId.
 [**get_advertisers**](SellersV2Api.md#get_advertisers) | **GET** /v2/crp/advertisers | Get the collection of advertisers associated with the user.
+[**get_budgets_by_advertiser**](SellersV2Api.md#get_budgets_by_advertiser) | **GET** /v2/crp/advertisers/{advertiserId}/budgets | Get CRP budgets for a specific advertiser
 [**get_budgets_by_seller**](SellersV2Api.md#get_budgets_by_seller) | **GET** /v2/crp/sellers/{sellerId}/budgets | Get a collection of budgets for this seller.
 [**get_budgets_by_seller_campaign_id**](SellersV2Api.md#get_budgets_by_seller_campaign_id) | **GET** /v2/crp/seller-campaigns/{sellerCampaignId}/budgets | Get a collection of budgets for this seller campaign.
 [**get_seller**](SellersV2Api.md#get_seller) | **GET** /v2/crp/sellers/{sellerId} | Get details for a seller.
@@ -17,6 +18,7 @@ Method | HTTP request | Description
 [**get_seller_budgets**](SellersV2Api.md#get_seller_budgets) | **GET** /v2/crp/budgets | Get a collection of budgets.
 [**get_seller_campaign**](SellersV2Api.md#get_seller_campaign) | **GET** /v2/crp/seller-campaigns/{sellerCampaignId} | Get details for a seller campaign.
 [**get_seller_campaigns**](SellersV2Api.md#get_seller_campaigns) | **GET** /v2/crp/seller-campaigns | Get a collection of seller campaigns.
+[**get_seller_campaigns_by_advertiser**](SellersV2Api.md#get_seller_campaigns_by_advertiser) | **GET** /v2/crp/advertisers/{advertiserId}/seller-campaigns | Get CRP seller-campaigns for a specific advertiser
 [**get_seller_campaigns_by_seller**](SellersV2Api.md#get_seller_campaigns_by_seller) | **GET** /v2/crp/sellers/{sellerId}/seller-campaigns | Get a collection of seller campaigns for this seller.
 [**get_sellers**](SellersV2Api.md#get_sellers) | **GET** /v2/crp/sellers | Get a collection of sellers.
 [**update_seller_budget**](SellersV2Api.md#update_seller_budget) | **PATCH** /v2/crp/budgets/{budgetId} | Modify a single budget.
@@ -408,6 +410,88 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**list[AdvertiserInfoMessage]**](AdvertiserInfoMessage.md)
+
+### Authorization
+
+[Authorization](../README.md#Authorization)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml, text/html
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_budgets_by_advertiser**
+> list[SellerBudgetMessage] get_budgets_by_advertiser(advertiser_id, authorization, status=status, with_balance=with_balance, with_spend=with_spend, end_after_date=end_after_date, start_before_date=start_before_date, budget_id=budget_id, seller_id=seller_id, type=type)
+
+Get CRP budgets for a specific advertiser
+
+### Example
+
+* Api Key Authentication (Authorization):
+```python
+from __future__ import print_function
+import time
+import criteo_marketing
+from criteo_marketing.rest import ApiException
+from pprint import pprint
+configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
+api_instance = criteo_marketing.SellersV2Api(criteo_marketing.ApiClient(configuration))
+advertiser_id = 56 # int | 
+authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
+status = 'status_example' # str |  (optional)
+with_balance = True # bool |  (optional)
+with_spend = True # bool |  (optional)
+end_after_date = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
+start_before_date = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
+budget_id = 56 # int |  (optional)
+seller_id = 56 # int |  (optional)
+type = 'type_example' # str |  (optional)
+
+try:
+    # Get CRP budgets for a specific advertiser
+    api_response = api_instance.get_budgets_by_advertiser(advertiser_id, authorization, status=status, with_balance=with_balance, with_spend=with_spend, end_after_date=end_after_date, start_before_date=start_before_date, budget_id=budget_id, seller_id=seller_id, type=type)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling SellersV2Api->get_budgets_by_advertiser: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **advertiser_id** | **int**|  | 
+ **authorization** | **str**| JWT Bearer Token | [default to &#39;Bearer VALID_JWT_TOKEN_BASE64&#39;]
+ **status** | **str**|  | [optional] 
+ **with_balance** | **bool**|  | [optional] 
+ **with_spend** | **bool**|  | [optional] 
+ **end_after_date** | **datetime**|  | [optional] 
+ **start_before_date** | **datetime**|  | [optional] 
+ **budget_id** | **int**|  | [optional] 
+ **seller_id** | **int**|  | [optional] 
+ **type** | **str**|  | [optional] 
+
+### Return type
+
+[**list[SellerBudgetMessage]**](SellerBudgetMessage.md)
 
 ### Authorization
 
@@ -951,6 +1035,72 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 **400** | List of errors encountered |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_seller_campaigns_by_advertiser**
+> list[SellerCampaignMessage] get_seller_campaigns_by_advertiser(advertiser_id, authorization)
+
+Get CRP seller-campaigns for a specific advertiser
+
+### Example
+
+* Api Key Authentication (Authorization):
+```python
+from __future__ import print_function
+import time
+import criteo_marketing
+from criteo_marketing.rest import ApiException
+from pprint import pprint
+configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
+api_instance = criteo_marketing.SellersV2Api(criteo_marketing.ApiClient(configuration))
+advertiser_id = 56 # int | 
+authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
+
+try:
+    # Get CRP seller-campaigns for a specific advertiser
+    api_response = api_instance.get_seller_campaigns_by_advertiser(advertiser_id, authorization)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling SellersV2Api->get_seller_campaigns_by_advertiser: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **advertiser_id** | **int**|  | 
+ **authorization** | **str**| JWT Bearer Token | [default to &#39;Bearer VALID_JWT_TOKEN_BASE64&#39;]
+
+### Return type
+
+[**list[SellerCampaignMessage]**](SellerCampaignMessage.md)
+
+### Authorization
+
+[Authorization](../README.md#Authorization)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml, text/html
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
 **401** | Authentication failed. |  -  |
 **403** | You do not have access to the requested records |  -  |
 **429** | Throttling failure. Maximum sending rate exceeded. |  -  |
