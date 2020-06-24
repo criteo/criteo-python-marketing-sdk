@@ -14,7 +14,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "1.0.166"
+__version__ = "1.0.167"
 
 # import apis into sdk package
 from criteo_marketing.api.advertisers_api import AdvertisersApi
@@ -41,6 +41,7 @@ from criteo_marketing.exceptions import ApiException
 # import models into sdk package
 from criteo_marketing.models.advertiser_campaign_message import AdvertiserCampaignMessage
 from criteo_marketing.models.advertiser_info_message import AdvertiserInfoMessage
+from criteo_marketing.models.advertiser_quota_message import AdvertiserQuotaMessage
 from criteo_marketing.models.audience_create_request import AudienceCreateRequest
 from criteo_marketing.models.audience_create_response import AudienceCreateResponse
 from criteo_marketing.models.audience_patch_request import AudiencePatchRequest
@@ -54,6 +55,7 @@ from criteo_marketing.models.campaign_bid_change_request import CampaignBidChang
 from criteo_marketing.models.campaign_bid_change_response import CampaignBidChangeResponse
 from criteo_marketing.models.campaign_bid_message import CampaignBidMessage
 from criteo_marketing.models.campaign_message import CampaignMessage
+from criteo_marketing.models.campaign_report_query_message import CampaignReportQueryMessage
 from criteo_marketing.models.catalog_product import CatalogProduct
 from criteo_marketing.models.catalog_product_v3 import CatalogProductV3
 from criteo_marketing.models.category_bid_change_request import CategoryBidChangeRequest

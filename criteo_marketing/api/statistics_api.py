@@ -36,6 +36,126 @@ class StatisticsApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
+    def get_campaign_report(self, authorization, report_query, **kwargs):  # noqa: E501
+        """Generates a statistics report  # noqa: E501
+
+        ###Statistics v2 is currently in beta and subject to change. Reach out to your Criteo contact if you’re interesting in participating in the beta.###  **AdvertiserIds**:(mandatory) The list of advertiser ids, comma-separated. Advertisers not in your portfolio   will be skipped. If no id is present, all the advertisers in the portfolio will be used.<br />  **StartDate, EndDate**: (mandatory) Start date (beginning of day) and end date (beginning of day) to be used for  the report generation. Format to use: yyyy-mm-dd (e.g. 2017-10-30).<br />  **Dimensions**: (mandatory) The dimensions to be used in the report. Possible values: CampaignId, Campaign,  AdvertiserId, Advertiser, CategoryId, Category, Hour, Day, Week, Month, Year.<br />  **Metrics**:(mandatory) The metrics to be used in the report. For a list of possible values, please see  <a href=\"https://support.criteo.com/s/article?article=Criteo-Marketing-API-Intro\">the full documentation</a>.<br />  **Format**: (mandatory)The file format of the generated report. Possible values: Csv, Excel, Xml, Json<br />  **Currency**: (optional) The currency to be used in the report. Three-letter capitals. For a list of   possible values, please see <a href=\"https://support.criteo.com/s/article?article=Criteo-Marketing-API-Intro\">the full documentation</a>.  If not set, the user's preference setting will be used.<br />  **Timezone**: (optional) Timezone to be used in the report. Possible format<br />  - TZ format (e.g. Europe/London)  - UTC format (e.g. UTC+1:00)  - Timezone abbreviation (e.g. PST)                If not set, GMT is used.<br />  #### Functional cases ####  Statistic export in a file might be corrupted through Swagger. It's recommended to access this file through   a CURL request or other programmatic methods.  #### Validation rules ####  StartDate and EndDate are mandatory.<br />  StartDate should come before, or be equal to EndDate.<br />  The requested dimensions must be in a supported combination.<br />  At least one metric must be provided.<br />  All metrics must be supported.<br />  No duplicated metric in the list.<br />  The selected advertisers must have at least one campaign.<br />  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_campaign_report(authorization, report_query, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str authorization: JWT Bearer Token (required)
+        :param CampaignReportQueryMessage report_query: (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: str
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.get_campaign_report_with_http_info(authorization, report_query, **kwargs)  # noqa: E501
+
+    def get_campaign_report_with_http_info(self, authorization, report_query, **kwargs):  # noqa: E501
+        """Generates a statistics report  # noqa: E501
+
+        ###Statistics v2 is currently in beta and subject to change. Reach out to your Criteo contact if you’re interesting in participating in the beta.###  **AdvertiserIds**:(mandatory) The list of advertiser ids, comma-separated. Advertisers not in your portfolio   will be skipped. If no id is present, all the advertisers in the portfolio will be used.<br />  **StartDate, EndDate**: (mandatory) Start date (beginning of day) and end date (beginning of day) to be used for  the report generation. Format to use: yyyy-mm-dd (e.g. 2017-10-30).<br />  **Dimensions**: (mandatory) The dimensions to be used in the report. Possible values: CampaignId, Campaign,  AdvertiserId, Advertiser, CategoryId, Category, Hour, Day, Week, Month, Year.<br />  **Metrics**:(mandatory) The metrics to be used in the report. For a list of possible values, please see  <a href=\"https://support.criteo.com/s/article?article=Criteo-Marketing-API-Intro\">the full documentation</a>.<br />  **Format**: (mandatory)The file format of the generated report. Possible values: Csv, Excel, Xml, Json<br />  **Currency**: (optional) The currency to be used in the report. Three-letter capitals. For a list of   possible values, please see <a href=\"https://support.criteo.com/s/article?article=Criteo-Marketing-API-Intro\">the full documentation</a>.  If not set, the user's preference setting will be used.<br />  **Timezone**: (optional) Timezone to be used in the report. Possible format<br />  - TZ format (e.g. Europe/London)  - UTC format (e.g. UTC+1:00)  - Timezone abbreviation (e.g. PST)                If not set, GMT is used.<br />  #### Functional cases ####  Statistic export in a file might be corrupted through Swagger. It's recommended to access this file through   a CURL request or other programmatic methods.  #### Validation rules ####  StartDate and EndDate are mandatory.<br />  StartDate should come before, or be equal to EndDate.<br />  The requested dimensions must be in a supported combination.<br />  At least one metric must be provided.<br />  All metrics must be supported.<br />  No duplicated metric in the list.<br />  The selected advertisers must have at least one campaign.<br />  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_campaign_report_with_http_info(authorization, report_query, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str authorization: JWT Bearer Token (required)
+        :param CampaignReportQueryMessage report_query: (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(str, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['authorization', 'report_query']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_campaign_report" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in local_var_params or
+                local_var_params['authorization'] is None):
+            raise ApiValueError("Missing the required parameter `authorization` when calling `get_campaign_report`")  # noqa: E501
+        # verify the required parameter 'report_query' is set
+        if ('report_query' not in local_var_params or
+                local_var_params['report_query'] is None):
+            raise ApiValueError("Missing the required parameter `report_query` when calling `get_campaign_report`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in local_var_params:
+            header_params['Authorization'] = local_var_params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'report_query' in local_var_params:
+            body_params = local_var_params['report_query']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', 'text/json', 'application/xml', 'text/xml', 'text/html'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json', 'text/json', 'application/xml', 'text/xml', 'application/x-www-form-urlencoded', 'text/html'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['Authorization']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/v1/statistics/report', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='str',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def get_stats(self, authorization, stats_query, **kwargs):  # noqa: E501
         """Generates a statistics report  # noqa: E501
 

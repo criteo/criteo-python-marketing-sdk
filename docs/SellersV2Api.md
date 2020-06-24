@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**create_sellers**](SellersV2Api.md#create_sellers) | **POST** /v2/crp/advertisers/{advertiserId}/sellers | Create new sellers for an advertiser
 [**get_advertiser**](SellersV2Api.md#get_advertiser) | **GET** /v2/crp/advertisers/{advertiserId} | Get an advertiser.
 [**get_advertiser_campaigns**](SellersV2Api.md#get_advertiser_campaigns) | **GET** /v2/crp/advertisers/{advertiserId}/campaigns | Get the collection of CRP campaigns associated with the advertiserId.
+[**get_advertiser_preview_limits**](SellersV2Api.md#get_advertiser_preview_limits) | **GET** /v2/crp/advertisers/preview-limit | Get the collection of advertisers preview limits associated with the user.
 [**get_advertisers**](SellersV2Api.md#get_advertisers) | **GET** /v2/crp/advertisers | Get the collection of advertisers associated with the user.
 [**get_budgets_by_advertiser**](SellersV2Api.md#get_budgets_by_advertiser) | **GET** /v2/crp/advertisers/{advertiserId}/budgets | Get CRP budgets for a specific advertiser
 [**get_budgets_by_seller**](SellersV2Api.md#get_budgets_by_seller) | **GET** /v2/crp/sellers/{sellerId}/budgets | Get a collection of budgets for this seller.
@@ -346,6 +347,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**list[AdvertiserCampaignMessage]**](AdvertiserCampaignMessage.md)
+
+### Authorization
+
+[Authorization](../README.md#Authorization)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml, text/html
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_advertiser_preview_limits**
+> list[AdvertiserQuotaMessage] get_advertiser_preview_limits(authorization)
+
+Get the collection of advertisers preview limits associated with the user.
+
+### Example
+
+* Api Key Authentication (Authorization):
+```python
+from __future__ import print_function
+import time
+import criteo_marketing
+from criteo_marketing.rest import ApiException
+from pprint import pprint
+configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
+api_instance = criteo_marketing.SellersV2Api(criteo_marketing.ApiClient(configuration))
+authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
+
+try:
+    # Get the collection of advertisers preview limits associated with the user.
+    api_response = api_instance.get_advertiser_preview_limits(authorization)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling SellersV2Api->get_advertiser_preview_limits: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| JWT Bearer Token | [default to &#39;Bearer VALID_JWT_TOKEN_BASE64&#39;]
+
+### Return type
+
+[**list[AdvertiserQuotaMessage]**](AdvertiserQuotaMessage.md)
 
 ### Authorization
 
