@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**get_budgets_by_seller**](SellersV2Api.md#get_budgets_by_seller) | **GET** /v2/crp/sellers/{sellerId}/budgets | Get a collection of budgets for this seller.
 [**get_budgets_by_seller_campaign_id**](SellersV2Api.md#get_budgets_by_seller_campaign_id) | **GET** /v2/crp/seller-campaigns/{sellerCampaignId}/budgets | Get a collection of budgets for this seller campaign.
 [**get_seller**](SellersV2Api.md#get_seller) | **GET** /v2/crp/sellers/{sellerId} | Get details for a seller.
+[**get_seller_ad_demo**](SellersV2Api.md#get_seller_ad_demo) | **GET** /v2/crp/advertisers/{advertiserId}/ad-preview | Get a demo ad with products from the given seller
 [**get_seller_budget**](SellersV2Api.md#get_seller_budget) | **GET** /v2/crp/budgets/{budgetId} | Get details for a budget.
 [**get_seller_budgets**](SellersV2Api.md#get_seller_budgets) | **GET** /v2/crp/budgets | Get a collection of budgets.
 [**get_seller_campaign**](SellersV2Api.md#get_seller_campaign) | **GET** /v2/crp/seller-campaigns/{sellerCampaignId} | Get details for a seller campaign.
@@ -804,6 +805,80 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 **400** | List of errors encountered |  -  |
+**401** | Authentication failed. |  -  |
+**403** | You do not have access to the requested records |  -  |
+**429** | Throttling failure. Maximum sending rate exceeded. |  -  |
+**500** | Unknown error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_seller_ad_demo**
+> str get_seller_ad_demo(advertiser_id, seller_id, authorization, campaign_id=campaign_id, height=height, width=width)
+
+Get a demo ad with products from the given seller
+
+### Example
+
+* Api Key Authentication (Authorization):
+```python
+from __future__ import print_function
+import time
+import criteo_marketing
+from criteo_marketing.rest import ApiException
+from pprint import pprint
+configuration = criteo_marketing.Configuration()
+# Configure API key authorization: Authorization
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# Defining host is optional and default to https://api.criteo.com/marketing
+configuration.host = "https://api.criteo.com/marketing"
+# Create an instance of the API class
+api_instance = criteo_marketing.SellersV2Api(criteo_marketing.ApiClient(configuration))
+advertiser_id = 56 # int | 
+seller_id = 56 # int | 
+authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
+campaign_id = 56 # int |  (optional)
+height = 56 # int |  (optional)
+width = 56 # int |  (optional)
+
+try:
+    # Get a demo ad with products from the given seller
+    api_response = api_instance.get_seller_ad_demo(advertiser_id, seller_id, authorization, campaign_id=campaign_id, height=height, width=width)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling SellersV2Api->get_seller_ad_demo: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **advertiser_id** | **int**|  | 
+ **seller_id** | **int**|  | 
+ **authorization** | **str**| JWT Bearer Token | [default to &#39;Bearer VALID_JWT_TOKEN_BASE64&#39;]
+ **campaign_id** | **int**|  | [optional] 
+ **height** | **int**|  | [optional] 
+ **width** | **int**|  | [optional] 
+
+### Return type
+
+**str**
+
+### Authorization
+
+[Authorization](../README.md#Authorization)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, application/xml, text/xml, text/html
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
 **401** | Authentication failed. |  -  |
 **403** | You do not have access to the requested records |  -  |
 **429** | Throttling failure. Maximum sending rate exceeded. |  -  |
