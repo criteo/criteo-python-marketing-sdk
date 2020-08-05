@@ -643,7 +643,7 @@ class SellersV2Api(object):
             collection_formats=collection_formats)
 
     def get_advertiser_preview_limits(self, authorization, **kwargs):  # noqa: E501
-        """Get the collection of advertisers preview limits associated with the user.  # noqa: E501
+        """Get the collection of advertisers preview limits associated with the authorized user.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -667,7 +667,7 @@ class SellersV2Api(object):
         return self.get_advertiser_preview_limits_with_http_info(authorization, **kwargs)  # noqa: E501
 
     def get_advertiser_preview_limits_with_http_info(self, authorization, **kwargs):  # noqa: E501
-        """Get the collection of advertisers preview limits associated with the user.  # noqa: E501
+        """Get the collection of advertisers preview limits associated with the authorized user.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -1401,8 +1401,9 @@ class SellersV2Api(object):
             collection_formats=collection_formats)
 
     def get_seller_ad_demo(self, advertiser_id, seller_id, authorization, **kwargs):  # noqa: E501
-        """Get a demo ad with products from the given seller  # noqa: E501
+        """Get a preview of an HTML ad with products belonging to the provided seller  # noqa: E501
 
+        • <b>advertiserId</b>: Valid crp advertiserId, seller belongs to provided advertiser<br />  • <b>sellerId</b>: Products from given SellerId will fill the ad preview, must be existing crp sellerId<br />  • <b>campaignId</b>: CampaignId may be supplied if there is a specific design set configured for the provided campaign, Seller-Campaign must be valid in crp<br />  • <b>height</b>: height may be supplied to request a specific ad preview height<br />  • <b>width</b>: width may be supplied to request a specific ad preview width<br />                Ad preview api calls are capped to 1000 per day per advertiser by default.  Current usage, limit, and period can be found using v2/crp/advertisers/preview-limit  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_seller_ad_demo(advertiser_id, seller_id, authorization, async_req=True)
@@ -1430,8 +1431,9 @@ class SellersV2Api(object):
         return self.get_seller_ad_demo_with_http_info(advertiser_id, seller_id, authorization, **kwargs)  # noqa: E501
 
     def get_seller_ad_demo_with_http_info(self, advertiser_id, seller_id, authorization, **kwargs):  # noqa: E501
-        """Get a demo ad with products from the given seller  # noqa: E501
+        """Get a preview of an HTML ad with products belonging to the provided seller  # noqa: E501
 
+        • <b>advertiserId</b>: Valid crp advertiserId, seller belongs to provided advertiser<br />  • <b>sellerId</b>: Products from given SellerId will fill the ad preview, must be existing crp sellerId<br />  • <b>campaignId</b>: CampaignId may be supplied if there is a specific design set configured for the provided campaign, Seller-Campaign must be valid in crp<br />  • <b>height</b>: height may be supplied to request a specific ad preview height<br />  • <b>width</b>: width may be supplied to request a specific ad preview width<br />                Ad preview api calls are capped to 1000 per day per advertiser by default.  Current usage, limit, and period can be found using v2/crp/advertisers/preview-limit  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_seller_ad_demo_with_http_info(advertiser_id, seller_id, authorization, async_req=True)
@@ -1669,6 +1671,7 @@ class SellersV2Api(object):
         :param int campaign_id: Return only budgets that pay for a given campaign.
         :param str seller_id: Return only budgets belonging to the given seller.
         :param str type: Return only budgets with the given budget type.
+        :param int advertiser_id: Return only budgets belonging to the specified advertiser
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -1702,6 +1705,7 @@ class SellersV2Api(object):
         :param int campaign_id: Return only budgets that pay for a given campaign.
         :param str seller_id: Return only budgets belonging to the given seller.
         :param str type: Return only budgets with the given budget type.
+        :param int advertiser_id: Return only budgets belonging to the specified advertiser
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -1718,7 +1722,7 @@ class SellersV2Api(object):
 
         local_var_params = locals()
 
-        all_params = ['authorization', 'status', 'with_balance', 'with_spend', 'end_after_date', 'start_before_date', 'campaign_id', 'seller_id', 'type']  # noqa: E501
+        all_params = ['authorization', 'status', 'with_balance', 'with_spend', 'end_after_date', 'start_before_date', 'campaign_id', 'seller_id', 'type', 'advertiser_id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1758,6 +1762,8 @@ class SellersV2Api(object):
             query_params.append(('sellerId', local_var_params['seller_id']))  # noqa: E501
         if 'type' in local_var_params:
             query_params.append(('type', local_var_params['type']))  # noqa: E501
+        if 'advertiser_id' in local_var_params:
+            query_params.append(('advertiserId', local_var_params['advertiser_id']))  # noqa: E501
 
         header_params = {}
         if 'authorization' in local_var_params:
@@ -1921,6 +1927,7 @@ class SellersV2Api(object):
         :param str seller_id: Return only seller campaigns belonging to the given seller.
         :param int campaign_id: Return only seller campaigns associated with the given campaign.
         :param str budget_status: Return only seller campaigns whose budget has the given status.
+        :param int advertiser_id: Return only seller belonging to the specified advertiser
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -1950,6 +1957,7 @@ class SellersV2Api(object):
         :param str seller_id: Return only seller campaigns belonging to the given seller.
         :param int campaign_id: Return only seller campaigns associated with the given campaign.
         :param str budget_status: Return only seller campaigns whose budget has the given status.
+        :param int advertiser_id: Return only seller belonging to the specified advertiser
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -1966,7 +1974,7 @@ class SellersV2Api(object):
 
         local_var_params = locals()
 
-        all_params = ['authorization', 'seller_status', 'seller_id', 'campaign_id', 'budget_status']  # noqa: E501
+        all_params = ['authorization', 'seller_status', 'seller_id', 'campaign_id', 'budget_status', 'advertiser_id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1998,6 +2006,8 @@ class SellersV2Api(object):
             query_params.append(('campaignId', local_var_params['campaign_id']))  # noqa: E501
         if 'budget_status' in local_var_params:
             query_params.append(('budgetStatus', local_var_params['budget_status']))  # noqa: E501
+        if 'advertiser_id' in local_var_params:
+            query_params.append(('advertiserId', local_var_params['advertiser_id']))  # noqa: E501
 
         header_params = {}
         if 'authorization' in local_var_params:
@@ -2287,6 +2297,8 @@ class SellersV2Api(object):
         :param bool with_products: Return only sellers with or without products in catalog.
         :param str with_budget_status: Return only sellers with specific budget status.
         :param str seller_name: Return only sellers with the matching name.
+        :param int advertiser_id: Return only sellers belonging to the specified advertiser
+        :param int campaign_id: Return only sellers belonging to the specified campaign
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -2316,6 +2328,8 @@ class SellersV2Api(object):
         :param bool with_products: Return only sellers with or without products in catalog.
         :param str with_budget_status: Return only sellers with specific budget status.
         :param str seller_name: Return only sellers with the matching name.
+        :param int advertiser_id: Return only sellers belonging to the specified advertiser
+        :param int campaign_id: Return only sellers belonging to the specified campaign
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -2332,7 +2346,7 @@ class SellersV2Api(object):
 
         local_var_params = locals()
 
-        all_params = ['authorization', 'seller_status', 'with_products', 'with_budget_status', 'seller_name']  # noqa: E501
+        all_params = ['authorization', 'seller_status', 'with_products', 'with_budget_status', 'seller_name', 'advertiser_id', 'campaign_id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2364,6 +2378,10 @@ class SellersV2Api(object):
             query_params.append(('withBudgetStatus', local_var_params['with_budget_status']))  # noqa: E501
         if 'seller_name' in local_var_params:
             query_params.append(('sellerName', local_var_params['seller_name']))  # noqa: E501
+        if 'advertiser_id' in local_var_params:
+            query_params.append(('advertiserId', local_var_params['advertiser_id']))  # noqa: E501
+        if 'campaign_id' in local_var_params:
+            query_params.append(('campaignId', local_var_params['campaign_id']))  # noqa: E501
 
         header_params = {}
         if 'authorization' in local_var_params:

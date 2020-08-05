@@ -9,13 +9,13 @@ Method | HTTP request | Description
 [**create_sellers**](SellersV2Api.md#create_sellers) | **POST** /v2/crp/advertisers/{advertiserId}/sellers | Create new sellers for an advertiser
 [**get_advertiser**](SellersV2Api.md#get_advertiser) | **GET** /v2/crp/advertisers/{advertiserId} | Get an advertiser.
 [**get_advertiser_campaigns**](SellersV2Api.md#get_advertiser_campaigns) | **GET** /v2/crp/advertisers/{advertiserId}/campaigns | Get the collection of CRP campaigns associated with the advertiserId.
-[**get_advertiser_preview_limits**](SellersV2Api.md#get_advertiser_preview_limits) | **GET** /v2/crp/advertisers/preview-limit | Get the collection of advertisers preview limits associated with the user.
+[**get_advertiser_preview_limits**](SellersV2Api.md#get_advertiser_preview_limits) | **GET** /v2/crp/advertisers/preview-limit | Get the collection of advertisers preview limits associated with the authorized user.
 [**get_advertisers**](SellersV2Api.md#get_advertisers) | **GET** /v2/crp/advertisers | Get the collection of advertisers associated with the user.
 [**get_budgets_by_advertiser**](SellersV2Api.md#get_budgets_by_advertiser) | **GET** /v2/crp/advertisers/{advertiserId}/budgets | Get CRP budgets for a specific advertiser
 [**get_budgets_by_seller**](SellersV2Api.md#get_budgets_by_seller) | **GET** /v2/crp/sellers/{sellerId}/budgets | Get a collection of budgets for this seller.
 [**get_budgets_by_seller_campaign_id**](SellersV2Api.md#get_budgets_by_seller_campaign_id) | **GET** /v2/crp/seller-campaigns/{sellerCampaignId}/budgets | Get a collection of budgets for this seller campaign.
 [**get_seller**](SellersV2Api.md#get_seller) | **GET** /v2/crp/sellers/{sellerId} | Get details for a seller.
-[**get_seller_ad_demo**](SellersV2Api.md#get_seller_ad_demo) | **GET** /v2/crp/advertisers/{advertiserId}/ad-preview | Get a demo ad with products from the given seller
+[**get_seller_ad_demo**](SellersV2Api.md#get_seller_ad_demo) | **GET** /v2/crp/advertisers/{advertiserId}/ad-preview | Get a preview of an HTML ad with products belonging to the provided seller
 [**get_seller_budget**](SellersV2Api.md#get_seller_budget) | **GET** /v2/crp/budgets/{budgetId} | Get details for a budget.
 [**get_seller_budgets**](SellersV2Api.md#get_seller_budgets) | **GET** /v2/crp/budgets | Get a collection of budgets.
 [**get_seller_campaign**](SellersV2Api.md#get_seller_campaign) | **GET** /v2/crp/seller-campaigns/{sellerCampaignId} | Get details for a seller campaign.
@@ -372,7 +372,7 @@ Name | Type | Description  | Notes
 # **get_advertiser_preview_limits**
 > list[AdvertiserQuotaMessage] get_advertiser_preview_limits(authorization)
 
-Get the collection of advertisers preview limits associated with the user.
+Get the collection of advertisers preview limits associated with the authorized user.
 
 ### Example
 
@@ -396,7 +396,7 @@ api_instance = criteo_marketing.SellersV2Api(criteo_marketing.ApiClient(configur
 authorization = 'Bearer VALID_JWT_TOKEN_BASE64' # str | JWT Bearer Token (default to 'Bearer VALID_JWT_TOKEN_BASE64')
 
 try:
-    # Get the collection of advertisers preview limits associated with the user.
+    # Get the collection of advertisers preview limits associated with the authorized user.
     api_response = api_instance.get_advertiser_preview_limits(authorization)
     pprint(api_response)
 except ApiException as e:
@@ -815,7 +815,9 @@ Name | Type | Description  | Notes
 # **get_seller_ad_demo**
 > str get_seller_ad_demo(advertiser_id, seller_id, authorization, campaign_id=campaign_id, height=height, width=width)
 
-Get a demo ad with products from the given seller
+Get a preview of an HTML ad with products belonging to the provided seller
+
+• <b>advertiserId</b>: Valid crp advertiserId, seller belongs to provided advertiser<br />  • <b>sellerId</b>: Products from given SellerId will fill the ad preview, must be existing crp sellerId<br />  • <b>campaignId</b>: CampaignId may be supplied if there is a specific design set configured for the provided campaign, Seller-Campaign must be valid in crp<br />  • <b>height</b>: height may be supplied to request a specific ad preview height<br />  • <b>width</b>: width may be supplied to request a specific ad preview width<br />                Ad preview api calls are capped to 1000 per day per advertiser by default.  Current usage, limit, and period can be found using v2/crp/advertisers/preview-limit
 
 ### Example
 
@@ -844,7 +846,7 @@ height = 56 # int |  (optional)
 width = 56 # int |  (optional)
 
 try:
-    # Get a demo ad with products from the given seller
+    # Get a preview of an HTML ad with products belonging to the provided seller
     api_response = api_instance.get_seller_ad_demo(advertiser_id, seller_id, authorization, campaign_id=campaign_id, height=height, width=width)
     pprint(api_response)
 except ApiException as e:
@@ -956,7 +958,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_seller_budgets**
-> list[SellerBudgetMessage] get_seller_budgets(authorization, status=status, with_balance=with_balance, with_spend=with_spend, end_after_date=end_after_date, start_before_date=start_before_date, campaign_id=campaign_id, seller_id=seller_id, type=type)
+> list[SellerBudgetMessage] get_seller_budgets(authorization, status=status, with_balance=with_balance, with_spend=with_spend, end_after_date=end_after_date, start_before_date=start_before_date, campaign_id=campaign_id, seller_id=seller_id, type=type, advertiser_id=advertiser_id)
 
 Get a collection of budgets.
 
@@ -990,10 +992,11 @@ start_before_date = '2013-10-20T19:20:30+01:00' # datetime | Return budgets that
 campaign_id = 56 # int | Return only budgets that pay for a given campaign. (optional)
 seller_id = 'seller_id_example' # str | Return only budgets belonging to the given seller. (optional)
 type = 'type_example' # str | Return only budgets with the given budget type. (optional)
+advertiser_id = 56 # int | Return only budgets belonging to the specified advertiser (optional)
 
 try:
     # Get a collection of budgets.
-    api_response = api_instance.get_seller_budgets(authorization, status=status, with_balance=with_balance, with_spend=with_spend, end_after_date=end_after_date, start_before_date=start_before_date, campaign_id=campaign_id, seller_id=seller_id, type=type)
+    api_response = api_instance.get_seller_budgets(authorization, status=status, with_balance=with_balance, with_spend=with_spend, end_after_date=end_after_date, start_before_date=start_before_date, campaign_id=campaign_id, seller_id=seller_id, type=type, advertiser_id=advertiser_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SellersV2Api->get_seller_budgets: %s\n" % e)
@@ -1012,6 +1015,7 @@ Name | Type | Description  | Notes
  **campaign_id** | **int**| Return only budgets that pay for a given campaign. | [optional] 
  **seller_id** | **str**| Return only budgets belonging to the given seller. | [optional] 
  **type** | **str**| Return only budgets with the given budget type. | [optional] 
+ **advertiser_id** | **int**| Return only budgets belonging to the specified advertiser | [optional] 
 
 ### Return type
 
@@ -1108,7 +1112,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_seller_campaigns**
-> list[SellerCampaignMessage] get_seller_campaigns(authorization, seller_status=seller_status, seller_id=seller_id, campaign_id=campaign_id, budget_status=budget_status)
+> list[SellerCampaignMessage] get_seller_campaigns(authorization, seller_status=seller_status, seller_id=seller_id, campaign_id=campaign_id, budget_status=budget_status, advertiser_id=advertiser_id)
 
 Get a collection of seller campaigns.
 
@@ -1138,10 +1142,11 @@ seller_status = 'seller_status_example' # str | Return only seller campaigns for
 seller_id = 'seller_id_example' # str | Return only seller campaigns belonging to the given seller. (optional)
 campaign_id = 56 # int | Return only seller campaigns associated with the given campaign. (optional)
 budget_status = 'budget_status_example' # str | Return only seller campaigns whose budget has the given status. (optional)
+advertiser_id = 56 # int | Return only seller belonging to the specified advertiser (optional)
 
 try:
     # Get a collection of seller campaigns.
-    api_response = api_instance.get_seller_campaigns(authorization, seller_status=seller_status, seller_id=seller_id, campaign_id=campaign_id, budget_status=budget_status)
+    api_response = api_instance.get_seller_campaigns(authorization, seller_status=seller_status, seller_id=seller_id, campaign_id=campaign_id, budget_status=budget_status, advertiser_id=advertiser_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SellersV2Api->get_seller_campaigns: %s\n" % e)
@@ -1156,6 +1161,7 @@ Name | Type | Description  | Notes
  **seller_id** | **str**| Return only seller campaigns belonging to the given seller. | [optional] 
  **campaign_id** | **int**| Return only seller campaigns associated with the given campaign. | [optional] 
  **budget_status** | **str**| Return only seller campaigns whose budget has the given status. | [optional] 
+ **advertiser_id** | **int**| Return only seller belonging to the specified advertiser | [optional] 
 
 ### Return type
 
@@ -1324,7 +1330,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_sellers**
-> list[SellerBase] get_sellers(authorization, seller_status=seller_status, with_products=with_products, with_budget_status=with_budget_status, seller_name=seller_name)
+> list[SellerBase] get_sellers(authorization, seller_status=seller_status, with_products=with_products, with_budget_status=with_budget_status, seller_name=seller_name, advertiser_id=advertiser_id, campaign_id=campaign_id)
 
 Get a collection of sellers.
 
@@ -1354,10 +1360,12 @@ seller_status = 'seller_status_example' # str | Return only sellers with specifi
 with_products = True # bool | Return only sellers with or without products in catalog. (optional)
 with_budget_status = 'with_budget_status_example' # str | Return only sellers with specific budget status. (optional)
 seller_name = 'seller_name_example' # str | Return only sellers with the matching name. (optional)
+advertiser_id = 56 # int | Return only sellers belonging to the specified advertiser (optional)
+campaign_id = 56 # int | Return only sellers belonging to the specified campaign (optional)
 
 try:
     # Get a collection of sellers.
-    api_response = api_instance.get_sellers(authorization, seller_status=seller_status, with_products=with_products, with_budget_status=with_budget_status, seller_name=seller_name)
+    api_response = api_instance.get_sellers(authorization, seller_status=seller_status, with_products=with_products, with_budget_status=with_budget_status, seller_name=seller_name, advertiser_id=advertiser_id, campaign_id=campaign_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SellersV2Api->get_sellers: %s\n" % e)
@@ -1372,6 +1380,8 @@ Name | Type | Description  | Notes
  **with_products** | **bool**| Return only sellers with or without products in catalog. | [optional] 
  **with_budget_status** | **str**| Return only sellers with specific budget status. | [optional] 
  **seller_name** | **str**| Return only sellers with the matching name. | [optional] 
+ **advertiser_id** | **int**| Return only sellers belonging to the specified advertiser | [optional] 
+ **campaign_id** | **int**| Return only sellers belonging to the specified campaign | [optional] 
 
 ### Return type
 
