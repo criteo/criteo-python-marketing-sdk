@@ -817,7 +817,7 @@ Name | Type | Description  | Notes
 
 Get a preview of an HTML ad with products belonging to the provided seller
 
-• <b>advertiserId</b>: Valid crp advertiserId, seller belongs to provided advertiser<br />  • <b>sellerId</b>: Products from given SellerId will fill the ad preview, must be existing crp sellerId<br />  • <b>campaignId</b>: CampaignId may be supplied if there is a specific design set configured for the provided campaign, Seller-Campaign must be valid in crp<br />  • <b>height</b>: height may be supplied to request a specific ad preview height<br />  • <b>width</b>: width may be supplied to request a specific ad preview width<br />                Ad preview api calls are capped to 1000 per day per advertiser by default.  Current usage, limit, and period can be found using v2/crp/advertisers/preview-limit
+• <b>advertiserId</b>: Valid crp advertiserId, seller belongs to provided advertiser<br />  • <b>sellerId</b>: Products from given SellerId will fill the ad preview, must be existing crp sellerId<br />  • <b>campaignId</b>: CampaignId may be supplied if there is a specific design set configured for the provided campaign, Seller-Campaign must be valid in crp<br />  • <b>height</b>: height may be supplied to request a specific ad preview height.  Default height: 250<br />  • <b>width</b>: width may be supplied to request a specific ad preview width. Default width: 300<br />                Ad preview api calls are capped to 1000 per day per advertiser by default.  Current usage, limit, and period can be found using v2/crp/advertisers/preview-limit
 
 ### Example
 
