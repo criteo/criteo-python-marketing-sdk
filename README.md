@@ -1,3 +1,8 @@
+# This project is deprecated
+We've built a new set of SDKs to help you use our [Criteo's API](https://developers.criteo.com/).
+
+You can find the new Python SDKs repository here : https://github.com/criteo/criteo-api-python-sdk
+
 # Criteo Marketing SDK for Python
 [![Build Status](https://travis-ci.com/criteo/criteo-python-marketing-sdk.svg?branch=master)](https://travis-ci.com/criteo/criteo-python-marketing-sdk)
 [![](https://img.shields.io/pypi/pyversions/criteo-marketing.svg)](https://pypi.org/project/criteo-marketing/)
